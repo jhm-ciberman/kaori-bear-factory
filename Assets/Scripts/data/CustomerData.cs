@@ -27,32 +27,23 @@ public class CustomerData : ScriptableObject
         DeliveryBoxType.Cardboard,
     };
 
-    private System.Random _random = new System.Random();
-
     public Request MakeRequest(System.Random random) 
     {
         Request request = new Request(this);
         
-        PieceSkin globalSkin = this._GetRandomSkin(random);
+        PieceSkin globalSkin = this.skins[random.Next(this.skins.Length)];
 
         foreach (var part in this.compulsoryParts)
         {
-            this._AddPiece(request, part, globalSkin);
+            this._AddPiece(request, part, this._GetPieceSkin(random, globalSkin));
         }
 
         foreach (RequestPiecePool pool in this.optionalPartsPools)
         {
-            RequestPiece piece = pool.pieces[this._random.Next(pool.pieces.Length)];
+            RequestPiece piece = pool.pieces[random.Next(pool.pieces.Length)];
             if (piece.data != null)
             {
-                if (this.perPartSkin) 
-                {
-                    this._AddPiece(request, piece, this._GetRandomSkin(this._random));
-                }
-                else
-                {
-                    this._AddPiece(request, piece, globalSkin);
-                }
+                this._AddPiece(request, piece, this._GetPieceSkin(random, globalSkin));
             }
         }
 
@@ -61,9 +52,11 @@ public class CustomerData : ScriptableObject
         return request;
     }
 
-    private PieceSkin _GetRandomSkin(System.Random random)
+    private PieceSkin _GetPieceSkin(System.Random random, PieceSkin globalSkin)
     {
-        return this.skins[random.Next(this.skins.Length)];
+        return (this.perPartSkin) 
+            ? this.skins[random.Next(this.skins.Length)]
+            : globalSkin;
     }
 
     private void _AddPiece(Request request, RequestPiece requestPiece, PieceSkin skin)

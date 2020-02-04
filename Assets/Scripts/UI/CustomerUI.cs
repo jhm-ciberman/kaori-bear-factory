@@ -33,7 +33,6 @@ public class CustomerUI : MonoBehaviour
 
         this.timerSlider.value = p;
 
-        Debug.Log(p + " " + this._isAngry);
         if (p < 0.25f && !this._isAngry)
         {
             this._isAngry = true;
