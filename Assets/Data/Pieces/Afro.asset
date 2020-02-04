@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
+  m_Name: Afro
+  m_EditorClassIdentifier: 
+  piecePrefab: {fileID: 5139706044289731383, guid: 36bd9800b18c9bb46958b05874986ea8,
+    type: 3}
+  type: 6
+  skineable: 0
+  uiLayerSpriteNone: {fileID: 21300000, guid: 0e05f3f3e1e0a0647a2a38cbeffc14f1, type: 3}
+  uiLayerSpriteLeft: {fileID: 0}
+  uiLayerSpriteRight: {fileID: 0}

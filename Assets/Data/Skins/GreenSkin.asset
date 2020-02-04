@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3830c7ba1c5e0584aa8d099db899a695, type: 3}
+  m_Name: GreenSkin
+  m_EditorClassIdentifier: 
+  color: {r: 0.105882354, g: 0.46666667, b: 0.26666668, a: 1}
+  albedo: {fileID: 2800000, guid: ed254e89f5145d6458561bf286949758, type: 3}

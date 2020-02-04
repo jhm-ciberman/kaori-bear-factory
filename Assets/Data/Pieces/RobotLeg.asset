@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
+  m_Name: RobotLeg
+  m_EditorClassIdentifier: 
+  piecePrefab: {fileID: 8364624348399638986, guid: 9003e668aa0eefd4ba6a6b110d8485f8,
+    type: 3}
+  type: 3
+  skineable: 0
+  uiLayerSpriteNone: {fileID: 0}
+  uiLayerSpriteLeft: {fileID: 21300000, guid: 64bd047fbcd00264e9ad35ae7ee6e3c1, type: 3}
+  uiLayerSpriteRight: {fileID: 21300000, guid: 5216fbc8b4eb408489d464bfbf87c4f1, type: 3}
