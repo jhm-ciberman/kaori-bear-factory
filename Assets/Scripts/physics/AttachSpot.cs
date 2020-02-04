@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttachSpot : MonoBehaviour
 {
-
     public PieceType spotType;
 
     public PieceDirection spotDirection;
@@ -26,5 +25,4 @@ public class AttachSpot : MonoBehaviour
             this.onAttachSpotEnter(dcd.piece, this);
         }
     }
-
 }

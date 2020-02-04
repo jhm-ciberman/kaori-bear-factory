@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
@@ -38,7 +37,6 @@ public class PlayerInput : MonoBehaviour
         {
             this._playerMovement.Move(-1);
         }
-
     }
 
 }

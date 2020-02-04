@@ -33,7 +33,7 @@ public class CustomerData : ScriptableObject
         
         PieceSkin globalSkin = this.skins[random.Next(this.skins.Length)];
 
-        foreach (var part in this.compulsoryParts)
+        foreach (RequestPiece part in this.compulsoryParts)
         {
             this._AddPiece(request, part, this._GetPieceSkin(random, globalSkin));
         }

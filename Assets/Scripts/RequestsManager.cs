@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class RequestsManager : MonoBehaviour
 {
+    [SerializeField]
     public Spawner spawner;
 
     [SerializeField]
-    private UIManager _uiManager;
+    private UIManager _uiManager = null;
 
     public CustomerData[] customers;
 
@@ -109,6 +110,7 @@ public class RequestsManager : MonoBehaviour
                 this._activeRequests.Remove(activeRequest);
                 this._uiManager.RemoveActiveRequest(activeRequest);
                 this.RebuildSpawnList();
+                this._nextCustomerTime = Time.time + this.customerIntervals;
                 return;
             }
         }
@@ -138,11 +140,6 @@ public class RequestsManager : MonoBehaviour
             Debug.Log("Extra: " + part.data.name + " " + part.direction.ToString() + " " + part.skin?.name);
         }
 
-        if (missing.Count == 0 && extra.Count == 0)
-        {
-            return true;
-        }
-
-        return false;
+        return (missing.Count == 0 && extra.Count == 0);
     }
 }

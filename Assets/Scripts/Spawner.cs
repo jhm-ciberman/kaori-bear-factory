@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
         Spawner.Shuffle(this._random, this._temporalSpawnList);
     }
 
-        // https://stackoverflow.com/a/1262619/2022985
+    // https://stackoverflow.com/a/1262619/2022985
     public static void Shuffle<T>(System.Random random, IList<T> list)  
     {  
         int n = list.Count;  
@@ -61,7 +61,6 @@ public class Spawner : MonoBehaviour
             list[n] = value;  
         }  
     }
-
 
     public void Spawn()
     {

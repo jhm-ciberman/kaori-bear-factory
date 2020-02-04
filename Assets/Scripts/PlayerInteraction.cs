@@ -10,9 +10,13 @@ public class PlayerInteraction : MonoBehaviour
 
     public LayerMask tableLayer;
 
+    [HideInInspector]
     private Piece _currentDraggable = null;
 
+    [HideInInspector]
     private Vector2 _cursorScreenPos;
+
+    private float _raycastDistance = 50f;
 
     public void SetCursorPosition(Vector2 pos)
     {
@@ -23,9 +27,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (this._currentDraggable != null)
         {
-            Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f, this.tableLayer))
+            Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
+            if (Physics.Raycast(ray, out hit, this._raycastDistance, this.tableLayer))
             {
                 this._currentDraggable.UpdatePosition(hit.point);
             }
@@ -34,9 +38,9 @@ public class PlayerInteraction : MonoBehaviour
 
     public void StartInteraction()
     {
-        Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100f, this.piecesLayer))
+        Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
+        if (Physics.Raycast(ray, out hit, this._raycastDistance, this.piecesLayer))
         {
             var dcd = hit.transform.GetComponent<PieceCollisionDetection>();
 

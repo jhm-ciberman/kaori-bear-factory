@@ -13,11 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _positionStart;
     private Quaternion _rotationStart;
 
-    public void Start()
-    {
-        
-    }
-
     public void Move(int dir)
     {
         this._positionStart = this.transform.position;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
@@ -9,10 +7,10 @@ public class Piece : MonoBehaviour
     private bool _isDragged = false;
 
     private Vector3 _startDragElevation = Vector3.zero;
-    private Vector3 _dragOffset = Vector3.zero;
-    private Vector3 _dragDestination = Vector3.zero;
-    private Vector3 _realElevation = Vector3.zero;
-    private Vector3 _elevationVelocity = Vector3.zero;
+    private Vector3 _dragOffset         = Vector3.zero;
+    private Vector3 _dragDestination    = Vector3.zero;
+    private Vector3 _realElevation      = Vector3.zero;
+    private Vector3 _elevationVelocity  = Vector3.zero;
 
     public Rigidbody rigidBody;
     public Vector3 elevation = Vector3.zero;
@@ -20,6 +18,7 @@ public class Piece : MonoBehaviour
 
     [HideInInspector]
     public PieceData pieceData;
+
     private PieceSkin _skin = null;
     public PieceSkin skin 
     {
@@ -41,7 +40,6 @@ public class Piece : MonoBehaviour
 
     private Transform _transform;
     private Vector3 _centerPos;
-    private bool _isAttached = false;
 
     public void Start()
     {
@@ -107,7 +105,6 @@ public class Piece : MonoBehaviour
 
     public void Attach(Craftable craftable, PieceDirection dir)
     {
-        this._isAttached = true;
         this.model.parent = craftable.piece.model.transform;
         this.model.localPosition = Vector3.zero;
         this.model.localRotation = Quaternion.identity;
@@ -122,7 +119,6 @@ public class Piece : MonoBehaviour
 
     public void Deattach()
     {
-        this._isAttached = false;
         this.model.parent = null;
         this.model.localPosition += this._centerPos;
         this.rigidBody.useGravity = true;
@@ -130,6 +126,4 @@ public class Piece : MonoBehaviour
 
         this.rigidBody.detectCollisions = true;
     }
-
-
 }

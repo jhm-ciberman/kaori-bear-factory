@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +15,6 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<ActiveRequest, CustomerUI> _requestsUI = new Dictionary<ActiveRequest, CustomerUI>();
 
-    // Start is called before the first frame update
     void Start()
     {
         this.winScreen.gameObject.SetActive(false);
