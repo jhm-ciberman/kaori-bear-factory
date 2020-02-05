@@ -13,8 +13,8 @@ public class AttachSpot : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (! this.enabled) return;
-        
-        PieceCollisionDetection dcd = other.gameObject.GetComponent<PieceCollisionDetection>();
+
+        Piece.PieceCollisionDetection dcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
         if (dcd == null) return;
 
         if (dcd.piece == null) return;

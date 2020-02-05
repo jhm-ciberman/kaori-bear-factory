@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6476538445996529728}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2034340173429340738
 MeshFilter:
@@ -139,7 +139,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6476538445996529728}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8050765700301482579
 GameObject:
@@ -169,8 +169,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 198115171522613896}
   - {fileID: 928053746312849098}
+  - {fileID: 198115171522613896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -186,9 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 7060111397313415783}
-  elevation: {x: 0, y: 0.5, z: 0}
-  elevationAnimationTime: 0.05
   pieceData: {fileID: 0}
-  model: {fileID: 928053746312849098}
-  center: {fileID: 198115171522613896}
+  _rigidbody: {fileID: 7060111397313415783}
+  _dragHitbox: {fileID: 2063623384078468477}
+  _model: {fileID: 928053746312849098}
+  _center: {fileID: 198115171522613896}

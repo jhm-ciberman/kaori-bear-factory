@@ -20,8 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
   - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
   - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
   - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
-  - {fileID: 11400000, guid: cf7a2b188999b3d4e8354949b7093c27, type: 2}
   compulsoryParts:
   - data: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
     direction: 0

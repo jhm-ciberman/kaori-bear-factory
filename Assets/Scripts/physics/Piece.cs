@@ -2,19 +2,43 @@
 
 public class Piece : MonoBehaviour
 {
+    public class PieceHitbox : MonoBehaviour
+    {
+
+        public static int layer = 8; // Hardcoded
+
+        public Piece piece;
+
+        void Start()
+        {
+            this.gameObject.layer = PieceHitbox.layer;
+        }
+    }
+
+    public class PieceCollisionDetection : MonoBehaviour
+    {
+        public Piece piece;
+
+        void OnCollisionStay(Collision other)
+        {
+            GameObject go = other.gameObject;
+            if (go.tag == "Belt")
+            {
+                Belt belt = go.GetComponent<Belt>();
+                this.piece.MoveByBelt(belt);
+            }
+
+            if (go.tag == "Dispawner")
+            {
+                Object.Destroy(this.gameObject);
+            }
+        }
+    }
+
     public static float globalScale = 0.15f;
 
     private bool _isDragged = false;
 
-    private Vector3 _startDragElevation = Vector3.zero;
-    private Vector3 _dragOffset         = Vector3.zero;
-    private Vector3 _dragDestination    = Vector3.zero;
-    private Vector3 _realElevation      = Vector3.zero;
-    private Vector3 _elevationVelocity  = Vector3.zero;
-
-    public Rigidbody rigidBody;
-    public Vector3 elevation = Vector3.zero;
-    public float elevationAnimationTime = 0.15f;
 
     [HideInInspector]
     public PieceData pieceData;
@@ -30,70 +54,61 @@ public class Piece : MonoBehaviour
             
             if (value != null)
             {
-                this.model.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", value.albedo); 
+                this._model.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", value.albedo); 
             }
         }
     }
 
-    public Transform model;
-    public Transform center;
+    [SerializeField]
+    private Rigidbody _rigidbody = null;
+
+    [SerializeField]
+    private Collider _dragHitbox = null;
+
+    [SerializeField]
+    private Transform _model = null;
+
+    [SerializeField]
+    private Transform _center = null;
 
     private Transform _transform;
     private Vector3 _centerPos;
 
     public void Start()
     {
-        this._transform = this.rigidBody.transform;
-        PieceCollisionDetection cd = this.rigidBody.gameObject.AddComponent<PieceCollisionDetection>();
-        cd.piece = this;
+        this._transform = this._rigidbody.transform;
+        this._rigidbody.gameObject.AddComponent<PieceCollisionDetection>().piece = this;
+        this._dragHitbox.gameObject.AddComponent<PieceHitbox>().piece = this;
 
-        this._centerPos = this.center.localPosition;
-        this.model.localPosition -= this._centerPos;
+        this._centerPos = this._center.localPosition;
+        this._model.localPosition -= this._centerPos;
         this.transform.localScale = Piece.globalScale * Vector3.one;
+
+        this.SetDragStatus(false);
     }
 
-    public void StartDrag(Vector3 posStart)
+    public Vector3 GetDragOffset(Vector3 dragPosition)
     {
-        this._isDragged = true;
-        this.rigidBody.useGravity = false;
-        this.rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
-        this._dragDestination = posStart;
-        this._dragOffset = posStart - this._transform.position;
+        return dragPosition - this._transform.position;
     }
 
-    public void EndDrag()
+    public void SetDragStatus(bool isDragged)
     {
-        this._isDragged = false;
-        this.rigidBody.useGravity = true;
-        this._realElevation = Vector3.zero;
-        this.rigidBody.constraints = RigidbodyConstraints.None;
-        this._elevationVelocity = Vector3.zero;
+        this._isDragged = isDragged;
+        this._rigidbody.useGravity = !isDragged;
+        this._rigidbody.constraints = isDragged ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
     }
 
     public void MoveByBelt(Belt belt)
     {
         if (this._isDragged) return;
 
-        this.rigidBody.MovePosition(this._transform.position + belt.velocity * Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
-        
-        if (this._isDragged)
-        {
-            this._realElevation = Vector3.SmoothDamp(this._realElevation, this.elevation, ref this._elevationVelocity, this.elevationAnimationTime);
-
-            this.rigidBody.MovePosition(this._dragDestination + this._realElevation - this._dragOffset);
-        }
+        this._rigidbody.MovePosition(this._transform.position + belt.velocity * Time.deltaTime);
     }
 
     public void UpdatePosition(Vector3 pos)
     {
-        if (this._isDragged)
-        {
-            this._dragDestination = pos;
-        }
+        this._rigidbody.MovePosition(pos);
     }
 
     private float _GetScale(PieceDirection dir)
@@ -105,25 +120,27 @@ public class Piece : MonoBehaviour
 
     public void Attach(Craftable craftable, PieceDirection dir)
     {
-        this.model.parent = craftable.piece.model.transform;
-        this.model.localPosition = Vector3.zero;
-        this.model.localRotation = Quaternion.identity;
-        this.model.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
+        this._model.parent = craftable.piece._model.transform;
+        this._model.localPosition = Vector3.zero;
+        this._model.localRotation = Quaternion.identity;
+        this._model.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
 
-        this.rigidBody.detectCollisions = false;
-
-        this.rigidBody.useGravity = false;
-        this.rigidBody.isKinematic = true;
-        this._isDragged = false;
+        this._SetAttachState(true);
     }
 
     public void Deattach()
     {
-        this.model.parent = null;
-        this.model.localPosition += this._centerPos;
-        this.rigidBody.useGravity = true;
-        this.rigidBody.isKinematic = false;
+        this._SetAttachState(false);
+        this._model.parent = null;
+        this._model.localPosition += this._centerPos;
 
-        this.rigidBody.detectCollisions = true;
+    }
+
+    private void _SetAttachState(bool attached)
+    {
+        this._rigidbody.useGravity       = !attached;
+        this._rigidbody.detectCollisions = !attached;
+        this._rigidbody.isKinematic      = attached;
+        this._isDragged = false;
     }
 }

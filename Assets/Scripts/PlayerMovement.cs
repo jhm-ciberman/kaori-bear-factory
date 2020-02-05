@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
             this._animationProgress += Time.deltaTime;
 
             float p = this._animationProgress / this.animationDuration;
+            p = -p * (p - 2);  // ease quad out
 
             Transform station = this.stations[this._currentStation];
             Vector3 positionEnd = station.position;

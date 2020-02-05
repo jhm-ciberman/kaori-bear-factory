@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4682841938078630238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.08, y: 1.505, z: 1.15}
+  m_LocalPosition: {x: -0, y: 1.59, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8144969600300726564}
@@ -186,9 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 5265686793684167427}
-  elevation: {x: 0, y: 0.5, z: 0}
-  elevationAnimationTime: 0.05
   pieceData: {fileID: 0}
-  model: {fileID: 2596584818284005294}
-  center: {fileID: 3050677918976422892}
+  _rigidbody: {fileID: 5265686793684167427}
+  _dragHitbox: {fileID: 3767966276117390361}
+  _model: {fileID: 2596584818284005294}
+  _center: {fileID: 3050677918976422892}

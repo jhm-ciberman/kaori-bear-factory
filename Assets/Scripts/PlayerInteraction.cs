@@ -6,33 +6,33 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     private Camera _camera = null;
 
-    public LayerMask piecesLayer;
-
     public LayerMask tableLayer;
 
-    [HideInInspector]
-    private Piece _currentDraggable = null;
+    [SerializeField]
+    private DragState _drag;
 
     [HideInInspector]
     private Vector2 _cursorScreenPos;
 
-    private float _raycastDistance = 50f;
+    private float _raycastDistance = 100f;
 
     public void SetCursorPosition(Vector2 pos)
     {
         this._cursorScreenPos = pos;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        if (this._currentDraggable != null)
+        if (this._drag.isDragging)
         {
             RaycastHit hit;
             Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
             if (Physics.Raycast(ray, out hit, this._raycastDistance, this.tableLayer))
             {
-                this._currentDraggable.UpdatePosition(hit.point);
+                this._drag.targetPos = hit.point;
             }
+
+            this._drag.UpdateDrag(Time.deltaTime);
         }
     }
 
@@ -40,23 +40,21 @@ public class PlayerInteraction : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
-        if (Physics.Raycast(ray, out hit, this._raycastDistance, this.piecesLayer))
-        {
-            var dcd = hit.transform.GetComponent<PieceCollisionDetection>();
 
-            if (dcd && dcd.piece)
+        if (Physics.Raycast(ray, out hit, this._raycastDistance, 1 << Piece.PieceHitbox.layer))
+        {
+            Piece.PieceHitbox hitbox = hit.collider.GetComponent<Piece.PieceHitbox>();
+
+            if (hitbox && hitbox.piece)
             {
-                this._currentDraggable = dcd.piece;
-                dcd.piece.StartDrag(hit.point);
+                this._drag.EndDrag();
+                this._drag.StartDrag(hitbox.piece, hit.point);
             }
         }
     }
 
     public void StopInteraction()
     {
-        this._currentDraggable?.EndDrag();
-        this._currentDraggable = null;
+        this._drag.EndDrag();
     }
-
-
 }

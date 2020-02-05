@@ -28,8 +28,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7463643821417152394}
   - {fileID: 7623173355567418312}
+  - {fileID: 7463643821417152394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -45,12 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 347170628717946725}
-  elevation: {x: 0, y: 0.5, z: 0}
-  elevationAnimationTime: 0.05
   pieceData: {fileID: 0}
-  model: {fileID: 7623173355567418312}
-  center: {fileID: 7463643821417152394}
+  _rigidbody: {fileID: 347170628717946725}
+  _dragHitbox: {fileID: 8757423992031996031}
+  _model: {fileID: 7623173355567418312}
+  _center: {fileID: 7463643821417152394}
 --- !u!1 &954433315150400824
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +78,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4380490982897726786}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6383865263799043580
 GameObject:
@@ -113,7 +112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4380490982897726786}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8723619451648137024
 MeshFilter:
