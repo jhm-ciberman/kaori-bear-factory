@@ -118,6 +118,11 @@ public class Piece : MonoBehaviour
         return 1f;
     }
 
+    public bool canBeAttached
+    {
+        get => !this._isDragged;
+    }
+
     public void Attach(Craftable craftable, PieceDirection dir)
     {
         this._model.parent = craftable.piece._model.transform;
@@ -133,7 +138,6 @@ public class Piece : MonoBehaviour
         this._SetAttachState(false);
         this._model.parent = null;
         this._model.localPosition += this._centerPos;
-
     }
 
     private void _SetAttachState(bool attached)
@@ -141,6 +145,7 @@ public class Piece : MonoBehaviour
         this._rigidbody.useGravity       = !attached;
         this._rigidbody.detectCollisions = !attached;
         this._rigidbody.isKinematic      = attached;
+        this._rigidbody.constraints      = RigidbodyConstraints.None;
         this._isDragged = false;
     }
 }

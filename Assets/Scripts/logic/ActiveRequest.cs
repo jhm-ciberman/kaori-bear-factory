@@ -7,6 +7,8 @@ public class ActiveRequest
 
     public bool lost = false;
 
+    public int slot = 0;
+
     public ActiveRequest(Request request)
     {
         this.request = request;

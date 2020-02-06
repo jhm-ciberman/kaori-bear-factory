@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class RequestsManager : MonoBehaviour
 {
+    public event System.Action<ActiveRequest> onActiveRequestAdded;
+    public event System.Action<ActiveRequest> onActiveRequestRemoved;
+
     [SerializeField]
     public Spawner spawner;
 
@@ -17,11 +20,13 @@ public class RequestsManager : MonoBehaviour
 
     private List<ActiveRequest> _activeRequests = new List<ActiveRequest>();
 
-    public int maxNumberOfAciveRequests = 3;
+    public int slotsNumber = 3;
 
     public float customerIntervals = 3f;
 
     private float _nextCustomerTime = 0f;
+
+    private ActiveRequest[] _slots;
 
     public void Start()
     {
@@ -33,6 +38,8 @@ public class RequestsManager : MonoBehaviour
             Request request = customer.MakeRequest(this._random);
             this._requestsQueue.Enqueue(request);
         }
+
+        this._slots = new ActiveRequest[this.slotsNumber];
     }
 
     public void Update()
@@ -50,7 +57,7 @@ public class RequestsManager : MonoBehaviour
 
     public void TryToFitNewCustomer()
     {
-        if (this._activeRequests.Count >= this.maxNumberOfAciveRequests) return;
+        if (this._activeRequests.Count >= this.slotsNumber) return;
 
         if (this._requestsQueue.Count == 0)
         {
@@ -77,12 +84,41 @@ public class RequestsManager : MonoBehaviour
         }
     }
 
+    private void _AllocateSlot(ActiveRequest activeRequest)
+    {
+        for (int i = 0; i < this._slots.Length; i++)
+        {
+            if (this._slots[i] == null) 
+            {
+                this._slots[i] = activeRequest;
+                activeRequest.slot = i;
+                return;
+            }
+        }
+        throw new System.Exception("No slot available");
+    }
+
+    private void _FreeSlot(ActiveRequest activeRequest)
+    {
+        for (int i = 0; i < this._slots.Length; i++)
+        {
+            if (this._slots[i] == activeRequest) 
+            {
+                this._slots[i] = null;
+                return;
+            }   
+        }
+    }
+
     public void DequeueNextRequest()
     {
         Request request = this._requestsQueue.Dequeue();
         ActiveRequest activeRequest = new ActiveRequest(request);
+        this._AllocateSlot(activeRequest);
+
         this._activeRequests.Add(activeRequest);
-        this._uiManager.AddActiveRequest(activeRequest);
+
+        this.onActiveRequestAdded?.Invoke(activeRequest);
 
         activeRequest.onLost += this._LoseLevel;
 
@@ -108,7 +144,8 @@ public class RequestsManager : MonoBehaviour
             if (activeRequest.request.IsValid(craftable, boxType)) 
             {
                 this._activeRequests.Remove(activeRequest);
-                this._uiManager.RemoveActiveRequest(activeRequest);
+                this._FreeSlot(activeRequest);
+                this.onActiveRequestRemoved?.Invoke(activeRequest);
                 this.RebuildSpawnList();
                 this._nextCustomerTime = Time.time + this.customerIntervals;
                 return;

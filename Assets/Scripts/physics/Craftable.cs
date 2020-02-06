@@ -29,6 +29,8 @@ public class Craftable : MonoBehaviour
 
     public void OnAttachSpotEnter(Piece piece, AttachSpot spot)
     {
+        if (! piece.canBeAttached) return;
+        
         RequestPiece request = new RequestPiece(piece.pieceData, spot.spotDirection, piece.skin);
 
         if (! this.requestPieces.Contains(request))

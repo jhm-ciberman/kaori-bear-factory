@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 248686439}
   - component: {fileID: 248686440}
   m_Layer: 5
-  m_Name: CustomersLayoutGroup
+  m_Name: CustomersLayoutUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 103.6}
+  m_AnchoredPosition: {x: 0, y: 103.6001}
   m_SizeDelta: {x: 0, y: 207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248686440
@@ -236,22 +236,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 248686438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: c23b8655fdcc5df48b3a0bd0e58b5190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 8
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  requestsManager: {fileID: 441204434}
+  customerPrefab: {fileID: 9069898805341230346, guid: 4d75d028f6b73fc4a9c7ba810f9cfa4f,
+    type: 3}
 --- !u!1 &302280910
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,9 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 806808659}
-  customerPrefab: {fileID: 9069898805341230346, guid: 4d75d028f6b73fc4a9c7ba810f9cfa4f,
-    type: 3}
-  customersLayoutGroup: {fileID: 248686440}
+  customersLayoutUI: {fileID: 248686440}
   winScreen: {fileID: 688333628}
 --- !u!114 &441204434
 MonoBehaviour:
