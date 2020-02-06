@@ -14,6 +14,9 @@ public class PlayerInteraction : MonoBehaviour
     [HideInInspector]
     private Vector2 _cursorScreenPos;
 
+    [SerializeField]
+    private PlayerMovement _playerMovement;
+
     private float _raycastDistance = 100f;
 
     public void SetCursorPosition(Vector2 pos)
@@ -33,6 +36,22 @@ public class PlayerInteraction : MonoBehaviour
             }
 
             this._drag.UpdateDrag(Time.deltaTime);
+            this._UpdateCamera();
+        }
+    }
+
+    private void _UpdateCamera()
+    {
+        float dx = this._cursorScreenPos.x / Screen.width;
+        float limit = 0.10f;
+        if (1f - dx < limit)
+        {
+            this._playerMovement.Move(1);
+        }
+
+        if (dx < limit)
+        {
+            this._playerMovement.Move(-1);
         }
     }
 
@@ -51,6 +70,8 @@ public class PlayerInteraction : MonoBehaviour
                 this._drag.StartDrag(hitbox.piece, hit.point);
             }
         }
+
+        this._UpdateCamera();
     }
 
     public void StopInteraction()

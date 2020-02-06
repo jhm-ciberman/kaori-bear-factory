@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1829310625}
   _uiManager: {fileID: 441204433}
+  levelTimeMultiplier: 1
   customers:
   - {fileID: 11400000, guid: f9a7e70b4bf037d4bb04b3cc5a5a4616, type: 2}
   - {fileID: 11400000, guid: 77b01e633b51b804ba445b44353ae83c, type: 2}
@@ -499,7 +500,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f41ad965180d0f240ba077dd2ee62608, type: 2}
   - {fileID: 11400000, guid: f9a7e70b4bf037d4bb04b3cc5a5a4616, type: 2}
   - {fileID: 11400000, guid: 77b01e633b51b804ba445b44353ae83c, type: 2}
-  maxNumberOfAciveRequests: 3
+  slotsNumber: 3
   customerIntervals: 10
 --- !u!1 &449469984 stripped
 GameObject:
@@ -1320,6 +1321,7 @@ MonoBehaviour:
   _drag:
     _elevation: 0.5
     _animationDuration: 0.15
+  _playerMovement: {fileID: 1007200886}
 --- !u!114 &1007200886
 MonoBehaviour:
   m_ObjectHideFlags: 0

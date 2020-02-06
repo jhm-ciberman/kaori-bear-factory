@@ -12,6 +12,10 @@ public class RequestsManager : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager = null;
 
+    [SerializeField]
+    public float levelTimeMultiplier = 1f;
+
+    [SerializeField]
     public CustomerData[] customers;
 
     private Queue<Request> _requestsQueue = new Queue<Request>();
@@ -27,6 +31,7 @@ public class RequestsManager : MonoBehaviour
     private float _nextCustomerTime = 0f;
 
     private ActiveRequest[] _slots;
+
 
     public void Start()
     {
@@ -113,7 +118,7 @@ public class RequestsManager : MonoBehaviour
     public void DequeueNextRequest()
     {
         Request request = this._requestsQueue.Dequeue();
-        ActiveRequest activeRequest = new ActiveRequest(request);
+        ActiveRequest activeRequest = new ActiveRequest(request, this.levelTimeMultiplier);
         this._AllocateSlot(activeRequest);
 
         this._activeRequests.Add(activeRequest);

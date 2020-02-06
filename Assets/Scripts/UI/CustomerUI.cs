@@ -19,12 +19,14 @@ public class CustomerUI : MonoBehaviour
 
     private bool _isAngry = false;
 
+    private RectTransform _rt; 
+
     public void Awake()
     {
         this.requestOk.gameObject.SetActive(false);
 
-        RectTransform rt = this.GetComponent<RectTransform>();
-        LeanTween.moveY(rt, rt.rect.height, 0.8f)
+        this._rt = this.GetComponent<RectTransform>();
+        LeanTween.moveY(this._rt, this._rt.rect.height, 0.8f)
             .setFrom(0f)
             .setEaseOutQuad();
     }
@@ -32,7 +34,7 @@ public class CustomerUI : MonoBehaviour
     public void UpdatePosition(float slotWidth)
     {
         if (this._activeRequest == null) return;
-        this.GetComponent<RectTransform>().anchoredPosition = new Vector2(slotWidth * (this._activeRequest.slot + 0.5f), 0f);
+        this._rt.anchoredPosition = new Vector2(slotWidth * (this._activeRequest.slot + 0.5f), 0f);
     }
 
     public void SetActiveRequest(ActiveRequest activeRequest, float slotWidth)
@@ -45,16 +47,23 @@ public class CustomerUI : MonoBehaviour
     public void ShowOkAnimation()
     {
         this.requestOk.gameObject.SetActive(true);
-        LeanTween.scale(this.requestOk.gameObject, Vector3.one, 0.8f)
-            .setFrom(Vector3.zero)
-            .setEaseOutElastic()
-            .setOnComplete(this.onOkAnimationComplete);
+
+        LeanTween.sequence()
+            .append(
+                LeanTween.scale(this.requestOk.gameObject, Vector3.one, 0.8f)
+                    .setFrom(Vector3.zero)
+                    .setEaseOutElastic()
+                    .setOnComplete(this.onOkAnimationComplete)
+            )
+            .append(
+                LeanTween.moveY(this._rt, 0f, 0.8f).setEaseInQuad()
+            );
     }
 
     public void Update()
     {
         if (this._activeRequest == null) return;
-        float p = 1f - (this._activeRequest.elapsedTime / this._activeRequest.request.maximumTime);
+        float p = this._activeRequest.progress;
 
         CustomerData customer = this._activeRequest.request.customer;
         this.customerPortrait.sprite = (p < 0.5f ? customer.customerAngryPortrait : customer.customerPortrait);
