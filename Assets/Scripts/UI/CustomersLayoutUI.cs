@@ -46,7 +46,7 @@ public class CustomersLayoutUI : MonoBehaviour
 
     private float _GetSlotWidth()
     {
-        return this._rt.rect.width / this.requestsManager.slotsNumber;
+        return this._rt.rect.width / this.requestsManager.level.slotsNumber;
     }
 
     public void AddActiveRequest(ActiveRequest activeRequest)

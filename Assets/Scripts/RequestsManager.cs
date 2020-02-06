@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RequestsManager : MonoBehaviour
 {
+    public static LevelData currentLevelData;
+
     public event System.Action<ActiveRequest> onActiveRequestAdded;
     public event System.Action<ActiveRequest> onActiveRequestRemoved;
 
@@ -10,23 +12,16 @@ public class RequestsManager : MonoBehaviour
     public Spawner spawner;
 
     [SerializeField]
+    public LevelData level;
+
+    [SerializeField]
     private UIManager _uiManager = null;
-
-    [SerializeField]
-    public float levelTimeMultiplier = 1f;
-
-    [SerializeField]
-    public CustomerData[] customers;
 
     private Queue<Request> _requestsQueue = new Queue<Request>();
 
     private System.Random _random = new System.Random();
 
     private List<ActiveRequest> _activeRequests = new List<ActiveRequest>();
-
-    public int slotsNumber = 3;
-
-    public float customerIntervals = 3f;
 
     private float _nextCustomerTime = 0f;
 
@@ -35,16 +30,21 @@ public class RequestsManager : MonoBehaviour
 
     public void Start()
     {
+        if (RequestsManager.currentLevelData != null)
+        {
+            this.level = RequestsManager.currentLevelData;
+        }
+        
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
-        for (int i = 0; i < this.customers.Length; i++)
+        for (int i = 0; i < this.level.customers.Length; i++)
         {
-            CustomerData customer = this.customers[i];
+            CustomerData customer = this.level.customers[i];
             Request request = customer.MakeRequest(this._random);
             this._requestsQueue.Enqueue(request);
         }
 
-        this._slots = new ActiveRequest[this.slotsNumber];
+        this._slots = new ActiveRequest[this.level.slotsNumber];
     }
 
     public void Update()
@@ -62,7 +62,7 @@ public class RequestsManager : MonoBehaviour
 
     public void TryToFitNewCustomer()
     {
-        if (this._activeRequests.Count >= this.slotsNumber) return;
+        if (this._activeRequests.Count >= this.level.slotsNumber) return;
 
         if (this._requestsQueue.Count == 0)
         {
@@ -118,7 +118,7 @@ public class RequestsManager : MonoBehaviour
     public void DequeueNextRequest()
     {
         Request request = this._requestsQueue.Dequeue();
-        ActiveRequest activeRequest = new ActiveRequest(request, this.levelTimeMultiplier);
+        ActiveRequest activeRequest = new ActiveRequest(request, this.level.levelTimeMultiplier);
         this._AllocateSlot(activeRequest);
 
         this._activeRequests.Add(activeRequest);
@@ -128,7 +128,7 @@ public class RequestsManager : MonoBehaviour
         activeRequest.onLost += this._LoseLevel;
 
         this.RebuildSpawnList();
-        this._nextCustomerTime = Time.time + this.customerIntervals;
+        this._nextCustomerTime = Time.time + this.level.customerIntervals;
     }
 
     private void _WinLevel()
@@ -152,7 +152,7 @@ public class RequestsManager : MonoBehaviour
                 this._FreeSlot(activeRequest);
                 this.onActiveRequestRemoved?.Invoke(activeRequest);
                 this.RebuildSpawnList();
-                this._nextCustomerTime = Time.time + this.customerIntervals;
+                this._nextCustomerTime = Time.time + this.level.customerIntervals;
                 return;
             }
         }

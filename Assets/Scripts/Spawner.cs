@@ -11,6 +11,9 @@ public class Spawner : MonoBehaviour
         public PieceSkin skin;
     }
 
+    [SerializeField]
+    public Animator _spawnAnimator;
+
     public float spawnInterval = 2f;
 
     private float _timeForNextSpawn = 0f;
@@ -70,8 +73,10 @@ public class Spawner : MonoBehaviour
             if (this._temporalSpawnList.Count == 0)
             {
                 this.ReinitSpawnList();
+                
             }
         }
+        if (this._temporalSpawnList.Count == 0) return;
 
         SpawnerPieceData requestPiece = this._temporalSpawnList[0];
         this._temporalSpawnList.RemoveAt(0);
@@ -80,6 +85,8 @@ public class Spawner : MonoBehaviour
         Piece piece = go.GetComponent<Piece>();
         piece.skin = requestPiece.skin;
         piece.pieceData = requestPiece.data;
+
+        this._spawnAnimator?.Play("Spawn");
     }
 
 }

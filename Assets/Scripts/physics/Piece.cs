@@ -30,7 +30,7 @@ public class Piece : MonoBehaviour
 
             if (go.tag == "Dispawner")
             {
-                Object.Destroy(this.gameObject);
+                this.piece.Dispawn();
             }
         }
     }
@@ -116,6 +116,11 @@ public class Piece : MonoBehaviour
         if (dir == PieceDirection.Left) return -1f;
         if (dir == PieceDirection.Right) return 1f;
         return 1f;
+    }
+
+    public void Dispawn()
+    {
+        Object.Destroy(this.gameObject);
     }
 
     public bool canBeAttached

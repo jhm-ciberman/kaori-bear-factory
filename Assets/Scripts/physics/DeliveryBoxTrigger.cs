@@ -6,7 +6,7 @@ public class DeliveryBoxTrigger : MonoBehaviour
 
     public DeliveryBoxType type;
 
-    public void OnCollisionEnter(Collision other)
+    public void OnTriggerEnter(Collider other)
     {
         CraftableCollisionDetection ccd = other.gameObject.GetComponent<CraftableCollisionDetection>();
 
@@ -15,6 +15,15 @@ public class DeliveryBoxTrigger : MonoBehaviour
             Object.Destroy(ccd.craftable.gameObject);
 
             this.requestsManager.DeliverCraftable(ccd.craftable, this.type);
+            return;
+        }
+
+        Piece.PieceCollisionDetection pcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
+
+        if (pcd != null)
+        {
+            Object.Destroy(pcd.gameObject);
+            return;
         }
     }
 }
