@@ -5,10 +5,9 @@ public class Request
 {
     public CustomerData customer;
 
-    public delegate void OnLost();
-    public event OnLost onLost;
+    public event System.Action<Request> onFailRequest;
 
-    public bool lost = false;
+    public bool failed = false;
 
     public int slot = 0;
 
@@ -68,14 +67,14 @@ public class Request
 
     public void Update(float deltaTime)
     {
-        if (this.lost) return;
+        if (this.failed) return;
         this.elapsedTime += deltaTime;
 
         if (this.elapsedTime >= this.maximumTime)
         {
             this.elapsedTime = this.maximumTime;
-            this.lost = true;
-            if (this.onLost != null) this.onLost();
+            this.failed = true;
+            this.onFailRequest(this);
         }
     }
 

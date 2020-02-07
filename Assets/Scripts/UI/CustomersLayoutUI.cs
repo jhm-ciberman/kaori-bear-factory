@@ -20,7 +20,8 @@ public class CustomersLayoutUI : MonoBehaviour
         this._rt = this.GetComponent<RectTransform>();
 
         this.requestsManager.onActiveRequestAdded += this.AddRequest;
-        this.requestsManager.onActiveRequestRemoved += this.RemoveRequest;
+        this.requestsManager.onActiveRequestCompleted += this.RemoveRequest;
+        this.requestsManager.onActiveRequestFailed += this.RemoveRequest;
 
 #if UNITY_EDITOR
         this._resolution = new Vector2(Screen.width, Screen.height);
@@ -64,11 +65,19 @@ public class CustomersLayoutUI : MonoBehaviour
     {
         if (! this._requestsUI.ContainsKey(request)) return;
         CustomerUI ui = this._requestsUI[request];
-        ui.onOkAnimationComplete = () => {
+        ui.onExitAnimationComplete = () => {
             Destroy(ui.gameObject, 1f);
             this._requestsUI.Remove(request);
         };
-        ui.ShowOkAnimation();
+
+        if (request.failed)
+        {
+            ui.ShowFailAnimation();
+        }
+        else
+        {
+            ui.ShowOkAnimation();
+        }
     }
 
 }

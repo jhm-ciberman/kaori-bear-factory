@@ -6,7 +6,8 @@ public class RequestsManager : MonoBehaviour
     public static LevelData currentLevelData;
 
     public event System.Action<Request> onActiveRequestAdded;
-    public event System.Action<Request> onActiveRequestRemoved;
+    public event System.Action<Request> onActiveRequestCompleted;
+    public event System.Action<Request> onActiveRequestFailed;
 
     [SerializeField]
     public Spawner spawner;
@@ -73,8 +74,8 @@ public class RequestsManager : MonoBehaviour
     {
         Request req = this._queue.Dequeue();
 
-        this.onActiveRequestAdded?.Invoke(req);
-        req.onLost += this._LoseLevel;
+        this.onActiveRequestAdded(req);
+        req.onFailRequest += this._FailRequest;
 
         this.RebuildSpawnList();
         this._nextCustomerTime = Time.time + this.level.customerIntervals;
@@ -86,9 +87,9 @@ public class RequestsManager : MonoBehaviour
         Debug.Log("You wiiiin!");
     }
 
-    private void _LoseLevel()
+    private void _FailRequest(Request request)
     {
-        Debug.Log("You loose!");
+        this.onActiveRequestFailed(request);
     }
 
     public void DeliverCraftable(Craftable craftable, DeliveryBoxType boxType)
@@ -98,7 +99,7 @@ public class RequestsManager : MonoBehaviour
             if (activeRequest.IsValid(craftable, boxType)) 
             {
                 this._queue.RemoveActiveRequest(activeRequest);
-                this.onActiveRequestRemoved?.Invoke(activeRequest);
+                this.onActiveRequestCompleted(activeRequest);
                 this.RebuildSpawnList();
                 this._nextCustomerTime = Time.time + this.level.customerIntervals;
                 return;

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CustomerUI : MonoBehaviour
 {
-    public System.Action onOkAnimationComplete;
+    public System.Action onExitAnimationComplete;
 
     private Request _request;
 
@@ -46,19 +46,31 @@ public class CustomerUI : MonoBehaviour
 
     public void ShowOkAnimation()
     {
-        this.requestOk.gameObject.SetActive(true);
+        this.animator.Play("Normal");
+       this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
+    }
+
+    public void ShowFailAnimation()
+    {
+        this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
+    }
+
+    private void _ShowAnimation(GameObject go, System.Action callback)
+    {
+        go.SetActive(true);
 
         LeanTween.sequence()
             .append(
-                LeanTween.scale(this.requestOk.gameObject, Vector3.one, 0.8f)
+                LeanTween.scale(go, Vector3.one, 0.8f)
                     .setFrom(Vector3.zero)
                     .setEaseOutElastic()
-                    .setOnComplete(this.onOkAnimationComplete)
             )
             .append(
-                LeanTween.moveY(this._rt, 0f, 0.8f).setEaseInQuad()
+                LeanTween.moveY(this._rt, 0f, 0.8f)
+                    .setEaseInQuad()
+                    .setOnComplete(callback)
             );
-    }
+    } 
 
     public void Update()
     {
