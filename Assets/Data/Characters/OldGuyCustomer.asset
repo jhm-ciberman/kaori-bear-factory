@@ -52,23 +52,23 @@ MonoBehaviour:
     skin: {fileID: 0}
   optionalPartsPools:
   - pieces:
-    - data: {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
-      direction: 0
-      skin: {fileID: 0}
-    - data: {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
-      direction: 0
-      skin: {fileID: 0}
-    - data: {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
-      direction: 0
-      skin: {fileID: 0}
-    - data: {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
+    - data: {fileID: 0}
       direction: 0
       skin: {fileID: 0}
     - data: {fileID: 0}
       direction: 0
       skin: {fileID: 0}
+    - data: {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
+      direction: 0
+      skin: {fileID: 0}
+    - data: {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
+      direction: 0
+      skin: {fileID: 0}
+    - data: {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
+      direction: 0
+      skin: {fileID: 0}
   - pieces:
-    - data: {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
+    - data: {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
       direction: 0
       skin: {fileID: 0}
     - data: {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
@@ -81,6 +81,16 @@ MonoBehaviour:
       direction: 0
       skin: {fileID: 0}
     - data: {fileID: 0}
+      direction: 0
+      skin: {fileID: 0}
+    - data: {fileID: 0}
+      direction: 0
+      skin: {fileID: 0}
+  - pieces:
+    - data: {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
+      direction: 0
+      skin: {fileID: 0}
+    - data: {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
       direction: 0
       skin: {fileID: 0}
     - data: {fileID: 0}

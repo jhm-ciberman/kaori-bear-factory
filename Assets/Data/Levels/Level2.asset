@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd10c21296869274798276c436eebf72, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
+  displayName: 2 - Robot Kaoris
   levelTimeMultiplier: 1.4
   customers:
   - {fileID: 11400000, guid: f9a7e70b4bf037d4bb04b3cc5a5a4616, type: 2}

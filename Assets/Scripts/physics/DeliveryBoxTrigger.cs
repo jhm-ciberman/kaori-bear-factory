@@ -12,7 +12,7 @@ public class DeliveryBoxTrigger : MonoBehaviour
 
         if (ccd != null)
         {
-            Object.Destroy(ccd.craftable.gameObject);
+            ccd.craftable.piece.Dispawn();
 
             this.requestsManager.DeliverCraftable(ccd.craftable, this.type);
             return;
@@ -22,7 +22,7 @@ public class DeliveryBoxTrigger : MonoBehaviour
 
         if (pcd != null)
         {
-            Object.Destroy(pcd.gameObject);
+            pcd.piece.Dispawn();
             return;
         }
     }

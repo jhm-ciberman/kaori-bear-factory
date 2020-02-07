@@ -10,6 +10,8 @@ public class CustomerUI : MonoBehaviour
     public Image customerPortrait;
 
     public Image requestOk;
+    
+    public Image requestFailed;
 
     public ProductUI productUI;
 
@@ -24,6 +26,7 @@ public class CustomerUI : MonoBehaviour
     public void Awake()
     {
         this.requestOk.gameObject.SetActive(false);
+        this.requestFailed.gameObject.SetActive(false);
 
         this._rt = this.GetComponent<RectTransform>();
         LeanTween.moveY(this._rt, this._rt.rect.height, 0.8f)
@@ -47,12 +50,12 @@ public class CustomerUI : MonoBehaviour
     public void ShowOkAnimation()
     {
         this.animator.Play("Normal");
-       this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
+        this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
     }
 
     public void ShowFailAnimation()
     {
-        this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
+        this._ShowAnimation(this.requestFailed.gameObject, this.onExitAnimationComplete);
     }
 
     private void _ShowAnimation(GameObject go, System.Action callback)

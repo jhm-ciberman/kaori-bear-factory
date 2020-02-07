@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public class RequestsQueue
 {
+    public event System.Action<Request> onFailRequest;
+
     private Queue<Request> _requestsQueue = new Queue<Request>();
 
     private System.Random _random = new System.Random();
@@ -23,9 +25,19 @@ public class RequestsQueue
 
     public void Update(float deltaTime)
     {
-        foreach (var activeRequest in this._activeRequests)
+        for (int i = this._activeRequests.Count - 1; i >= 0; i--)
         {
-            activeRequest.Update(deltaTime);
+            Request request = this._activeRequests[i];
+            
+            if (request.failed) return;
+            request.elapsedTime += deltaTime;
+
+            if (request.elapsedTime >= request.maximumTime)
+            {
+                request.elapsedTime = request.maximumTime;
+                request.failed = true;
+                this.onFailRequest(request);
+            }
         }
     }
 
@@ -48,6 +60,11 @@ public class RequestsQueue
     public IEnumerable<Request> activeRequests
     {
         get => this._activeRequests;
+    }
+
+    public bool levelFinished
+    {
+        get => (! this.hasRequestsInQueue && ! this.hasActiveRequests);
     }
 
     public bool hasFreeSlots

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -17,7 +17,18 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     private PlayerMovement _playerMovement;
 
+    [SerializeField]
+    private ScrollRect _scrollView;
+
+    [SerializeField]
+    private float _moveSpeed = 1f;
+
     private float _raycastDistance = 100f;
+
+    void Start()
+    {
+        this._playerMovement.SetNormalizedValue(this._scrollView.horizontalNormalizedPosition);
+    }
 
     public void SetCursorPosition(Vector2 pos)
     {
@@ -44,15 +55,34 @@ public class PlayerInteraction : MonoBehaviour
     {
         float dx = this._cursorScreenPos.x / Screen.width;
         float limit = 0.10f;
-        if (1f - dx < limit)
+
+        if (1f - dx < limit) // Move right
         {
-            this._playerMovement.Move(1);
+            float force = 1f - ((1f - dx) / limit);
+            this._viewPos += force * this._moveSpeed * Time.deltaTime;
+
+            if (this._viewPos > this._playerMovement.stations.Length - 2) 
+                this._viewPos = this._playerMovement.stations.Length - 2;
+                
+            this._playerMovement.SetNormalizedValue(this._viewPos);
         }
 
-        if (dx < limit)
+        if (dx < limit) // Move left
         {
-            this._playerMovement.Move(-1);
+            float force = 1f - (dx / limit);
+            this._viewPos -= force * this._moveSpeed * Time.deltaTime;
+
+            if (this._viewPos < 0) 
+                this._viewPos = 0;
+
+            this._playerMovement.SetNormalizedValue(this._viewPos);
         }
+    }
+
+    private float _viewPos
+    {
+        get => this._scrollView.horizontalNormalizedPosition;
+        set => this._scrollView.horizontalNormalizedPosition = value;
     }
 
     public void StartInteraction()
@@ -68,6 +98,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 this._drag.EndDrag();
                 this._drag.StartDrag(hitbox.piece, hit.point);
+                this._scrollView.gameObject.SetActive(false);
             }
         }
 
@@ -76,6 +107,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void StopInteraction()
     {
+        this._scrollView.gameObject.SetActive(true);
         this._drag.EndDrag();
     }
 }

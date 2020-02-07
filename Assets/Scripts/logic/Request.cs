@@ -5,8 +5,6 @@ public class Request
 {
     public CustomerData customer;
 
-    public event System.Action<Request> onFailRequest;
-
     public bool failed = false;
 
     public int slot = 0;
@@ -63,19 +61,6 @@ public class Request
     public float progress
     {
         get => 1f - (this.elapsedTime / this.maximumTime);
-    }
-
-    public void Update(float deltaTime)
-    {
-        if (this.failed) return;
-        this.elapsedTime += deltaTime;
-
-        if (this.elapsedTime >= this.maximumTime)
-        {
-            this.elapsedTime = this.maximumTime;
-            this.failed = true;
-            this.onFailRequest(this);
-        }
     }
 
 }

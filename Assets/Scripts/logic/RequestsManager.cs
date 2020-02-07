@@ -28,10 +28,15 @@ public class RequestsManager : MonoBehaviour
         {
             this.level = RequestsManager.currentLevelData;
         }
+        else
+        {
+            RequestsManager.currentLevelData = this.level;
+        }
         
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
         this._queue = new RequestsQueue(this.level.customers, this.level.slotsNumber, this.level.levelTimeMultiplier);
+        this._queue.onFailRequest += this._FailRequest;
     }
 
     public void Update()
@@ -40,18 +45,13 @@ public class RequestsManager : MonoBehaviour
 
         if (Time.time > this._nextCustomerTime)
         {
+            if (this._queue.levelFinished) return;
             if (! this._queue.hasFreeSlots) return;
 
-            if (! this._queue.hasRequestsInQueue)
+            if (this._queue.hasRequestsInQueue)
             {
-                if (! this._queue.hasActiveRequests)
-                {
-                    this._WinLevel();
-                }
-                return;
+                this._AddNextRequest();
             }
-
-            this.DequeueNextRequest();
         }
     }
 
@@ -70,38 +70,56 @@ public class RequestsManager : MonoBehaviour
         this.spawner.ReinitSpawnList();
     }
 
-    public void DequeueNextRequest()
+    public void _AddNextRequest()
     {
         Request req = this._queue.Dequeue();
 
         this.onActiveRequestAdded(req);
-        req.onFailRequest += this._FailRequest;
 
         this.RebuildSpawnList();
         this._nextCustomerTime = Time.time + this.level.customerIntervals;
     }
 
-    private void _WinLevel()
+    private void _FinishLevel()
     {
-        this._uiManager.ShowWinScreen();
+        this._uiManager.ShowLevelCompleteScreen();
         Debug.Log("You wiiiin!");
     }
 
     private void _FailRequest(Request request)
     {
         this.onActiveRequestFailed(request);
+        this._RemoveRequest(request);
+    }
+
+    private void _CompleteRequest(Request request)
+    {
+        this.onActiveRequestCompleted(request);
+        this._RemoveRequest(request);
+    }
+
+    private void _RemoveRequest(Request request)
+    {
+        this._queue.RemoveActiveRequest(request);
+        this.RebuildSpawnList();
+
+        if (this._queue.levelFinished)
+        {
+            this._FinishLevel();
+        }
+        else
+        {
+            this._nextCustomerTime = Time.time + this.level.customerIntervals;
+        }
     }
 
     public void DeliverCraftable(Craftable craftable, DeliveryBoxType boxType)
     {
-        foreach (Request activeRequest in this._queue.activeRequests)
+        foreach (Request request in this._queue.activeRequests)
         {
-            if (activeRequest.IsValid(craftable, boxType)) 
+            if (request.IsValid(craftable, boxType)) 
             {
-                this._queue.RemoveActiveRequest(activeRequest);
-                this.onActiveRequestCompleted(activeRequest);
-                this.RebuildSpawnList();
-                this._nextCustomerTime = Time.time + this.level.customerIntervals;
+                this._CompleteRequest(request);
                 return;
             }
         }

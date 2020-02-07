@@ -30,12 +30,12 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            this._playerMovement.Move(1);
+            this._playerMovement.SetNormalizedValue(1);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            this._playerMovement.Move(-1);
+            this._playerMovement.SetNormalizedValue(-1);
         }
     }
 

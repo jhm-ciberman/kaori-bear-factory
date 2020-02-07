@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 
     public CustomersLayoutUI customersLayoutUI;
 
-    public RectTransform winScreen;
+    public LevelCompleteUI winScreen;
 
     void Start()
     {
@@ -21,8 +21,9 @@ public class UIManager : MonoBehaviour
         this.cursor.anchoredPosition = pos * new Vector2(1, 1);
     }
 
-    public void ShowWinScreen()
+    public void ShowLevelCompleteScreen()
     {
         this.winScreen.gameObject.SetActive(true);
+        this.winScreen.Show();
     }
 }

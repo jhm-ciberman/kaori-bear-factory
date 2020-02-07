@@ -66,7 +66,7 @@ public class CustomersLayoutUI : MonoBehaviour
         if (! this._requestsUI.ContainsKey(request)) return;
         CustomerUI ui = this._requestsUI[request];
         ui.onExitAnimationComplete = () => {
-            Destroy(ui.gameObject, 1f);
+            Object.Destroy(ui.gameObject, 1f);
             this._requestsUI.Remove(request);
         };
 

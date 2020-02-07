@@ -14,15 +14,25 @@ public class AttachSpot : MonoBehaviour
     {
         if (! this.enabled) return;
 
-        Piece.PieceCollisionDetection dcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
-        if (dcd == null) return;
+        Piece piece = this._GetPiece(other);
 
-        if (dcd.piece == null) return;
-        if (dcd.piece.pieceData.type != this.spotType) return;
+        if (piece == null) return;
+        if (piece.pieceData.type != this.spotType) return;
 
         if (this.onAttachSpotEnter != null)
         {
-            this.onAttachSpotEnter(dcd.piece, this);
+            this.onAttachSpotEnter(piece, this);
         }
+    }
+
+    protected Piece _GetPiece(Collider other)
+    {
+        Piece.PieceCollisionDetection dcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
+        if (dcd != null) return dcd.piece;
+
+        Piece.PieceHitbox ph = other.gameObject.GetComponent<Piece.PieceHitbox>();
+        if (ph != null) return ph.piece;
+
+        return null;
     }
 }

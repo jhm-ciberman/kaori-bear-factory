@@ -1,47 +1,44 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private int _currentStation = 0;
-
     public Transform[] stations;
 
-    public float animationDuration = 0.5f;
-
-    private float _animationProgress = 0f;
-
-    private Vector3 _positionStart;
-    private Quaternion _rotationStart;
-
-    public void Move(int dir)
+    public void SetNormalizedValue(float value)
     {
-        this._positionStart = this.transform.position;
-        this._rotationStart = this.transform.rotation;
-
-        int station = this._currentStation + dir;
-
-        if (station < 0) station = 0;
-        if (station > this.stations.Length - 1) station = this.stations.Length - 1;
-
-        this._currentStation = station;
-        this._animationProgress = 0f;
+        this.SetValue(value * (this.stations.Length - 1));
     }
 
-    void Update()
+    public void SetNormalizedValue(Vector2 value)
     {
-        if (this._animationProgress < this.animationDuration)
+        this.SetValue(value.x * (this.stations.Length - 1));
+    }
+
+    public void SetValue(float value)
+    {
+        if (value < 1f)
         {
-            this._animationProgress += Time.deltaTime;
-
-            float p = this._animationProgress / this.animationDuration;
-            p = -p * (p - 2);  // ease quad out
-
-            Transform station = this.stations[this._currentStation];
-            Vector3 positionEnd = station.position;
-            Quaternion rotationEnd = station.rotation;
-
-            this.transform.position = Vector3.Lerp(this._positionStart, positionEnd, p);
-            this.transform.rotation = Quaternion.Lerp(this._rotationStart, rotationEnd, p);
+            this._SetCamera(0, 1, value);
+            return;
         }
+
+        if (value > this.stations.Length - 2)
+        {
+            this._SetCamera(this.stations.Length - 2, this.stations.Length - 1, value - (this.stations.Length - 2));
+            return;
+        }
+
+        int a = Mathf.FloorToInt(value);
+        int b = Mathf.CeilToInt(value);
+        this._SetCamera(a, b, value - b);
+    }
+
+    protected void _SetCamera(int a, int b, float t)
+    {
+        Transform stationA = this.stations[a];
+        Transform stationB = this.stations[b];
+        this.transform.position = Vector3.LerpUnclamped   (stationA.position, stationB.position, t);
+        this.transform.rotation = Quaternion.LerpUnclamped(stationA.rotation, stationB.rotation, t);
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd10c21296869274798276c436eebf72, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
+  displayName: 1 - Kaori Bears
   levelTimeMultiplier: 1.5
   customers:
   - {fileID: 11400000, guid: f41ad965180d0f240ba077dd2ee62608, type: 2}

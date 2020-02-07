@@ -4,6 +4,9 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     [SerializeField]
+    public string displayName = "Level";
+
+    [SerializeField]
     public float levelTimeMultiplier = 1f;
 
     [SerializeField]
