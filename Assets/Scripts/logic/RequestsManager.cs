@@ -9,6 +9,8 @@ public class RequestsManager : MonoBehaviour
     public event System.Action<Request> onActiveRequestCompleted;
     public event System.Action<Request> onActiveRequestFailed;
 
+    public event System.Action onLevelComplete;
+
     [SerializeField]
     public Spawner spawner;
 
@@ -83,7 +85,6 @@ public class RequestsManager : MonoBehaviour
     private void _FinishLevel()
     {
         this._uiManager.ShowLevelCompleteScreen();
-        Debug.Log("You wiiiin!");
     }
 
     private void _FailRequest(Request request)

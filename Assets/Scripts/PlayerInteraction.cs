@@ -4,6 +4,9 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField]
+    private RequestsManager _requestsManager;
+
+    [SerializeField]
     private Camera _camera = null;
 
     public LayerMask tableLayer;
@@ -18,16 +21,13 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerMovement _playerMovement;
 
     [SerializeField]
-    private ScrollRect _scrollView;
-
-    [SerializeField]
-    private float _moveSpeed = 1f;
+    [Range(0f, 1f)] public float screenDragMargin = 0.10f;
 
     private float _raycastDistance = 100f;
 
-    void Start()
+    public void Start()
     {
-        this._playerMovement.SetNormalizedValue(this._scrollView.horizontalNormalizedPosition);
+        this._requestsManager.onLevelComplete += () => this.enabled = false;
     }
 
     public void SetCursorPosition(Vector2 pos)
@@ -54,36 +54,22 @@ public class PlayerInteraction : MonoBehaviour
     private void _UpdateCamera()
     {
         float dx = this._cursorScreenPos.x / Screen.width;
-        float limit = 0.10f;
 
-        if (1f - dx < limit) // Move right
+        if (1f - dx < this.screenDragMargin) // Move right
         {
-            float force = 1f - ((1f - dx) / limit);
-            this._viewPos += force * this._moveSpeed * Time.deltaTime;
-
-            if (this._viewPos > this._playerMovement.stations.Length - 2) 
-                this._viewPos = this._playerMovement.stations.Length - 2;
-                
-            this._playerMovement.SetNormalizedValue(this._viewPos);
+            float force = 1f - ((1f - dx) / this.screenDragMargin);
+            this._playerMovement.MoveView(force * Time.deltaTime);
+            
         }
 
-        if (dx < limit) // Move left
+        if (dx < this.screenDragMargin) // Move left
         {
-            float force = 1f - (dx / limit);
-            this._viewPos -= force * this._moveSpeed * Time.deltaTime;
-
-            if (this._viewPos < 0) 
-                this._viewPos = 0;
-
-            this._playerMovement.SetNormalizedValue(this._viewPos);
+            float force = 1f - (dx / this.screenDragMargin);
+            this._playerMovement.MoveView(-force * Time.deltaTime);
         }
     }
 
-    private float _viewPos
-    {
-        get => this._scrollView.horizontalNormalizedPosition;
-        set => this._scrollView.horizontalNormalizedPosition = value;
-    }
+
 
     public void StartInteraction()
     {
@@ -98,7 +84,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 this._drag.EndDrag();
                 this._drag.StartDrag(hitbox.piece, hit.point);
-                this._scrollView.gameObject.SetActive(false);
+                this._playerMovement.enabled = false;
             }
         }
 
@@ -107,7 +93,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void StopInteraction()
     {
-        this._scrollView.gameObject.SetActive(true);
+        this._playerMovement.enabled = true;
         this._drag.EndDrag();
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttachSpot : MonoBehaviour
 {
+    public Piece attachedPiece = null;
+
     public PieceType spotType;
 
     public PieceDirection spotDirection;
@@ -12,7 +14,7 @@ public class AttachSpot : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (! this.enabled) return;
+        if (this.attachedPiece != null) return;
 
         Piece piece = this._GetPiece(other);
 

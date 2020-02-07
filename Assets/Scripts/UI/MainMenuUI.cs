@@ -22,6 +22,12 @@ public class MainMenuUI : MonoBehaviour
         Object.Destroy(this.baseButton.gameObject);
     }
 
+    public void ClearProgress()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
+
     public void StartLevel(LevelData levelData)
     {
         RequestsManager.currentLevelData = levelData;

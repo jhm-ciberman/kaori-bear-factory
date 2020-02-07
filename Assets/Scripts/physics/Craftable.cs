@@ -36,7 +36,7 @@ public class Craftable : MonoBehaviour
         if (! this.requestPieces.Contains(request))
         {
             piece.Attach(this, spot.spotDirection);
-            spot.enabled = false;
+            spot.attachedPiece = piece;
             this.requestPieces.Add(request);
 
             if (Craftable.onPieceAttached != null)
