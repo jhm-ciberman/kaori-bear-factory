@@ -5,7 +5,7 @@ public class CustomerUI : MonoBehaviour
 {
     public System.Action onOkAnimationComplete;
 
-    private ActiveRequest _activeRequest;
+    private Request _request;
 
     public Image customerPortrait;
 
@@ -33,14 +33,14 @@ public class CustomerUI : MonoBehaviour
 
     public void UpdatePosition(float slotWidth)
     {
-        if (this._activeRequest == null) return;
-        this._rt.anchoredPosition = new Vector2(slotWidth * (this._activeRequest.slot + 0.5f), 0f);
+        if (this._request == null) return;
+        this._rt.anchoredPosition = new Vector2(slotWidth * (this._request.slot + 0.5f), 0f);
     }
 
-    public void SetActiveRequest(ActiveRequest activeRequest, float slotWidth)
+    public void SetRequest(Request request, float slotWidth)
     {
-        this._activeRequest = activeRequest;
-        this.productUI.SetRequest(activeRequest.request);
+        this._request = request;
+        this.productUI.SetRequest(request);
         this.UpdatePosition(slotWidth);
     }
 
@@ -62,10 +62,10 @@ public class CustomerUI : MonoBehaviour
 
     public void Update()
     {
-        if (this._activeRequest == null) return;
-        float p = this._activeRequest.progress;
+        if (this._request == null) return;
+        float p = this._request.progress;
 
-        CustomerData customer = this._activeRequest.request.customer;
+        CustomerData customer = this._request.customer;
         this.customerPortrait.sprite = (p < 0.5f ? customer.customerAngryPortrait : customer.customerPortrait);
 
         this.customerPortrait.color = (p < 0.25f ? Color.red : Color.white);

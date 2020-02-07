@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd10c21296869274798276c436eebf72, type: 3}
-  m_Name: Level2
+  m_Name: Level3
   m_EditorClassIdentifier: 
   levelTimeMultiplier: 1.4
   customers:
+  - {fileID: 11400000, guid: 779a20e8b5f2fdf4d97fbe68e48d3485, type: 2}
+  - {fileID: 11400000, guid: 779a20e8b5f2fdf4d97fbe68e48d3485, type: 2}
   - {fileID: 11400000, guid: f9a7e70b4bf037d4bb04b3cc5a5a4616, type: 2}
-  - {fileID: 11400000, guid: f41ad965180d0f240ba077dd2ee62608, type: 2}
   - {fileID: 11400000, guid: f9a7e70b4bf037d4bb04b3cc5a5a4616, type: 2}
   slotsNumber: 2
   customerIntervals: 15

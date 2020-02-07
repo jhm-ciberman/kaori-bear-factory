@@ -27,9 +27,9 @@ public class CustomerData : ScriptableObject
         DeliveryBoxType.Cardboard,
     };
 
-    public Request MakeRequest(System.Random random) 
+    public Request MakeRequest(System.Random random, float levelTimeMultiplier) 
     {
-        Request request = new Request(this);
+        Request request = new Request(this, this.patienceTime * levelTimeMultiplier);
         
         PieceSkin globalSkin = this.skins[random.Next(this.skins.Length)];
 
@@ -47,7 +47,6 @@ public class CustomerData : ScriptableObject
             }
         }
 
-        request.maximumTime = this.patienceTime;
         request.deliveryBoxType = this.deliveryBoxTypes[random.Next(this.deliveryBoxTypes.Length)];
         return request;
     }

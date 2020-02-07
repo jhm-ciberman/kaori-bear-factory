@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.8018868, g: 0.24241035, b: 0.23829654, a: 1}
+  m_AmbientSkyColor: {r: 0.6509434, g: 0.31250265, b: 0.31011927, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1.76
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
@@ -937,6 +937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: belt (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b741c434b8766274492fb3a17885471b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b741c434b8766274492fb3a17885471b, type: 3}
@@ -2333,6 +2338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: belt (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b741c434b8766274492fb3a17885471b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5490870052100550915, guid: b741c434b8766274492fb3a17885471b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2591,6 +2601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: belt (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b741c434b8766274492fb3a17885471b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b741c434b8766274492fb3a17885471b, type: 3}
@@ -3379,6 +3394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: belt
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b741c434b8766274492fb3a17885471b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b741c434b8766274492fb3a17885471b, type: 3}

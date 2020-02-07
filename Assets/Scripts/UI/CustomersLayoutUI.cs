@@ -7,7 +7,7 @@ public class CustomersLayoutUI : MonoBehaviour
 
     public GameObject customerPrefab;
 
-    private Dictionary<ActiveRequest, CustomerUI> _requestsUI = new Dictionary<ActiveRequest, CustomerUI>();
+    private Dictionary<Request, CustomerUI> _requestsUI = new Dictionary<Request, CustomerUI>();
 
     private RectTransform _rt;
 
@@ -19,8 +19,8 @@ public class CustomersLayoutUI : MonoBehaviour
     {
         this._rt = this.GetComponent<RectTransform>();
 
-        this.requestsManager.onActiveRequestAdded += this.AddActiveRequest;
-        this.requestsManager.onActiveRequestRemoved += this.RemoveActiveRequest;
+        this.requestsManager.onActiveRequestAdded += this.AddRequest;
+        this.requestsManager.onActiveRequestRemoved += this.RemoveRequest;
 
 #if UNITY_EDITOR
         this._resolution = new Vector2(Screen.width, Screen.height);
@@ -49,24 +49,24 @@ public class CustomersLayoutUI : MonoBehaviour
         return this._rt.rect.width / this.requestsManager.level.slotsNumber;
     }
 
-    public void AddActiveRequest(ActiveRequest activeRequest)
+    public void AddRequest(Request request)
     {
         GameObject go = Object.Instantiate(this.customerPrefab, Vector3.zero, Quaternion.identity, this.transform);
 
         CustomerUI ui = go.GetComponent<CustomerUI>();
-        ui.SetActiveRequest(activeRequest, this._GetSlotWidth());
+        ui.SetRequest(request, this._GetSlotWidth());
 
         go.transform.SetAsFirstSibling();
-        this._requestsUI.Add(activeRequest, ui);
+        this._requestsUI.Add(request, ui);
     }
 
-    public void RemoveActiveRequest(ActiveRequest activeRequest)
+    public void RemoveRequest(Request request)
     {
-        if (! this._requestsUI.ContainsKey(activeRequest)) return;
-        CustomerUI ui = this._requestsUI[activeRequest];
+        if (! this._requestsUI.ContainsKey(request)) return;
+        CustomerUI ui = this._requestsUI[request];
         ui.onOkAnimationComplete = () => {
             Destroy(ui.gameObject, 1f);
-            this._requestsUI.Remove(activeRequest);
+            this._requestsUI.Remove(request);
         };
         ui.ShowOkAnimation();
     }
