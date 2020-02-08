@@ -7,16 +7,21 @@ public class PlayerMovement : MonoBehaviour
     private RequestsManager _requestsManager;
 
     [SerializeField]
+    private RectTransform _screen;
+
+    [SerializeField]
     private ScrollRect _scrollView;
 
     [SerializeField]
     private float _moveSpeed = 1f;
 
-    public Transform[] _stations;
+    [SerializeField]
+    private Transform[] _stations;
+
 
     void Start()
     {
-        this._scrollView.content.sizeDelta = new Vector2(Screen.width * this._stations.Length, Screen.height);
+        this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length, this._screen.sizeDelta.y);
         this.SetNormalizedValue(this._scrollView.horizontalNormalizedPosition);
 
         foreach (Transform station in this._stations)
