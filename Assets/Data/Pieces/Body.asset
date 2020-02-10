@@ -15,7 +15,7 @@ MonoBehaviour:
   piecePrefab: {fileID: 939509388436483082, guid: 34e9a62fba1898c44a4fdea3bb4008e3,
     type: 3}
   type: 0
-  skineable: 1
+  skinable: 1
   uiLayerSpriteNone: {fileID: 21300000, guid: 5fcfed723311d594898e4db7cd442881, type: 3}
   uiLayerSpriteLeft: {fileID: 0}
   uiLayerSpriteRight: {fileID: 0}

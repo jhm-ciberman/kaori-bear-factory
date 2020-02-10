@@ -7,7 +7,7 @@ public class PieceData : ScriptableObject
 
     public PieceType type;
 
-    public bool skineable = false;
+    public bool skinable = false;
 
     public Sprite uiLayerSpriteNone;
     public Sprite uiLayerSpriteLeft;

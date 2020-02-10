@@ -60,7 +60,7 @@ public class CustomerData : ScriptableObject
 
     private void _AddPiece(Request request, RequestPiece requestPiece, PieceSkin skin)
     {
-        request.AddPiece(new RequestPiece(requestPiece.data, requestPiece.direction, requestPiece.data.skineable ? skin : null));
+        request.AddPiece(new RequestPiece(requestPiece.data, requestPiece.direction, requestPiece.data.skinable ? skin : null));
     }
 
 }
