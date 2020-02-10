@@ -21,10 +21,7 @@ public class AttachSpot : MonoBehaviour
         if (piece == null) return;
         if (piece.pieceData.type != this.spotType) return;
 
-        if (this.onAttachSpotEnter != null)
-        {
-            this.onAttachSpotEnter(piece, this);
-        }
+        this.onAttachSpotEnter?.Invoke(piece, this);
     }
 
     protected Piece _GetPiece(Collider other)

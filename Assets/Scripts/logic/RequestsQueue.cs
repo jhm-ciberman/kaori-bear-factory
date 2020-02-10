@@ -36,7 +36,7 @@ public class RequestsQueue
             {
                 request.elapsedTime = request.maximumTime;
                 request.failed = true;
-                this.onFailRequest(request);
+                this.onFailRequest?.Invoke(request);
             }
         }
     }

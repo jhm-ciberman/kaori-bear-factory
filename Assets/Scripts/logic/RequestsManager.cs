@@ -76,7 +76,7 @@ public class RequestsManager : MonoBehaviour
     {
         Request req = this._queue.Dequeue();
 
-        this.onActiveRequestAdded(req);
+        this.onActiveRequestAdded?.Invoke(req);
 
         this.RebuildSpawnList();
         this._nextCustomerTime = Time.time + this.level.customerIntervals;
@@ -89,13 +89,13 @@ public class RequestsManager : MonoBehaviour
 
     private void _FailRequest(Request request)
     {
-        this.onActiveRequestFailed(request);
+        this.onActiveRequestFailed?.Invoke(request);
         this._RemoveRequest(request);
     }
 
     private void _CompleteRequest(Request request)
     {
-        this.onActiveRequestCompleted(request);
+        this.onActiveRequestCompleted?.Invoke(request);
         this._RemoveRequest(request);
     }
 

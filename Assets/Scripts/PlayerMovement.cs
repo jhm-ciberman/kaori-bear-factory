@@ -16,12 +16,15 @@ public class PlayerMovement : MonoBehaviour
     private float _moveSpeed = 1f;
 
     [SerializeField]
+    private float _scrollLengthRatio = 0.2f;
+
+    [SerializeField]
     private Transform[] _stations;
 
 
     void Start()
     {
-        this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length, this._screen.sizeDelta.y);
+        this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length * this._scrollLengthRatio, this._screen.sizeDelta.y);
         this.SetNormalizedValue(this._scrollView.horizontalNormalizedPosition);
 
         foreach (Transform station in this._stations)

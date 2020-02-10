@@ -24,6 +24,6 @@ public class LevelButtonUI : MonoBehaviour
 
     public void OnClick()
     {
-        this.onLevelSelect(this._level);
+        this.onLevelSelect?.Invoke(this._level);
     }
 }
