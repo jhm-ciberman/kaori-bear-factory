@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: 2 - Robot Kaoris
   levelTimeMultiplier: 1.4
-  requests:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  requests: []
   slotsNumber: 2
   customerIntervals: 15
   unlockables: []

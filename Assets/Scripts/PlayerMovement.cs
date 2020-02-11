@@ -4,9 +4,6 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private RequestsManager _requestsManager;
-
-    [SerializeField]
     private RectTransform _screen;
 
     [SerializeField]
@@ -32,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
         {
             station.gameObject.SetActive(false);
         }
-
-        this._requestsManager.onLevelComplete += () => this.DisableMovement();
 
         this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length * this._scrollLengthRatio, this._screen.sizeDelta.y);
         this.SetStation(this._initialStation);

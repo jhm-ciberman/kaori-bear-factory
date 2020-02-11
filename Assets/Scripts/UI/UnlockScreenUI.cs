@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnlockScreenUI : MonoBehaviour
+public class UnlockScreenUI : ScreenUI
 {
     public System.Action onDone;
 
@@ -14,7 +14,7 @@ public class UnlockScreenUI : MonoBehaviour
 
     public Text title;
     
-    public RectTransform overlay;
+    public OverlayUI overlay;
 
     public RectTransform flareBackground;
 
@@ -37,24 +37,15 @@ public class UnlockScreenUI : MonoBehaviour
             this.onDone?.Invoke();
             return;
         }
-        
+
         this.gameObject.SetActive(true);
 
-        LeanTween.alpha(this.overlay, 0.75f, 1f);
+        this.flareBackground.transform.localScale = Vector3.zero;
         LeanTween.scale(this.flareBackground, Vector3.one, 0.5f);
 
-        this._SetOverlayAlpha(0f);
-        this.flareBackground.transform.localScale = Vector3.zero;
+        this.overlay.Show();
 
         this.OnContinueButtonPressed();
-    }
-
-    private void _SetOverlayAlpha(float alpha)
-    {
-        Image image = this.overlay.GetComponent<Image>();
-        Color c = image.color;
-        c.a = alpha;
-        image.color = c;
     }
 
     public void OnContinueButtonPressed()

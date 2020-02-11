@@ -3,61 +3,38 @@ using UnityEngine;
 
 public class RequestsManager : MonoBehaviour
 {
-    public static LevelData currentLevelData;
-
     public event System.Action<Request> onActiveRequestAdded;
     public event System.Action<Request> onActiveRequestCompleted;
     public event System.Action<Request> onActiveRequestFailed;
-
-    public event System.Action onLevelComplete;
-
-    [SerializeField]
-    public Spawner spawner;
+    public event System.Action<LevelData> onLevelComplete;
 
     [SerializeField]
-    public LevelData level;
+    public Spawner spawner = null;
 
-    [SerializeField]
-    private UIManager _uiManager = null;
+    [HideInInspector]
+    private LevelData _level = null;
 
     private float _nextCustomerTime = 0f;
 
     private RequestsQueue _queue;
 
-    private bool levelFinished = false;
-
-    public void Start()
+    public void StartLevel(LevelData level)
     {
-        if (RequestsManager.currentLevelData != null)
-        {
-            this.level = RequestsManager.currentLevelData;
-        }
-        else
-        {
-            RequestsManager.currentLevelData = this.level;
-        }
-        
+        this._level = level;
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
-        this._queue = new RequestsQueue(this.level.requests, this.level.slotsNumber, this.level.levelTimeMultiplier);
+        this._queue = new RequestsQueue(this._level.requests, this._level.slotsNumber, this._level.levelTimeMultiplier);
         this._queue.onFailRequest += this._FailRequest;
 
-        if (this.level.requests == null || this.level.requests.Length == 0)
+        if (this._level.requests == null || this._level.requests.Length == 0)
         {
-            this._FinishLevel();
+            this.CompleteLevel();
         }
     }
 
     public void Update()
     {
-        if (this.levelFinished) return;
-
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            this._FinishLevel();
-        }
-#endif
+        if (this._level == null) return;
 
         this._queue.Update(Time.deltaTime);
 
@@ -95,20 +72,14 @@ public class RequestsManager : MonoBehaviour
         this.onActiveRequestAdded?.Invoke(req);
 
         this.RebuildSpawnList();
-        this._nextCustomerTime = Time.time + this.level.customerIntervals;
+        this._nextCustomerTime = Time.time + this._level.customerIntervals;
     }
 
-    private void _FinishLevel()
+    public void CompleteLevel()
     {
-        this.levelFinished = true;
+        this.onLevelComplete?.Invoke(this._level);
+        this._level = null;
         this.spawner.enabled = false;
-        PlayerPrefs.SetInt("Level_" + this.level.name, 1);
-        PlayerPrefs.Save();
-
-        LeanTween.delayedCall(2f, () => {
-            this._uiManager.ShowLevelCompleteScreen(this.level);
-            this.onLevelComplete?.Invoke();
-        });
     }
 
     private void _FailRequest(Request request)
@@ -130,11 +101,11 @@ public class RequestsManager : MonoBehaviour
 
         if (this._queue.levelFinished)
         {
-            this._FinishLevel();
+            this.CompleteLevel();
         }
         else
         {
-            this._nextCustomerTime = Time.time + this.level.customerIntervals;
+            this._nextCustomerTime = Time.time + this._level.customerIntervals;
         }
     }
 

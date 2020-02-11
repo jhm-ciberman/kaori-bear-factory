@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuUI : MonoBehaviour
+public class MainMenuUI : ScreenUI
 {
     public LevelData[] levels;
 
@@ -30,7 +30,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartLevel(LevelData levelData)
     {
-        RequestsManager.currentLevelData = levelData;
+        GameManager.currentLevelData = levelData;
         SceneManager.LoadScene("MainGame", LoadSceneMode.Single);
     }
 }

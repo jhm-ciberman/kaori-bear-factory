@@ -3,33 +3,82 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public CustomersLayoutUI customersLayoutUI;
+    public System.Action onExitLevel;
+    public System.Action onPause;
+    public System.Action onUnpause;
 
-    public LevelCompleteUI winScreen;
+    [SerializeField]
+    public CustomersLayoutUI _customersLayoutUI;
 
-    public UnlockScreenUI unlockScreenUI;
+    [SerializeField]
+    public LevelCompleteUI _levelCompleteUI;
 
-    public RectTransform scrollView;
+    [SerializeField]
+    public UnlockScreenUI _unlockScreenUI;
+
+    [SerializeField]
+    public PauseScreenUI _pauseScreenUI;
+
+    [SerializeField]
+    public OverlayUI _overlayUI;
+
+    [SerializeField]
+    public Transform _inGameUI;
 
     void Start()
     {
-        this.winScreen.onDone += () => this.unlockScreenUI.ShowFirstUnlockable();
-        this.unlockScreenUI.onDone += () => SceneManager.LoadScene("Menu");
+        this._levelCompleteUI.onDone += () => {
+            this._unlockScreenUI.overlay.alpha = this._overlayUI.alpha;
+            this._overlayUI.HideNow();
+            this._unlockScreenUI.ShowFirstUnlockable();
+        };
+        this._unlockScreenUI.onDone += () => this.onExitLevel?.Invoke();
+        this._pauseScreenUI.onUnpaused += () => {
+            this.onUnpause?.Invoke();
+            this._overlayUI.HideNow();
+        };
 
-        this.winScreen.gameObject.SetActive(false);
-        this.unlockScreenUI.gameObject.SetActive(false);
+        this._levelCompleteUI.HideNow();
+        this._unlockScreenUI.HideNow();
+        this._pauseScreenUI.HideNow();
+        this._overlayUI.HideNow();
+        this._inGameUI.gameObject.SetActive(true);
+    }
+
+    public void SetSlotsNumber(int slots)
+    {
+        this._customersLayoutUI.slotsNumber = slots;
     }
 
     public void ShowLevelCompleteScreen(LevelData level)
     {
-        this.customersLayoutUI.gameObject.SetActive(false);
-        this.scrollView.gameObject.SetActive(false);
+        this._inGameUI.gameObject.SetActive(false);
+        this._customersLayoutUI.gameObject.SetActive(false);
+
+        this._overlayUI.Show();
 
         foreach (var unlockable in level.unlockables)
         {
-            this.unlockScreenUI.AddUnlockable(unlockable.name, unlockable.model);
+            this._unlockScreenUI.AddUnlockable(unlockable.name, unlockable.model);
         }
 
-        this.winScreen.Show();
+        this._levelCompleteUI.Show();
+    }
+
+    public void AddRequest(Request request)
+    {
+        this._customersLayoutUI.AddRequest(request);
+    }
+
+    public void RemoveRequest(Request request)
+    {
+        this._customersLayoutUI.RemoveRequest(request);
+    }
+
+    public void OnMenuButtonPressed()
+    {
+        this.onPause?.Invoke();
+        this._overlayUI.Show();
+        this._pauseScreenUI.Show();
     }
 }

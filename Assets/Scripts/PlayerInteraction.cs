@@ -4,9 +4,6 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField]
-    private RequestsManager _requestsManager;
-
-    [SerializeField]
     private Camera _camera = null;
 
     public LayerMask tableLayer;
@@ -26,11 +23,6 @@ public class PlayerInteraction : MonoBehaviour
     private float _raycastDistance = 100f;
 
     private bool _canInteract = true;
-
-    public void Start()
-    {
-        this._requestsManager.onLevelComplete += () => this.DisableInteraction();
-    }
 
     public void EnableInteraction()
     {

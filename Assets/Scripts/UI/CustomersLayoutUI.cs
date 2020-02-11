@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class CustomersLayoutUI : MonoBehaviour
 {
-    public RequestsManager requestsManager;
-
     public GameObject customerPrefab;
 
     private Dictionary<Request, CustomerUI> _requestsUI = new Dictionary<Request, CustomerUI>();
 
     private RectTransform _rt;
+
+    [HideInInspector]
+    public int slotsNumber = 1;
 
 #if UNITY_EDITOR
      private Vector2 _resolution;
@@ -18,10 +19,6 @@ public class CustomersLayoutUI : MonoBehaviour
     void Start()
     {
         this._rt = this.GetComponent<RectTransform>();
-
-        this.requestsManager.onActiveRequestAdded += this.AddRequest;
-        this.requestsManager.onActiveRequestCompleted += this.RemoveRequest;
-        this.requestsManager.onActiveRequestFailed += this.RemoveRequest;
 
 #if UNITY_EDITOR
         this._resolution = new Vector2(Screen.width, Screen.height);
@@ -47,7 +44,7 @@ public class CustomersLayoutUI : MonoBehaviour
 
     private float _GetSlotWidth()
     {
-        return this._rt.rect.width / this.requestsManager.level.slotsNumber;
+        return this._rt.rect.width / this.slotsNumber;
     }
 
     public void AddRequest(Request request)

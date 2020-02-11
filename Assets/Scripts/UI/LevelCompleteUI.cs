@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class LevelCompleteUI : MonoBehaviour
+public class LevelCompleteUI : ScreenUI
 {
     public System.Action onDone;
 
