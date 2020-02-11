@@ -25,9 +25,22 @@ public class PlayerInteraction : MonoBehaviour
 
     private float _raycastDistance = 100f;
 
+    private bool _canInteract = true;
+
     public void Start()
     {
-        this._requestsManager.onLevelComplete += () => this.enabled = false;
+        this._requestsManager.onLevelComplete += () => this.DisableInteraction();
+    }
+
+    public void EnableInteraction()
+    {
+        this._canInteract = true;
+    }
+
+    public void DisableInteraction()
+    {
+        this._canInteract = false;
+        this._drag.EndDrag();
     }
 
     public void SetCursorPosition(Vector2 pos)
@@ -37,6 +50,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (! this._canInteract) return;
+
         if (this._drag.isDragging)
         {
             RaycastHit hit;
@@ -73,6 +88,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void StartInteraction()
     {
+        if (! this._canInteract) return;
+
         RaycastHit hit;
         Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
 
@@ -84,16 +101,16 @@ public class PlayerInteraction : MonoBehaviour
             {
                 this._drag.EndDrag();
                 this._drag.StartDrag(hitbox.piece, hit.point);
-                this._playerMovement.enabled = false;
+                this._playerMovement.DisableMovement();
             }
         }
-
-        this._UpdateCamera();
     }
 
     public void StopInteraction()
     {
+        if (! this._canInteract) return;
         this._playerMovement.enabled = true;
         this._drag.EndDrag();
+        this._playerMovement.EnableMovement();
     }
 }

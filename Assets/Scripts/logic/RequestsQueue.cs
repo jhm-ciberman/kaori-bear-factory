@@ -12,12 +12,15 @@ public class RequestsQueue
 
     private Request[] _slots;
     
-    public RequestsQueue(CustomerData[] customers, int slotsNumber, float levelTimeMultiplier)
+    public RequestsQueue(RequestData[] requestDatas, int slotsNumber, float levelTimeMultiplier)
     {
-        foreach (CustomerData customerData in customers)
+        if (requestDatas != null)
         {
-            Request request = customerData.MakeRequest(this._random, levelTimeMultiplier);
-            this._requestsQueue.Enqueue(request);
+            foreach (var req in requestDatas)
+            {
+                Request request = req.MakeRequest(this._random, levelTimeMultiplier);
+                this._requestsQueue.Enqueue(request);
+            }
         }
 
         this._slots = new Request[slotsNumber];

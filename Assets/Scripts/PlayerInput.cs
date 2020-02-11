@@ -15,7 +15,6 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        this._uiManager.SetCursorPosition(Input.mousePosition);
         this._playerInteraction.SetCursorPosition(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))

@@ -1,29 +1,35 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-
-    public RectTransform cursor;
-
     public CustomersLayoutUI customersLayoutUI;
 
     public LevelCompleteUI winScreen;
 
+    public UnlockScreenUI unlockScreenUI;
+
+    public RectTransform scrollView;
+
     void Start()
     {
+        this.winScreen.onDone += () => this.unlockScreenUI.ShowFirstUnlockable();
+        this.unlockScreenUI.onDone += () => SceneManager.LoadScene("Menu");
+
         this.winScreen.gameObject.SetActive(false);
-    }
-    
-    public void SetCursorPosition(Vector2 pos)
-    {
-        this.cursor.anchoredPosition = pos * new Vector2(1, 1);
+        this.unlockScreenUI.gameObject.SetActive(false);
     }
 
-    public void ShowLevelCompleteScreen()
+    public void ShowLevelCompleteScreen(LevelData level)
     {
-        this.winScreen.gameObject.SetActive(true);
+        this.customersLayoutUI.gameObject.SetActive(false);
+        this.scrollView.gameObject.SetActive(false);
+
+        foreach (var unlockable in level.unlockables)
+        {
+            this.unlockScreenUI.AddUnlockable(unlockable.name, unlockable.model);
+        }
+
         this.winScreen.Show();
     }
 }

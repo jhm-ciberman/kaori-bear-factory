@@ -16,10 +16,10 @@ public class Request
 
     public DeliveryBoxType deliveryBoxType;
     
-    public Request(CustomerData customer, float maximumTime)
+    public Request(CustomerData customer, float levelTimeMultiplier)
     {
         this.customer = customer;
-        this.maximumTime = maximumTime;
+        this.maximumTime = levelTimeMultiplier * this.customer.patienceTime;
     }
 
 

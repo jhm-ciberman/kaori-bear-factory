@@ -21,29 +21,35 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform[] _stations;
 
+    [SerializeField]
+    private float _initialStation = 0;
+
+    private bool _canMove = true;
 
     void Start()
     {
-        this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length * this._scrollLengthRatio, this._screen.sizeDelta.y);
-        this.SetNormalizedValue(this._scrollView.horizontalNormalizedPosition);
-
         foreach (Transform station in this._stations)
         {
             station.gameObject.SetActive(false);
         }
 
-        this._requestsManager.onLevelComplete += () => this.enabled = false;
+        this._requestsManager.onLevelComplete += () => this.DisableMovement();
+
+        this._scrollView.content.sizeDelta = new Vector2(this._screen.sizeDelta.x * this._stations.Length * this._scrollLengthRatio, this._screen.sizeDelta.y);
+        this.SetStation(this._initialStation);
+        this._viewPos = this._initialStation / (this._stations.Length - 1);
     }
 
-    public void OnEnable()
+    public void EnableMovement()
     {
-        
-        this._scrollView?.gameObject.SetActive(true);
+        this._canMove = true;
+        this._scrollView?.gameObject?.SetActive(true);
     }
 
-    public void OnDisable()
+    public void DisableMovement()
     {
-        this._scrollView?.gameObject.SetActive(false);
+        this._canMove = false;
+        this._scrollView?.gameObject?.SetActive(false);
     }
 
 
@@ -69,15 +75,19 @@ public class PlayerMovement : MonoBehaviour
         set => this._scrollView.horizontalNormalizedPosition = value;
     }
 
-    public void SetNormalizedValue(Vector2 value)
+    public void OnScrollViewPosChange(Vector2 value)
     {
+        if (! this._canMove) return;
         this.SetNormalizedValue(value.x);
     }
 
     public void SetNormalizedValue(float value)
     {
-        value = value * (this._stations.Length - 1);
+        this.SetStation(value * (this._stations.Length - 1));
+    }
 
+    public void SetStation(float value)
+    {
         if (value < 1f)
         {
             this._SetCamera(0, 1, value);

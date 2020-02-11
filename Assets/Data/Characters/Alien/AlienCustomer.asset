@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b99ebdd61c4b840b8fad08e92098db, type: 3}
+  m_Name: AlienCustomer
+  m_EditorClassIdentifier: 
+  customerPortrait: {fileID: 21300000, guid: 908582b90baefdb4ba64b1b4678880ac, type: 3}
+  customerAngryPortrait: {fileID: 21300000, guid: 8750a8c09e272fd4a9330dc963ebb49c,
+    type: 3}
+  patienceTime: 50
+  deliveryBoxTypes: 00000000
