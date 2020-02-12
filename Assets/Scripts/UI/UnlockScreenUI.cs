@@ -12,11 +12,12 @@ public class UnlockScreenUI : ScreenUI
         public GameObject model;
     }
 
-    public Text title;
+    public TMPro.TextMeshProUGUI title;
     
     public OverlayUI overlay;
 
     public RectTransform flareBackground;
+    public RectTransform bk;
 
     public Transform unlockableObject;
 
@@ -24,6 +25,7 @@ public class UnlockScreenUI : ScreenUI
 
     public float modelRotationSpeed = 100f;
     public float backgroundRotationSpeed = 100f;
+    public float bkRotationSpeed = 10f;
 
     public void AddUnlockable(string name, GameObject model)
     {
@@ -40,8 +42,13 @@ public class UnlockScreenUI : ScreenUI
 
         this.gameObject.SetActive(true);
 
+        Vector3 scale = this.flareBackground.transform.localScale;
         this.flareBackground.transform.localScale = Vector3.zero;
-        LeanTween.scale(this.flareBackground, Vector3.one, 0.5f);
+        LeanTween.scale(this.flareBackground, scale, 0.5f);
+
+        Image image = this.bk.GetComponent<Image>();
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
+        LeanTween.alpha(this.bk, 1f, 3f).setEaseLinear();
 
         this.overlay.Show();
 
@@ -77,5 +84,6 @@ public class UnlockScreenUI : ScreenUI
     {
         this.unlockableObject.Rotate(Vector3.up * this.modelRotationSpeed * Time.deltaTime);
         this.flareBackground.Rotate(Vector3.forward * this.backgroundRotationSpeed * Time.deltaTime);
+        this.bk.Rotate(Vector3.forward * this.bkRotationSpeed * Time.deltaTime);
     }
 }

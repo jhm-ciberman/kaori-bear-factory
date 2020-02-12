@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
             this._overlayUI.HideNow();
         };
 
+        this._customersLayoutUI.gameObject.SetActive(true);
         this._levelCompleteUI.HideNow();
         this._unlockScreenUI.HideNow();
         this._pauseScreenUI.HideNow();
