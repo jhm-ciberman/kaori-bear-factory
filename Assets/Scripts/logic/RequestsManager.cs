@@ -24,12 +24,22 @@ public class RequestsManager : MonoBehaviour
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
         this._queue = new RequestsQueue(this._level.requests, this._level.slotsNumber, this._level.levelTimeMultiplier);
-        this._queue.onFailRequest += this._FailRequest;
+        this._queue.onFailRequest += this._RemoveRequest;
 
         if (this._level.requests == null || this._level.requests.Length == 0)
         {
             this.CompleteLevel();
         }
+    }
+
+    public int requestsInQueueCount
+    {
+        get => this._queue.count;
+    }
+
+    public int requestsActiveCount
+    {
+        get => this._queue.activeRequestsCount;
     }
 
     public void Update()
@@ -82,21 +92,19 @@ public class RequestsManager : MonoBehaviour
         this.spawner.enabled = false;
     }
 
-    private void _FailRequest(Request request)
-    {
-        this.onActiveRequestFailed?.Invoke(request);
-        this._RemoveRequest(request);
-    }
-
-    private void _CompleteRequest(Request request)
-    {
-        this.onActiveRequestCompleted?.Invoke(request);
-        this._RemoveRequest(request);
-    }
-
     private void _RemoveRequest(Request request)
     {
         this._queue.RemoveActiveRequest(request);
+        
+        if (request.failed)
+        {
+            this.onActiveRequestFailed?.Invoke(request);
+        }
+        else 
+        {
+            this.onActiveRequestCompleted?.Invoke(request);
+        }
+
         this.RebuildSpawnList();
 
         if (this._queue.levelFinished)
@@ -115,7 +123,7 @@ public class RequestsManager : MonoBehaviour
         {
             if (request.IsValid(craftable, boxType)) 
             {
-                this._CompleteRequest(request);
+                this._RemoveRequest(request);
                 return;
             }
         }

@@ -65,6 +65,12 @@ public class RequestsQueue
         get => this._activeRequests;
     }
 
+    public int activeRequestsCount
+    {
+        get => this._activeRequests.Count;
+    }
+
+
     public bool levelFinished
     {
         get => (! this.hasRequestsInQueue && ! this.hasActiveRequests);
@@ -83,6 +89,11 @@ public class RequestsQueue
     public bool hasRequestsInQueue
     {
         get => (this._requestsQueue.Count > 0);
+    }
+
+    public int count
+    {
+        get => this._requestsQueue.Count;
     }
 
     private void _AllocateSlot(Request req)

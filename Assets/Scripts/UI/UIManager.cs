@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     public Transform _inGameUI;
 
+    public TMPro.TextMeshProUGUI _customersCountText;
+
     void Start()
     {
         this._levelCompleteUI.onDone += () => {
@@ -49,6 +51,11 @@ public class UIManager : MonoBehaviour
     public void SetSlotsNumber(int slots)
     {
         this._customersLayoutUI.slotsNumber = slots;
+    }
+
+    public void SetCustomersCountText(string text)
+    {
+        this._customersCountText.text = text;
     }
 
     public void ShowLevelCompleteScreen(LevelData level)

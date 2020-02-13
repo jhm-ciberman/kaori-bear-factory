@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LiberationSans SDF Material
   m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_ShaderKeywords: OUTLINE_ON UNDERLAY_ON
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -34,7 +34,7 @@ Material:
     - _PerspectiveFilter: 0.875
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.365625
+    - _ScaleRatioC: 0.49744898
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -46,7 +46,7 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 1024
     - _TextureWidth: 1024
-    - _UnderlayDilate: 1
+    - _UnderlayDilate: 0.47
     - _UnderlayOffsetX: -0
     - _UnderlayOffsetY: 1
     - _UnderlaySoftness: 0

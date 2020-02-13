@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public PlayerMovement _playerMovement;
 
+    [HideInInspector]
+    private LevelData _currentLevel;
+
     public void Start()
     {
         // Level exit UI
@@ -30,6 +33,10 @@ public class GameManager : MonoBehaviour
         this._requestsManager.onActiveRequestCompleted += this._uiManager.RemoveRequest;
         this._requestsManager.onActiveRequestFailed += this._uiManager.RemoveRequest;
 
+        // UI update
+        this._requestsManager.onActiveRequestCompleted += (_req) => this._UpdateCustomersUI();
+        this._requestsManager.onActiveRequestFailed += (_req) => this._UpdateCustomersUI();
+
         // Level complete
         this._requestsManager.onLevelComplete += this._OnLevelComplete;
 
@@ -38,9 +45,21 @@ public class GameManager : MonoBehaviour
         this._uiManager.onUnpause += this._OnUnpause;
 
         // Start the fun!
-        LevelData level = (GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData;
-        this._uiManager.SetSlotsNumber(level.slotsNumber);
-        this._requestsManager.StartLevel(level);
+        this._currentLevel = (GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData;
+        this._uiManager.SetSlotsNumber(this._currentLevel.slotsNumber);
+        this._requestsManager.StartLevel(this._currentLevel);
+
+        this._UpdateCustomersUI();
+    }
+
+    private void _UpdateCustomersUI()
+    {
+        int total = this._currentLevel.requests.Length;
+        int inQueue = this._requestsManager.requestsInQueueCount;
+        int active = this._requestsManager.requestsActiveCount;
+        int notFullfiled = total - inQueue - active;
+        string str = notFullfiled + " / " + total;
+        this._uiManager.SetCustomersCountText(str);
     }
 
     private void Update()
