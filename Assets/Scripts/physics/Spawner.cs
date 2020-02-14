@@ -11,8 +11,7 @@ public class Spawner : MonoBehaviour
         public PieceSkin skin;
     }
 
-    [SerializeField]
-    public Animator _spawnAnimator;
+    [SerializeField] public Animator _spawnAnimator;
 
     public float spawnInterval = 2f;
 

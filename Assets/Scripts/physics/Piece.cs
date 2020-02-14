@@ -5,7 +5,6 @@ public class Piece : MonoBehaviour
 {
     public class Hitbox : MonoBehaviour
     {
-
         public static int layer = 8; // Hardcoded
 
         public Piece piece;
@@ -38,41 +37,17 @@ public class Piece : MonoBehaviour
 
     public static float globalScale = 0.15f;
 
-    private bool _isDragged = false;
-
     public event System.Action<Piece> onAttached;
 
-    [HideInInspector]
-    public PieceData pieceData;
+    [SerializeField] private Rigidbody _rigidbody = null;
+    [SerializeField] private Collider _dragHitbox = null;
+    [SerializeField] private MeshRenderer _model = null;
+    [SerializeField] private Transform _center = null;
 
+    [HideInInspector] public PieceData pieceData;
+
+    private bool _isDragged = false;
     private PieceSkin _skin = null;
-    public PieceSkin skin 
-    {
-        get => this._skin;
-        set 
-        {
-            if (this._skin == value) return;
-            this._skin = value;
-            
-            if (value != null)
-            {
-                this._model.GetComponent<MeshRenderer>().material.SetTexture("_BaseMap", value.albedo); 
-            }
-        }
-    }
-
-    [SerializeField]
-    private Rigidbody _rigidbody = null;
-
-    [SerializeField]
-    private Collider _dragHitbox = null;
-
-    [SerializeField]
-    private MeshRenderer _model = null;
-
-    [SerializeField]
-    private Transform _center = null;
-
     private Transform _transform;
     private Vector3 _centerPos;
 
@@ -87,6 +62,12 @@ public class Piece : MonoBehaviour
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
         this._ForceDragStatus(false);
+    }
+
+    private void _SetMaterialBySkin(PieceSkin skin)
+    {
+        if (skin == null) return;
+        this._model.material.SetTexture("_BaseMap", skin.albedo); 
     }
 
     public Vector3 GetDragOffset(Vector3 dragPosition)
@@ -118,26 +99,10 @@ public class Piece : MonoBehaviour
         Object.Destroy(this.gameObject);
     }
 
-    public bool isDragged
+    public bool draggable
     {
-        get => this._isDragged;
-        set 
-        {
-            if (this._isDragged == value) return;
-            this._ForceDragStatus(value);
-        }
-    }
-
-    private void _ForceDragStatus(bool dragStatus)
-    {
-        this._isDragged = dragStatus;
-        this._rigidbody.useGravity = !dragStatus;
-        this._rigidbody.constraints = dragStatus ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
-    }
-
-    public Transform modelTransform
-    {
-        get => this._model.transform;
+        get => this._rigidbody.detectCollisions;
+        set =>this._rigidbody.detectCollisions = value;
     }
 
     public void Attach(CraftablePiece craftable, PieceDirection dir)
@@ -164,12 +129,44 @@ public class Piece : MonoBehaviour
         this.modelTransform.localPosition += this._centerPos;
     }
 
+    private void _ForceDragStatus(bool dragStatus)
+    {
+        this._isDragged = dragStatus;
+        this._rigidbody.useGravity = !dragStatus;
+        this._rigidbody.constraints = dragStatus ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
+    }
+
     private void _SetAttachState(bool attached)
     {
         this._rigidbody.useGravity       = !attached;
-        this._rigidbody.detectCollisions = !attached;
         this._rigidbody.isKinematic      = attached;
         this._rigidbody.constraints      = RigidbodyConstraints.None;
         this._isDragged = false;
+    }
+
+    public bool isDragged
+    {
+        get => this._isDragged;
+        set 
+        {
+            if (this._isDragged == value) return;
+            this._ForceDragStatus(value);
+        }
+    }
+
+    public PieceSkin skin 
+    {
+        get => this._skin;
+        set 
+        {
+            if (this._skin == value) return;
+            this._skin = value;
+            this._SetMaterialBySkin(value);
+        }
+    }
+
+    public Transform modelTransform
+    {
+        get => this._model.transform;
     }
 }

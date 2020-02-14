@@ -3,23 +3,17 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private RectTransform _screen;
+    [SerializeField] private RectTransform _screen = null;
 
-    [SerializeField]
-    private ScrollRect _scrollView;
+    [SerializeField] private ScrollRect _scrollView = null;
 
-    [SerializeField]
-    private float _moveSpeed = 1f;
+    [SerializeField] private float _moveSpeed = 1f;
 
-    [SerializeField]
-    private float _scrollLengthRatio = 0.2f;
+    [SerializeField] private float _scrollLengthRatio = 0.2f;
 
-    [SerializeField]
-    private Transform[] _stations;
+    [SerializeField] private Transform[] _stations = new Transform[0];
 
-    [SerializeField]
-    private float _initialStation = 0;
+    [SerializeField] private float _initialStation = 0;
 
     private bool _canMove = true;
 

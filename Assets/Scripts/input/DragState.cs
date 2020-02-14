@@ -4,11 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class DragState
 {
-    [SerializeField]
-    public float _elevation = 1f;
+    [SerializeField] public float _elevation = 1f;
 
-    [SerializeField]
-    public float _animationDuration = 0.15f;
+    [SerializeField] public float _animationDuration = 0.15f;
 
     private Vector3 _offset;
     private Piece _piece;

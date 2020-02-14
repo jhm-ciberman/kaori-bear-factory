@@ -39,6 +39,7 @@ public class CraftablePiece : Piece
         if (! this.requestPieces.Contains(request))
         {
             piece.Attach(this, spot.spotDirection);
+            piece.draggable = false;
             spot.attachedPiece = piece;
             this.requestPieces.Add(request);
             this._attachedPieces.Add(piece);
@@ -49,6 +50,4 @@ public class CraftablePiece : Piece
             }
         }
     }
-
-
 }

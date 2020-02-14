@@ -19,24 +19,17 @@ public class PaintingMachine : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private Collider _interiorTrigger;
+    [SerializeField] private Collider _interiorTrigger = null;
 
-    [SerializeField]
-    private Transform _attachSpot;
+    [SerializeField] private Transform _attachSpot = null;
 
-    [SerializeField]
-    private float _rotationAnimationSpeed = 1f;
+    [SerializeField] private float _rotationAnimationSpeed = 1f;
 
-    [SerializeField]
-    private float _positionAnimationSpeed = 1f;
+    [SerializeField] private float _positionAnimationSpeed = 1f;
 
-    [SerializeField]
-    private float _rotationAnimationAmount = 25f;
+    [SerializeField] private float _rotationAnimationAmount = 25f;
 
-    [SerializeField]
-    private float _positionAnimationAmount = 0.25f;
-
+    [SerializeField] private float _positionAnimationAmount = 0.25f;
 
     private Piece _attachedPiece = null;
 
@@ -65,6 +58,8 @@ public class PaintingMachine : MonoBehaviour
         }
 
         piece.Attach(this._attachSpot);
+        piece.draggable = true;
+
         this._animationTime = 0f;
     }
 

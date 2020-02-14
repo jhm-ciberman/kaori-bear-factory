@@ -1,25 +1,20 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField]
-    private Camera _camera = null;
+    [SerializeField] private Camera _camera = null;
+    
+    [SerializeField] public LayerMask tableLayer;
+    
+    [SerializeField] private DragState _drag = new DragState();
+    
+    [SerializeField] private PlayerMovement _playerMovement = null;
 
-    public LayerMask tableLayer;
+    [Range(0f, 1f)] 
+    [SerializeField]public float screenDragMargin = 0.10f;
 
-    [SerializeField]
-    private DragState _drag;
-
-    [HideInInspector]
-    private Vector2 _cursorScreenPos;
-
-    [SerializeField]
-    private PlayerMovement _playerMovement;
-
-    [SerializeField]
-    [Range(0f, 1f)] public float screenDragMargin = 0.10f;
-
+    private Vector2 _cursorScreenPos = new Vector2();
+    
     private float _raycastDistance = 100f;
 
     private bool _canInteract = true;
@@ -40,10 +35,25 @@ public class PlayerInteraction : MonoBehaviour
         this._cursorScreenPos = pos;
     }
 
-    public void FixedUpdate()
+    void Update()
     {
         if (! this._canInteract) return;
+        
+        this._cursorScreenPos = Input.mousePosition;
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            this.StartInteraction();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            this.StopInteraction();
+        }
+    }
+
+    public void FixedUpdate()
+    {
         if (this._drag.isDragging)
         {
             RaycastHit hit;
@@ -75,8 +85,6 @@ public class PlayerInteraction : MonoBehaviour
             this._playerMovement.MoveView(-force * Time.deltaTime);
         }
     }
-
-
 
     public void StartInteraction()
     {

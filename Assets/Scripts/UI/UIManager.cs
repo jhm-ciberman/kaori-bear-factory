@@ -7,23 +7,17 @@ public class UIManager : MonoBehaviour
     public System.Action onPause;
     public System.Action onUnpause;
 
-    [SerializeField]
-    public CustomersLayoutUI _customersLayoutUI;
+    [SerializeField] public CustomersLayoutUI _customersLayoutUI;
 
-    [SerializeField]
-    public LevelCompleteUI _levelCompleteUI;
+    [SerializeField] public LevelCompleteUI _levelCompleteUI;
 
-    [SerializeField]
-    public UnlockScreenUI _unlockScreenUI;
+    [SerializeField] public UnlockScreenUI _unlockScreenUI;
 
-    [SerializeField]
-    public PauseScreenUI _pauseScreenUI;
+    [SerializeField] public PauseScreenUI _pauseScreenUI;
 
-    [SerializeField]
-    public OverlayUI _overlayUI;
+    [SerializeField] public OverlayUI _overlayUI;
 
-    [SerializeField]
-    public Transform _inGameUI;
+    [SerializeField] public Transform _inGameUI;
 
     public TMPro.TextMeshProUGUI _customersCountText;
 

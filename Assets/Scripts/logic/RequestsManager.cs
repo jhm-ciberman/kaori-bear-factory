@@ -8,11 +8,9 @@ public class RequestsManager : MonoBehaviour
     public event System.Action<Request> onActiveRequestFailed;
     public event System.Action<LevelData> onLevelComplete;
 
-    [SerializeField]
-    public Spawner spawner = null;
+    [SerializeField] public Spawner spawner = null;
 
-    [HideInInspector]
-    private LevelData _level = null;
+    [HideInInspector] private LevelData _level = null;
 
     private float _nextCustomerTime = 0f;
 

@@ -10,20 +10,15 @@ public class LevelData : ScriptableObject
         public GameObject model;
     }
 
-    [SerializeField]
-    public string displayName = "Level";
+    [SerializeField] public string displayName = "Level";
 
-    [SerializeField]
-    public float levelTimeMultiplier = 1f;
+    [SerializeField] public float levelTimeMultiplier = 1f;
 
-    [SerializeField]
-    public RequestData[] requests;
+    [SerializeField] public RequestData[] requests;
 
-    [SerializeField]
-    public int slotsNumber = 3;
+    [SerializeField] public int slotsNumber = 3;
 
-    [SerializeField]
-    public float customerIntervals = 3f;
+    [SerializeField] public float customerIntervals = 3f;
 
     public Unlockable[] unlockables;
 }

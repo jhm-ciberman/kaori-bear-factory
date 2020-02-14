@@ -5,20 +5,13 @@ public class GameManager : MonoBehaviour
 {
     public static LevelData currentLevelData;
 
-    [SerializeField]
-    private LevelData _testLevel;
+    [SerializeField] private LevelData _testLevel = null;
 
-    [SerializeField]
-    public UIManager _uiManager;
+    [SerializeField] public UIManager _uiManager = null;
 
-    [SerializeField]
-    public RequestsManager _requestsManager;
+    [SerializeField] public RequestsManager _requestsManager = null;
 
-    [SerializeField]
-    public PlayerInteraction _playerInteraction;
-
-    [SerializeField]
-    public PlayerMovement _playerMovement;
+    [SerializeField] public PlayerInput _playerInput = null;
 
     [HideInInspector]
     private LevelData _currentLevel;
@@ -75,15 +68,13 @@ public class GameManager : MonoBehaviour
     private void _OnPause()
     {
         Time.timeScale = 0f;
-        this._playerInteraction.DisableInteraction();
-        this._playerMovement.DisableMovement();
+        this._playerInput.DisableInput();
     }
 
     private void _OnUnpause()
     {
         Time.timeScale = 1f;
-        this._playerInteraction.EnableInteraction();
-        this._playerMovement.EnableMovement();
+        this._playerInput.EnableInput();
     }
 
     private void _GoToMenu()
@@ -96,8 +87,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Level_" + level.name, 1);
         PlayerPrefs.Save();
 
-        this._playerInteraction.DisableInteraction();
-        this._playerMovement.DisableMovement();
+        this._playerInput.DisableInput();
 
         LeanTween.delayedCall(2f, () => {
             this._uiManager.ShowLevelCompleteScreen(level);

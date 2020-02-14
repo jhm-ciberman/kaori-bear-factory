@@ -2776,8 +2776,7 @@ MonoBehaviour:
   _testLevel: {fileID: 11400000, guid: 8f0e180e99bd25c47b7e9369c2d7d8d1, type: 2}
   _uiManager: {fileID: 1154357192}
   _requestsManager: {fileID: 805608070}
-  _playerInteraction: {fileID: 1007200885}
-  _playerMovement: {fileID: 1007200886}
+  _playerInput: {fileID: 1007200884}
 --- !u!1 &816782343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,7 +3238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288b2b8ddc1af78409771f846c435e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiManager: {fileID: 0}
   _playerInteraction: {fileID: 1007200885}
   _playerMovement: {fileID: 1007200886}
 --- !u!114 &1007200885
@@ -3251,7 +3249,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007200882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a96a06884f62a4b81ebec3ec83b07c, type: 3}
+  m_Script: {fileID: 11500000, guid: aef6f7e39f6c94c49b22f25a8df771ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1952814043}
@@ -3272,7 +3270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007200882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d95478d8f85ebea4a9aad969448f8c54, type: 3}
+  m_Script: {fileID: 11500000, guid: baeca80d1dd9106458fadfc67a0d5660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _screen: {fileID: 441204432}
