@@ -4,9 +4,6 @@ using System.Collections.Generic;
 [DisallowMultipleComponent]
 public class CraftablePiece : Piece
 {
-    public delegate void OnPieceAttached(CraftablePiece craftable);
-    public static event OnPieceAttached onPieceAttached;
-
     public AttachSpot[] spots;
 
     public HashSet<RequestPiece> requestPieces = new HashSet<RequestPiece>();
@@ -43,11 +40,6 @@ public class CraftablePiece : Piece
             spot.attachedPiece = piece;
             this.requestPieces.Add(request);
             this._attachedPieces.Add(piece);
-
-            if (CraftablePiece.onPieceAttached != null)
-            {
-                CraftablePiece.onPieceAttached(this);
-            }
         }
     }
 }

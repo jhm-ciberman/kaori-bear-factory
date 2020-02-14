@@ -39,6 +39,8 @@ public class Piece : MonoBehaviour
 
     public event System.Action<Piece> onAttached;
 
+    public event System.Action<Piece> onDragStart;
+
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private Collider _dragHitbox = null;
     [SerializeField] private MeshRenderer _model = null;
@@ -47,6 +49,7 @@ public class Piece : MonoBehaviour
     [HideInInspector] public PieceData pieceData;
 
     private bool _isDragged = false;
+    private bool _isAttached = false;
     private PieceSkin _skin = null;
     private Transform _transform;
     private Vector3 _centerPos;
@@ -61,7 +64,7 @@ public class Piece : MonoBehaviour
         this._model.transform.localPosition -= this._centerPos;
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
-        this._ForceDragStatus(false);
+        this._UpdateRigidBodyState();
     }
 
     private void _SetMaterialBySkin(PieceSkin skin)
@@ -102,12 +105,13 @@ public class Piece : MonoBehaviour
     public bool draggable
     {
         get => this._rigidbody.detectCollisions;
-        set =>this._rigidbody.detectCollisions = value;
+        set => this._rigidbody.detectCollisions = value;
     }
 
     public void Attach(CraftablePiece craftable, PieceDirection dir)
     {
         this.Attach(craftable.modelTransform, dir);
+        this._rigidbody.isKinematic = this._isAttached;
     }
 
     public void Attach(Transform attachSpot, PieceDirection dir = PieceDirection.None)
@@ -118,30 +122,31 @@ public class Piece : MonoBehaviour
         t.localRotation = Quaternion.identity;
         t.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
 
-        this._SetAttachState(true);
+        this._isAttached = true;
+        this._UpdateRigidBodyState();
+
         this.onAttached?.Invoke(this);
     }
 
     public void Deattach()
     {
-        this._SetAttachState(false);
-        this.modelTransform.parent = null;
+        this._isAttached = false;
+        this._UpdateRigidBodyState();
+        this.modelTransform.parent = this.transform;
         this.modelTransform.localPosition += this._centerPos;
     }
 
-    private void _ForceDragStatus(bool dragStatus)
+    private void _UpdateRigidBodyState()
     {
-        this._isDragged = dragStatus;
-        this._rigidbody.useGravity = !dragStatus;
-        this._rigidbody.constraints = dragStatus ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
+        bool isFree = (!this._isDragged && !this._isAttached);
+        this._rigidbody.useGravity = isFree;
+        this._rigidbody.constraints = isFree ?  RigidbodyConstraints.None : RigidbodyConstraints.FreezeRotation;
+        
     }
 
-    private void _SetAttachState(bool attached)
+    public bool isAttached
     {
-        this._rigidbody.useGravity       = !attached;
-        this._rigidbody.isKinematic      = attached;
-        this._rigidbody.constraints      = RigidbodyConstraints.None;
-        this._isDragged = false;
+        get => this._isAttached;
     }
 
     public bool isDragged
@@ -150,7 +155,9 @@ public class Piece : MonoBehaviour
         set 
         {
             if (this._isDragged == value) return;
-            this._ForceDragStatus(value);
+            this._isDragged = value;
+            this._UpdateRigidBodyState();
+            if (value) this.onDragStart?.Invoke(this);
         }
     }
 

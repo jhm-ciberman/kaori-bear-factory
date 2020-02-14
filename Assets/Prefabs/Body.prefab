@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 4696443359750620294}
   - component: {fileID: 5295917131793520336}
   - component: {fileID: 2378839904423735128}
-  - component: {fileID: 2771796986814687076}
   m_Layer: 0
   m_Name: RightEyeSpot
   m_TagString: Untagged
@@ -89,7 +88,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.62
+  m_Radius: 1.35
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &5295917131793520336
 MonoBehaviour:
@@ -122,20 +121,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &2771796986814687076
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811706924413742703}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &939509388436483082
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b382e294deb7b4688ec163ade70b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceData: {fileID: 0}
   _rigidbody: {fileID: 5811492849485855428}
   _dragHitbox: {fileID: 5105450113356772342}
   _model: {fileID: 2332348504014042370}
   _center: {fileID: 3582689615250181388}
+  pieceData: {fileID: 0}
   spots:
   - {fileID: 4243947920975642159}
   - {fileID: 7313446270282743926}
@@ -209,7 +194,6 @@ GameObject:
   - component: {fileID: 5694506504170517154}
   - component: {fileID: 527127295385692962}
   - component: {fileID: 1682541793079747}
-  - component: {fileID: 5470906972115979203}
   m_Layer: 0
   m_Name: RightArmSpot
   m_TagString: Untagged
@@ -242,7 +226,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.82
+  m_Radius: 1.33
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &527127295385692962
 MonoBehaviour:
@@ -275,20 +259,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &5470906972115979203
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091443764799757609}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &1508442104538816385
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +271,6 @@ GameObject:
   - component: {fileID: 672101445268707252}
   - component: {fileID: 4243947920975642159}
   - component: {fileID: 4475519846450355809}
-  - component: {fileID: 550481706120673610}
   m_Layer: 0
   m_Name: RightEarSpot
   m_TagString: Untagged
@@ -334,7 +303,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.74
+  m_Radius: 1.27
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &4243947920975642159
 MonoBehaviour:
@@ -367,20 +336,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &550481706120673610
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508442104538816385}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &1816400598895429626
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +348,6 @@ GameObject:
   - component: {fileID: 8792411978217943921}
   - component: {fileID: 6871839213681850647}
   - component: {fileID: 7503656294521187242}
-  - component: {fileID: 9010137654757764418}
   m_Layer: 0
   m_Name: HatSpot
   m_TagString: Untagged
@@ -426,7 +380,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.94
+  m_Radius: 1.12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6871839213681850647
 MonoBehaviour:
@@ -459,20 +413,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &9010137654757764418
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816400598895429626}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &3133300519688978134
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +425,6 @@ GameObject:
   - component: {fileID: 2175257481389957433}
   - component: {fileID: 8098834489316591860}
   - component: {fileID: 6972213472291174846}
-  - component: {fileID: 2635111922237932122}
   m_Layer: 0
   m_Name: RightLegSpot
   m_TagString: Untagged
@@ -518,7 +457,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77
+  m_Radius: 1.21
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &8098834489316591860
 MonoBehaviour:
@@ -551,20 +490,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &2635111922237932122
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3133300519688978134}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &4876249273279829738
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +502,6 @@ GameObject:
   - component: {fileID: 4971364341102671220}
   - component: {fileID: 6216876815104422776}
   - component: {fileID: 5355486973342585708}
-  - component: {fileID: 8481381702477296773}
   m_Layer: 0
   m_Name: LeftEyeSpot
   m_TagString: Untagged
@@ -610,7 +534,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.62
+  m_Radius: 1.35
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &6216876815104422776
 MonoBehaviour:
@@ -643,20 +567,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &8481381702477296773
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876249273279829738}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &6076770033906282312
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +579,6 @@ GameObject:
   - component: {fileID: 9001273288373796903}
   - component: {fileID: 7313446270282743926}
   - component: {fileID: 6613725385299441108}
-  - component: {fileID: 8758348894024077533}
   m_Layer: 0
   m_Name: LeftEarSpot
   m_TagString: Untagged
@@ -702,7 +611,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.74
+  m_Radius: 1.27
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &7313446270282743926
 MonoBehaviour:
@@ -735,20 +644,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &8758348894024077533
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076770033906282312}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &6151834279103229860
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +686,6 @@ GameObject:
   - component: {fileID: 1183962301817280657}
   - component: {fileID: 2382372413508558878}
   - component: {fileID: 1723115122010713902}
-  - component: {fileID: 3225761757009948268}
   m_Layer: 0
   m_Name: LeftArmSpot
   m_TagString: Untagged
@@ -824,7 +718,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.82
+  m_Radius: 1.33
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &2382372413508558878
 MonoBehaviour:
@@ -857,20 +751,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &3225761757009948268
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6315292545460757889}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &6702909168679799191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +886,6 @@ GameObject:
   - component: {fileID: 4451874800944177436}
   - component: {fileID: 4254937002681621405}
   - component: {fileID: 8525474773560446837}
-  - component: {fileID: 2619286791832332368}
   m_Layer: 0
   m_Name: LeftLegSpot
   m_TagString: Untagged
@@ -1039,7 +918,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.77
+  m_Radius: 1.21
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &4254937002681621405
 MonoBehaviour:
@@ -1072,20 +951,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &2619286791832332368
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7691035191761798021}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1 &9097989343665236218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +963,6 @@ GameObject:
   - component: {fileID: 4174192889920551662}
   - component: {fileID: 1722919903803125067}
   - component: {fileID: 9127047604108933057}
-  - component: {fileID: 980863477044975151}
   m_Layer: 0
   m_Name: ClothSpot
   m_TagString: Untagged
@@ -1131,7 +995,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.33
+  m_Radius: 1.64
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1722919903803125067
 MonoBehaviour:
@@ -1164,20 +1028,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!138 &980863477044975151
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9097989343665236218}
-  m_ConnectedBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!1001 &872294731650211473
 PrefabInstance:
   m_ObjectHideFlags: 0

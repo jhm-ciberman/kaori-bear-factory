@@ -44,7 +44,7 @@ public class DragState
     public void UpdateDrag(float deltatime)
     {
         if (! this.isDragging) return;
-        
+
         this._animationTime += deltatime;
 
         if (this._animationTime > this._animationDuration)
