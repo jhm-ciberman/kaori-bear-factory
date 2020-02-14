@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 2
   spotDirection: 2
 --- !u!54 &2378839904423735128
@@ -144,8 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4274645122700828185}
-  - component: {fileID: 6268261403943760328}
-  - component: {fileID: 3117141983199949026}
+  - component: {fileID: 3724740808635836335}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -169,24 +169,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6268261403943760328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939509388436483082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pieceData: {fileID: 0}
-  _rigidbody: {fileID: 5811492849485855428}
-  _dragHitbox: {fileID: 5105450113356772342}
-  _model: {fileID: 5997748904319388961}
-  _center: {fileID: 3582689615250181388}
---- !u!114 &3117141983199949026
+--- !u!114 &3724740808635836335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,6 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b382e294deb7b4688ec163ade70b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pieceData: {fileID: 0}
+  _rigidbody: {fileID: 5811492849485855428}
+  _dragHitbox: {fileID: 5105450113356772342}
+  _model: {fileID: 2332348504014042370}
+  _center: {fileID: 3582689615250181388}
   spots:
   - {fileID: 4243947920975642159}
   - {fileID: 7313446270282743926}
@@ -268,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 1
   spotDirection: 2
 --- !u!54 &1682541793079747
@@ -359,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 4
   spotDirection: 2
 --- !u!54 &4475519846450355809
@@ -450,6 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 6
   spotDirection: 0
 --- !u!54 &7503656294521187242
@@ -541,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 3
   spotDirection: 2
 --- !u!54 &6972213472291174846
@@ -632,6 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 2
   spotDirection: 1
 --- !u!54 &5355486973342585708
@@ -723,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 4
   spotDirection: 1
 --- !u!54 &6613725385299441108
@@ -844,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 1
   spotDirection: 1
 --- !u!54 &1723115122010713902
@@ -889,7 +884,6 @@ GameObject:
   - component: {fileID: 2332348504014042370}
   - component: {fileID: 9090555266233660678}
   - component: {fileID: 5811492849485855428}
-  - component: {fileID: 4093286554896396935}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -1000,19 +994,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4093286554896396935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6702909168679799191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94106945ea918f649a89d3d75921b1f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  craftable: {fileID: 3117141983199949026}
 --- !u!1 &7691035191761798021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 3
   spotDirection: 1
 --- !u!54 &8525474773560446837
@@ -1163,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06969c20d964a2b468c2300a061e1643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedPiece: {fileID: 0}
   spotType: 7
   spotDirection: 0
 --- !u!54 &9127047604108933057

@@ -24,19 +24,19 @@ public class Request
 
 
 
-    public HashSet<RequestPiece> GetMissingParts(Craftable craftable)
+    public HashSet<RequestPiece> GetMissingParts(CraftablePiece craftable)
     {
         HashSet<RequestPiece> missingParts = new HashSet<RequestPiece>(this._pieces);
         missingParts.ExceptWith(craftable.requestPieces);
         return missingParts;
     }
 
-    public bool IsValid(Craftable craftable, DeliveryBoxType boxType)
+    public bool IsValid(CraftablePiece craftable, DeliveryBoxType boxType)
     {
         return this._pieces.SetEquals(craftable.requestPieces) && boxType == this.deliveryBoxType;
     }
 
-    public HashSet<RequestPiece> GetExtraParts(Craftable craftable)
+    public HashSet<RequestPiece> GetExtraParts(CraftablePiece craftable)
     {
         HashSet<RequestPiece> extraParts = new HashSet<RequestPiece>(craftable.requestPieces);
         extraParts.ExceptWith(this._pieces);

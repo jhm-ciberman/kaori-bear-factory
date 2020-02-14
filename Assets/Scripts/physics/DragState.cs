@@ -23,7 +23,13 @@ public class DragState
         this._offset = this._piece.GetDragOffset(pos);
         this._realElevation = 0f;
         this._animationTime = 0f;
-        this._piece.SetDragStatus(true);
+        this._piece.isDragged = true;
+        this._piece.onAttached += this._OnPieceAttached;
+    }
+
+    private void _OnPieceAttached(Piece piece)
+    {
+        this.EndDrag();
     }
 
     public bool isDragging
@@ -57,7 +63,8 @@ public class DragState
     public void EndDrag()
     {
         if (! this.isDragging) return;
-        this._piece.SetDragStatus(false);
+        this._piece.isDragged = false;
+        this._piece.onAttached -= this._OnPieceAttached;
         this._piece = null;
 
         this.UpdateDrag(0f);

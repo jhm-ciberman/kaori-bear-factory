@@ -48,7 +48,7 @@ MonoBehaviour:
   pieceData: {fileID: 0}
   _rigidbody: {fileID: 3903534827956153299}
   _dragHitbox: {fileID: 5437497722709173449}
-  _model: {fileID: 6572918038026127230}
+  _model: {fileID: 1098933659029498332}
   _center: {fileID: 6154575042304029500}
 --- !u!1 &4594680891645165966
 GameObject:

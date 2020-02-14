@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Piece : MonoBehaviour
 {
-    public class PieceHitbox : MonoBehaviour
+    public class Hitbox : MonoBehaviour
     {
 
         public static int layer = 8; // Hardcoded
@@ -11,11 +12,11 @@ public class Piece : MonoBehaviour
 
         void Start()
         {
-            this.gameObject.layer = PieceHitbox.layer;
+            this.gameObject.layer = Hitbox.layer;
         }
     }
 
-    public class PieceCollisionDetection : MonoBehaviour
+    public class CollisionDetection : MonoBehaviour
     {
         public Piece piece;
 
@@ -39,6 +40,7 @@ public class Piece : MonoBehaviour
 
     private bool _isDragged = false;
 
+    public event System.Action<Piece> onAttached;
 
     [HideInInspector]
     public PieceData pieceData;
@@ -66,7 +68,7 @@ public class Piece : MonoBehaviour
     private Collider _dragHitbox = null;
 
     [SerializeField]
-    private Transform _model = null;
+    private MeshRenderer _model = null;
 
     [SerializeField]
     private Transform _center = null;
@@ -77,26 +79,19 @@ public class Piece : MonoBehaviour
     public void Start()
     {
         this._transform = this._rigidbody.transform;
-        this._rigidbody.gameObject.AddComponent<PieceCollisionDetection>().piece = this;
-        this._dragHitbox.gameObject.AddComponent<PieceHitbox>().piece = this;
+        this._rigidbody.gameObject.AddComponent<CollisionDetection>().piece = this;
+        this._dragHitbox.gameObject.AddComponent<Hitbox>().piece = this;
 
         this._centerPos = this._center.localPosition;
-        this._model.localPosition -= this._centerPos;
+        this._model.transform.localPosition -= this._centerPos;
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
-        this.SetDragStatus(false);
+        this._ForceDragStatus(false);
     }
 
     public Vector3 GetDragOffset(Vector3 dragPosition)
     {
         return dragPosition - this._transform.position;
-    }
-
-    public void SetDragStatus(bool isDragged)
-    {
-        this._isDragged = isDragged;
-        this._rigidbody.useGravity = !isDragged;
-        this._rigidbody.constraints = isDragged ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
     }
 
     public void MoveByBelt(Belt belt)
@@ -123,26 +118,50 @@ public class Piece : MonoBehaviour
         Object.Destroy(this.gameObject);
     }
 
-    public bool canBeAttached
+    public bool isDragged
     {
-        get => !this._isDragged;
+        get => this._isDragged;
+        set 
+        {
+            if (this._isDragged == value) return;
+            this._ForceDragStatus(value);
+        }
     }
 
-    public void Attach(Craftable craftable, PieceDirection dir)
+    private void _ForceDragStatus(bool dragStatus)
     {
-        this._model.parent = craftable.piece._model.transform;
-        this._model.localPosition = Vector3.zero;
-        this._model.localRotation = Quaternion.identity;
-        this._model.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
+        this._isDragged = dragStatus;
+        this._rigidbody.useGravity = !dragStatus;
+        this._rigidbody.constraints = dragStatus ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.None;
+    }
+
+    public Transform modelTransform
+    {
+        get => this._model.transform;
+    }
+
+    public void Attach(CraftablePiece craftable, PieceDirection dir)
+    {
+        this.Attach(craftable.modelTransform, dir);
+    }
+
+    public void Attach(Transform attachSpot, PieceDirection dir = PieceDirection.None)
+    {
+        Transform t = this.modelTransform;
+        t.parent = attachSpot;
+        t.localPosition = Vector3.zero;
+        t.localRotation = Quaternion.identity;
+        t.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
 
         this._SetAttachState(true);
+        this.onAttached?.Invoke(this);
     }
 
     public void Deattach()
     {
         this._SetAttachState(false);
-        this._model.parent = null;
-        this._model.localPosition += this._centerPos;
+        this.modelTransform.parent = null;
+        this.modelTransform.localPosition += this._centerPos;
     }
 
     private void _SetAttachState(bool attached)

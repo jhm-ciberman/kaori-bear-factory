@@ -30,7 +30,6 @@ public class RequestPiece// : IEquatable
     
     public override int GetHashCode()
     {
-        //int hashSkin = (this.skin == null) ? 0 : this.skin.GetHashCode();
         return (this.data.type + "_" + this.direction).GetHashCode();
     }
 }

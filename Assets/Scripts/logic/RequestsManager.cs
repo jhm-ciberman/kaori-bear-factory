@@ -117,7 +117,7 @@ public class RequestsManager : MonoBehaviour
         }
     }
 
-    public void DeliverCraftable(Craftable craftable, DeliveryBoxType boxType)
+    public void DeliverCraftable(CraftablePiece craftable, DeliveryBoxType boxType)
     {
         foreach (Request request in this._queue.activeRequests)
         {
@@ -136,7 +136,7 @@ public class RequestsManager : MonoBehaviour
         }
     }
 
-    private bool _ShowErrorsForInvalidCraftable(Request activeRequest, Craftable craftable)
+    private bool _ShowErrorsForInvalidCraftable(Request activeRequest, CraftablePiece craftable)
     {
         HashSet<RequestPiece> missing = activeRequest.GetMissingParts(craftable);
         HashSet<RequestPiece> extra = activeRequest.GetExtraParts(craftable);

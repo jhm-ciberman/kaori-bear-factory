@@ -85,9 +85,9 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
 
-        if (Physics.Raycast(ray, out hit, this._raycastDistance, 1 << Piece.PieceHitbox.layer))
+        if (Physics.Raycast(ray, out hit, this._raycastDistance, 1 << Piece.Hitbox.layer))
         {
-            Piece.PieceHitbox hitbox = hit.collider.GetComponent<Piece.PieceHitbox>();
+            Piece.Hitbox hitbox = hit.collider.GetComponent<Piece.Hitbox>();
 
             if (hitbox && hitbox.piece)
             {

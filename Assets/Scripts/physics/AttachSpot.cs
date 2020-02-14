@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttachSpot : MonoBehaviour
 {
+    [HideInInspector]
     public Piece attachedPiece = null;
 
     public PieceType spotType;
@@ -26,12 +27,7 @@ public class AttachSpot : MonoBehaviour
 
     protected Piece _GetPiece(Collider other)
     {
-        Piece.PieceCollisionDetection dcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
-        if (dcd != null) return dcd.piece;
-
-        Piece.PieceHitbox ph = other.gameObject.GetComponent<Piece.PieceHitbox>();
-        if (ph != null) return ph.piece;
-
-        return null;
+        var pcd = other.gameObject.GetComponent<Piece.CollisionDetection>();
+        return pcd?.piece;
     }
 }

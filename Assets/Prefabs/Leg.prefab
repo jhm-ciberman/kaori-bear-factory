@@ -234,5 +234,5 @@ MonoBehaviour:
   pieceData: {fileID: 0}
   _rigidbody: {fileID: 7691950264405423030}
   _dragHitbox: {fileID: 4984265874132902401}
-  _model: {fileID: 550804872487001883}
+  _model: {fileID: 6040270939454058937}
   _center: {fileID: 718914960619367257}

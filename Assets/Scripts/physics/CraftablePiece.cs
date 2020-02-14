@@ -1,35 +1,38 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Craftable : MonoBehaviour
+[DisallowMultipleComponent]
+public class CraftablePiece : Piece
 {
-    public delegate void OnPieceAttached(Craftable craftable);
+    public delegate void OnPieceAttached(CraftablePiece craftable);
     public static event OnPieceAttached onPieceAttached;
-
-    private Piece _piece;
-    public Piece piece { get => this._piece; }
 
     public AttachSpot[] spots;
 
-    private Piece[] _attachedPieces;
-
     public HashSet<RequestPiece> requestPieces = new HashSet<RequestPiece>();
 
-    void Start()
+    private List<Piece> _attachedPieces = new List<Piece>();
+
+    new void Start()
     {
-        this._piece = this.GetComponent<Piece>();
+        base.Start();
 
         foreach (AttachSpot spot in this.spots)
         {
             spot.onAttachSpotEnter += this.OnAttachSpotEnter;
         }
 
-        this.requestPieces.Add(new RequestPiece(this._piece.pieceData, PieceDirection.None, this._piece.skin));
+        this.requestPieces.Add(new RequestPiece(this.pieceData, PieceDirection.None, this.skin));
+    }
+
+    public IEnumerable<Piece> attachedPieces
+    {
+        get => this._attachedPieces;
     }
 
     public void OnAttachSpotEnter(Piece piece, AttachSpot spot)
     {
-        if (! piece.canBeAttached) return;
+        if (piece.isDragged) return;
         
         RequestPiece request = new RequestPiece(piece.pieceData, spot.spotDirection, piece.skin);
 
@@ -38,10 +41,11 @@ public class Craftable : MonoBehaviour
             piece.Attach(this, spot.spotDirection);
             spot.attachedPiece = piece;
             this.requestPieces.Add(request);
+            this._attachedPieces.Add(piece);
 
-            if (Craftable.onPieceAttached != null)
+            if (CraftablePiece.onPieceAttached != null)
             {
-                Craftable.onPieceAttached(this);
+                CraftablePiece.onPieceAttached(this);
             }
         }
     }

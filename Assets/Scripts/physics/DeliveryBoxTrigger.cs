@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class DeliveryBoxTrigger : MonoBehaviour
 {
     public RequestsManager requestsManager;
@@ -8,20 +9,15 @@ public class DeliveryBoxTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        CraftableCollisionDetection ccd = other.gameObject.GetComponent<CraftableCollisionDetection>();
+        var pcd = other.gameObject.GetComponent<Piece.CollisionDetection>();
 
-        if (ccd != null)
+        if (pcd?.piece != null)
         {
-            ccd.craftable.piece.Dispawn();
+            if (pcd.piece is CraftablePiece)
+            {
+                this.requestsManager.DeliverCraftable(pcd.piece as CraftablePiece, this.type);
+            }
 
-            this.requestsManager.DeliverCraftable(ccd.craftable, this.type);
-            return;
-        }
-
-        Piece.PieceCollisionDetection pcd = other.gameObject.GetComponent<Piece.PieceCollisionDetection>();
-
-        if (pcd != null)
-        {
             pcd.piece.Dispawn();
             return;
         }
