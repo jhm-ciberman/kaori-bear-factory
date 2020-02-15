@@ -161,6 +161,11 @@ public class PaintingMachine : MonoBehaviour
 
         float position = Mathf.Sin(this._animationTime * this._positionAnimationSpeed) * this._positionAnimationAmount;
         t.localPosition = Vector3.up * position;
+
+        if (this._painting != null)
+        {
+            this._painting.Update(Time.deltaTime);
+        }
     }
 
     public void StartPainting(SkinData skin)
@@ -177,6 +182,5 @@ public class PaintingMachine : MonoBehaviour
             // No pieces to paint. Maybe play another sound? 
             return;
         }
-
     }
 }

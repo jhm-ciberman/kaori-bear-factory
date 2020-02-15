@@ -33,17 +33,23 @@ public class PaintingProcess
 
     public void Update(float deltaTime)
     {
-        this._paintedPieces += deltaTime / this._timePerPiece;
-        int paintedPieces = Mathf.FloorToInt(this._paintedPieces);
-        int unpaintedPieces = Mathf.CeilToInt(this._paintedPieces);
-
-        for (int i = 0; i < this._piecesToPaint.Count; i++)
+        if (this._paintedPieces < this._piecesToPaint.Count)
         {
-            Piece piece = this._piecesToPaint[i];
+            this._paintedPieces += deltaTime / this._timePerPiece;
 
-            if (i < paintedPieces)
+            if (this._paintedPieces >= this._piecesToPaint.Count)
             {
-                
+                this._paintedPieces = this._piecesToPaint.Count;
+            }
+
+            float progress = this.progress;
+
+            for (int i = 0; i < this._piecesToPaint.Count; i++)
+            {
+                Piece piece = this._piecesToPaint[i];
+
+                piece.skin.secondaryData = this._skin;
+                piece.skin.transition = progress;
             }
         }
     }
