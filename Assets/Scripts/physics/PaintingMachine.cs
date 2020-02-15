@@ -55,15 +55,17 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private float _positionAnimationAmount = 0.25f;
 
+    [SerializeField] private float _timePerPiece = 3f;
+
     private Piece _pieceInside = null;
 
     private Piece _lastPieceExited = null;
 
-    private List<Piece> _piecesToPaint = new List<Piece>();
-
     private MachineStatus _status = MachineStatus.Empty;
 
     private float _animationTime = 0f;
+
+    private PaintingProcess _painting = null;
 
     private InteriorTrigger _trigger;
 
@@ -78,16 +80,6 @@ public class PaintingMachine : MonoBehaviour
     {
         if (this._pieceInside != null) return;
         if (piece == this._lastPieceExited) return;
-
-        Debug.Log("_OnPieceEnter");
-
-        this._piecesToPaint.Clear();
-        this._AddPiecesToPaint(this._piecesToPaint, piece);
-
-        foreach (var p in this._piecesToPaint)
-        {
-            Debug.Log(p);
-        }
 
         this._AttachPiece(piece);
         this._animationTime = 0f;
@@ -104,8 +96,7 @@ public class PaintingMachine : MonoBehaviour
     private void _OnPieceExit(Piece piece)
     {
         if (this._pieceInside != piece) return;
-        //if (! piece.isDragged) return;
-        Debug.Log("_OnPieceExit");
+
         this._lastPieceExited = piece;
         this._CheckIfPieceExited(piece);
     }
@@ -131,7 +122,6 @@ public class PaintingMachine : MonoBehaviour
 
     private void _OnDragStart(Piece piece)
     {
-        Debug.Log("_OnDragStart");
         if (piece == this._pieceInside)
         {
             this._DeattachPiece();
@@ -173,21 +163,20 @@ public class PaintingMachine : MonoBehaviour
         t.localPosition = Vector3.up * position;
     }
 
-    void _AddPiecesToPaint(List<Piece> list, Piece piece)
+    public void StartPainting(SkinData skin)
     {
-        if (piece.pieceData.skinable)
+        if (this._status != MachineStatus.PieceAttached || this._pieceInside == null)
         {
-            list.Add(piece);
+            // Error, no pieces inside. Maybe play a sound?
+            return;
         }
 
-        if (piece is CraftablePiece)
+        this._painting = new PaintingProcess(skin, this._pieceInside, this._timePerPiece);
+        if (this._painting.count == 0)
         {
-            CraftablePiece craftable = piece as CraftablePiece;
-
-            foreach (var subpiece in craftable.attachedPieces)
-            {
-                this._AddPiecesToPaint(list, subpiece);
-            }
+            // No pieces to paint. Maybe play another sound? 
+            return;
         }
+
     }
 }

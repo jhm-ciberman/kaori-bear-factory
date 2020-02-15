@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttachSpot : MonoBehaviour
 {
-    [HideInInspector]
+    [HideInNormalInspector]
     public Piece attachedPiece = null;
 
     public PieceType spotType;
@@ -23,6 +23,16 @@ public class AttachSpot : MonoBehaviour
         if (piece.pieceData.type != this.spotType) return;
 
         this.onAttachSpotEnter?.Invoke(piece, this);
+    }
+
+    public void Disable()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void Enable()
+    {
+        this.gameObject.SetActive(true);
     }
 
     protected Piece _GetPiece(Collider other)

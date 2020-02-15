@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98ffe49b29d98a45a9bed57c551be61, type: 3}
+  m_Name: PieceSkinRenderingData
+  m_EditorClassIdentifier: 
+  paintingMaterial: {fileID: 2100000, guid: 4e62e8f4bb9adb84d9cbdae392662c29, type: 2}
+  nonPaintingMaterial: {fileID: 2100000, guid: 67711c5de2b09e44bb0ff41e14355640, type: 2}
+  defaultSkin: {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}

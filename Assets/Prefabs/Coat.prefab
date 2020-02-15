@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceData: {fileID: 0}
   _rigidbody: {fileID: 347170628717946725}
   _dragHitbox: {fileID: 8757423992031996031}
   _model: {fileID: 4448839212563948906}
   _center: {fileID: 7463643821417152394}
+  _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
+  pieceData: {fileID: 0}
 --- !u!1 &954433315150400824
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,16 +45,22 @@ public class Piece : MonoBehaviour
     [SerializeField] private Collider _dragHitbox = null;
     [SerializeField] private MeshRenderer _model = null;
     [SerializeField] private Transform _center = null;
+    [SerializeField] private PieceSkinRenderingData _renderingData = null;
 
     [HideInInspector] public PieceData pieceData;
 
     private bool _isDragged = false;
     private bool _isAttached = false;
-    private PieceSkin _skin = null;
     private Transform _transform;
     private Vector3 _centerPos;
+    private PieceSkin _skin = null;
 
-    public void Start()
+    protected void Awake()
+    {
+        this._skin = new PieceSkin(this._renderingData);
+    }
+
+    protected void Start()
     {
         this._transform = this._rigidbody.transform;
         this._rigidbody.gameObject.AddComponent<CollisionDetection>().piece = this;
@@ -65,12 +71,6 @@ public class Piece : MonoBehaviour
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
         this._UpdateRigidBodyState();
-    }
-
-    private void _SetMaterialBySkin(PieceSkin skin)
-    {
-        if (skin == null) return;
-        this._model.material.SetTexture("_BaseMap", skin.albedo); 
     }
 
     public Vector3 GetDragOffset(Vector3 dragPosition)
@@ -97,7 +97,7 @@ public class Piece : MonoBehaviour
         return 1f;
     }
 
-    public void Dispawn()
+    public virtual void Dispawn()
     {
         Object.Destroy(this.gameObject);
     }
@@ -112,6 +112,8 @@ public class Piece : MonoBehaviour
     {
         this.Attach(craftable.modelTransform, dir);
         this._rigidbody.isKinematic = this._isAttached;
+
+        this.transform.parent = craftable.transform;
     }
 
     public void Attach(Transform attachSpot, PieceDirection dir = PieceDirection.None)
@@ -126,6 +128,11 @@ public class Piece : MonoBehaviour
         this._UpdateRigidBodyState();
 
         this.onAttached?.Invoke(this);
+    }
+
+    private void Update()
+    {
+        this._skin.UpdateMaterial(this._model);
     }
 
     public void Deattach()
@@ -161,15 +168,9 @@ public class Piece : MonoBehaviour
         }
     }
 
-    public PieceSkin skin 
+    public PieceSkin skin
     {
         get => this._skin;
-        set 
-        {
-            if (this._skin == value) return;
-            this._skin = value;
-            this._SetMaterialBySkin(value);
-        }
     }
 
     public Transform modelTransform

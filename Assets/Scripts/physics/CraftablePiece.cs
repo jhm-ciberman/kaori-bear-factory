@@ -19,7 +19,7 @@ public class CraftablePiece : Piece
             spot.onAttachSpotEnter += this.OnAttachSpotEnter;
         }
 
-        this.requestPieces.Add(new RequestPiece(this.pieceData, PieceDirection.None, this.skin));
+        this.requestPieces.Add(new RequestPiece(this.pieceData, PieceDirection.None, this.skin.data));
     }
 
     public IEnumerable<Piece> attachedPieces
@@ -31,7 +31,7 @@ public class CraftablePiece : Piece
     {
         if (piece.isDragged) return;
         
-        RequestPiece request = new RequestPiece(piece.pieceData, spot.spotDirection, piece.skin);
+        RequestPiece request = new RequestPiece(piece.pieceData, spot.spotDirection, piece.skin.data);
 
         if (! this.requestPieces.Contains(request))
         {
@@ -41,5 +41,15 @@ public class CraftablePiece : Piece
             this.requestPieces.Add(request);
             this._attachedPieces.Add(piece);
         }
+    }
+
+    public override void Dispawn()
+    {
+        foreach (Piece piece in this._attachedPieces)
+        {
+            piece.Dispawn();
+        }
+
+        base.Dispawn();
     }
 }

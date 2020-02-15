@@ -5,6 +5,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Camera _camera = null;
     
     [SerializeField] public LayerMask tableLayer;
+
+    [SerializeField] public LayerMask interactionLayer;
     
     [SerializeField] private DragState _drag = new DragState();
     
@@ -93,15 +95,22 @@ public class PlayerInteraction : MonoBehaviour
         RaycastHit hit;
         Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
 
-        if (Physics.Raycast(ray, out hit, this._raycastDistance, 1 << Piece.Hitbox.layer))
+        if (Physics.Raycast(ray, out hit, this._raycastDistance, this.interactionLayer))
         {
             Piece.Hitbox hitbox = hit.collider.GetComponent<Piece.Hitbox>();
 
-            if (hitbox && hitbox.piece)
+            if (hitbox?.piece)
             {
                 this._drag.EndDrag();
                 this._drag.StartDrag(hitbox.piece, hit.point);
                 this._playerMovement.DisableMovement();
+            }
+
+            MachineButton button = hit.collider.GetComponent<MachineButton>();
+
+            if (button != null)
+            {
+                button.Interact();
             }
         }
     }

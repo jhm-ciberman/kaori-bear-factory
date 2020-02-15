@@ -8,9 +8,9 @@ public class RequestPiece// : IEquatable
     public PieceDirection direction;
 
     [HideInInspector]
-    public PieceSkin skin = null;
+    public SkinData skin = null;
 
-    public RequestPiece(PieceData data, PieceDirection direction, PieceSkin skin)
+    public RequestPiece(PieceData data, PieceDirection direction, SkinData skin)
     {
         this.data = data;
         this.direction = direction;

@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public struct SpawnerPieceData
     {
         public PieceData data;
-        public PieceSkin skin;
+        public SkinData skin;
     }
 
     [SerializeField] public Animator _spawnAnimator;
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
         this._pieces.Clear();
     }
 
-    public void AddPieceToSpawnList(PieceData data, PieceSkin skin)
+    public void AddPieceToSpawnList(PieceData data, SkinData skin)
     {
         this._pieces.Add(new SpawnerPieceData() {
             data = data,
@@ -82,7 +82,8 @@ public class Spawner : MonoBehaviour
 
         GameObject go = Object.Instantiate(requestPiece.data.piecePrefab, this.transform.position, Quaternion.identity);
         Piece piece = go.GetComponent<Piece>();
-        piece.skin = requestPiece.skin;
+        piece.skin.data = requestPiece.skin;
+
         piece.pieceData = requestPiece.data;
 
         this._spawnAnimator?.Play("Spawn");

@@ -170,6 +170,7 @@ MonoBehaviour:
   _dragHitbox: {fileID: 5105450113356772342}
   _model: {fileID: 2332348504014042370}
   _center: {fileID: 3582689615250181388}
+  _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 0}
   spots:
   - {fileID: 4243947920975642159}

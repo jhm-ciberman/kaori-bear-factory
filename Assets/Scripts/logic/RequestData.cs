@@ -12,7 +12,7 @@ public class RequestData : ScriptableObject
 
     public CustomerData customer;
 
-    public PieceSkin[] skins;
+    public SkinData[] skins;
 
     public PieceData   body;
     public PieceData[] leftArm;
@@ -32,7 +32,7 @@ public class RequestData : ScriptableObject
     {
         Request request = new Request(this.customer, levelTimeMultiplier);
         
-        PieceSkin globalSkin = this.skins[random.Next(this.skins.Length)];
+        SkinData globalSkin = this.skins[random.Next(this.skins.Length)];
 
         request.AddPiece(new RequestPiece(this.body, PieceDirection.None, this.body.skinable ? globalSkin : null));
 
@@ -51,7 +51,7 @@ public class RequestData : ScriptableObject
         return request;
     }
 
-    private void _AddPiece(Request request, System.Random random, PieceData[] pool, PieceDirection direction, PieceSkin globalSkin)
+    private void _AddPiece(Request request, System.Random random, PieceData[] pool, PieceDirection direction, SkinData globalSkin)
     {
         if (pool.Length == 0) return;
 
@@ -59,7 +59,7 @@ public class RequestData : ScriptableObject
 
         if (pieceData == null) return;
 
-        PieceSkin skin = (this.perPartSkin) ? this.skins[random.Next(this.skins.Length)] : globalSkin;
+        SkinData skin = (this.perPartSkin) ? this.skins[random.Next(this.skins.Length)] : globalSkin;
 
         request.AddPiece(new RequestPiece(pieceData, direction, pieceData.skinable ? skin : null));
     }

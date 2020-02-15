@@ -231,8 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72dc78629f4ce747b797a192d4e61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pieceData: {fileID: 0}
   _rigidbody: {fileID: 8815093484980697598}
   _dragHitbox: {fileID: 3089852266640435237}
   _model: {fileID: 4844068592653646833}
   _center: {fileID: 1806178247756964113}
+  _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
+  pieceData: {fileID: 0}
