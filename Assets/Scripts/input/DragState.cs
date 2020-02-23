@@ -55,7 +55,10 @@ public class DragState
         p = -p * (p - 2); // ease quad out
 
         this._realElevation = this._elevation * p;
-        this._piece.UpdatePosition(this._target - this._offset + this._realElevation * Vector3.up);
+
+        Vector3 pos = this._target - this._offset + this._realElevation * Vector3.up;
+        Debug.DrawLine(this._target, this._target - this._offset);
+        this._piece.UpdatePosition(pos);
     }
 
     public void EndDrag()

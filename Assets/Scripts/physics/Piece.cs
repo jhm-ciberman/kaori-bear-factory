@@ -104,8 +104,12 @@ public class Piece : MonoBehaviour
         set
         {
             this._isDraggable = value;
-            this._dragHitbox.gameObject.SetActive(value);
             this._rigidbody.detectCollisions = value;
+
+            if (this._dragHitbox.gameObject != this._rigidbody.gameObject)
+            {
+                this._dragHitbox.gameObject.SetActive(value);
+            }
         }
     }
 
