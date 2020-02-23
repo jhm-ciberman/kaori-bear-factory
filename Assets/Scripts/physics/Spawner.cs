@@ -80,7 +80,7 @@ public class Spawner : MonoBehaviour
         SpawnerPieceData requestPiece = this._temporalSpawnList[0];
         this._temporalSpawnList.RemoveAt(0);
 
-        GameObject go = Object.Instantiate(requestPiece.data.piecePrefab, this.transform.position, Quaternion.identity);
+        GameObject go = Object.Instantiate(requestPiece.data.piecePrefab, this.transform.position, this.transform.rotation);
         Piece piece = go.GetComponent<Piece>();
         piece.skin.data = requestPiece.skin;
 

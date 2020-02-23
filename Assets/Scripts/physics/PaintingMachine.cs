@@ -57,6 +57,8 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private float _timePerPiece = 3f;
 
+    [SerializeField] private Vector3 _rotationDir = Vector3.up;
+
     private Piece _pieceInside = null;
 
     private Piece _lastPieceExited = null;
@@ -157,10 +159,10 @@ public class PaintingMachine : MonoBehaviour
         Transform t = this._pieceInside.modelTransform;
         
         float rotation = Mathf.Sin(this._animationTime * this._rotationAnimationSpeed) * this._rotationAnimationAmount;
-        t.localRotation = Quaternion.AngleAxis(rotation, Vector3.up);
+        t.localRotation = Quaternion.AngleAxis(rotation, this._rotationDir);
 
         float position = Mathf.Sin(this._animationTime * this._positionAnimationSpeed) * this._positionAnimationAmount;
-        t.localPosition = Vector3.up * position;
+        t.localPosition = this._rotationDir * position;
 
         if (this._painting != null)
         {
