@@ -29,7 +29,7 @@ public class CraftablePiece : Piece
 
     public void OnAttachSpotEnter(Piece piece, AttachSpot spot)
     {
-        if (piece.isDragged) return;
+        if (piece.isAttached) return;
         
         RequestPiece request = new RequestPiece(piece.pieceData, spot.spotDirection, piece.skin.data);
 
@@ -38,6 +38,7 @@ public class CraftablePiece : Piece
             piece.Attach(this, spot.spotDirection);
             piece.draggable = false;
             spot.attachedPiece = piece;
+            spot.Disable();
             this.requestPieces.Add(request);
             this._attachedPieces.Add(piece);
         }

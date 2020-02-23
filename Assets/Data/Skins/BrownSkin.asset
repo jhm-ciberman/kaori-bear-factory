@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BrownSkin
   m_EditorClassIdentifier: 
   color: {r: 0.9245283, g: 0.7121554, b: 0.28346387, a: 1}
+  lightColor: {r: 0.9254902, g: 0.7137255, b: 0.28235295, a: 1}
   albedo: {fileID: 2800000, guid: 25d83440dc55e5c4386a105bdf57e996, type: 3}

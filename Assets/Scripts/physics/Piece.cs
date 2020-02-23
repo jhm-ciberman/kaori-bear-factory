@@ -49,6 +49,7 @@ public class Piece : MonoBehaviour
 
     [HideInInspector] public PieceData pieceData;
 
+    private bool _isDraggable = true;
     private bool _isDragged = false;
     private bool _isAttached = false;
     private Transform _transform;
@@ -73,11 +74,6 @@ public class Piece : MonoBehaviour
         this._UpdateRigidBodyState();
     }
 
-    public Vector3 GetDragOffset(Vector3 dragPosition)
-    {
-        return dragPosition - this._transform.position;
-    }
-
     public void MoveByBelt(Belt belt)
     {
         if (this._isDragged) return;
@@ -92,8 +88,8 @@ public class Piece : MonoBehaviour
 
     private float _GetScale(PieceDirection dir)
     {
-        if (dir == PieceDirection.Left) return -1f;
-        if (dir == PieceDirection.Right) return 1f;
+        if (dir == PieceDirection.Left) return 1f;
+        if (dir == PieceDirection.Right) return -1f;
         return 1f;
     }
 
@@ -104,8 +100,13 @@ public class Piece : MonoBehaviour
 
     public bool draggable
     {
-        get => this._rigidbody.detectCollisions;
-        set => this._rigidbody.detectCollisions = value;
+        get => this._isDraggable;
+        set
+        {
+            this._isDraggable = value;
+            this._dragHitbox.gameObject.SetActive(value);
+            this._rigidbody.detectCollisions = value;
+        }
     }
 
     public void Attach(CraftablePiece craftable, PieceDirection dir)
@@ -148,7 +149,6 @@ public class Piece : MonoBehaviour
         bool isFree = (!this._isDragged && !this._isAttached);
         this._rigidbody.useGravity = isFree;
         this._rigidbody.constraints = isFree ?  RigidbodyConstraints.None : RigidbodyConstraints.FreezeRotation;
-        
     }
 
     public bool isAttached
@@ -177,4 +177,6 @@ public class Piece : MonoBehaviour
     {
         get => this._model.transform;
     }
+
+    public Vector3 rigidbodyPosition => this._transform.position;
 }

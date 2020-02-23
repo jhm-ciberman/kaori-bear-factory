@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: YellowSkin
   m_EditorClassIdentifier: 
   color: {r: 0.9647059, g: 0.8784314, b: 0.13333334, a: 1}
+  lightColor: {r: 0.9647059, g: 0.8784314, b: 0.13333334, a: 1}
   albedo: {fileID: 2800000, guid: 6e2000fc6e9a51e4b84ec1c7fc0a7e55, type: 3}

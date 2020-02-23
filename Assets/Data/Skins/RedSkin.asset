@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RedSkin
   m_EditorClassIdentifier: 
   color: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
+  lightColor: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
   albedo: {fileID: 2800000, guid: 2cfdff400ead362439fa0c8aa6025953, type: 3}

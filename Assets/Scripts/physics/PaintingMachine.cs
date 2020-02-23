@@ -59,6 +59,8 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private Vector3 _rotationDir = Vector3.up;
 
+    [SerializeField] private Light _interiorLight = null;
+
     private Piece _pieceInside = null;
 
     private Piece _lastPieceExited = null;
@@ -183,6 +185,11 @@ public class PaintingMachine : MonoBehaviour
         {
             // No pieces to paint. Maybe play another sound? 
             return;
+        }
+
+        if (this._interiorLight)
+        {
+            this._interiorLight.color = skin.lightColor;
         }
     }
 }

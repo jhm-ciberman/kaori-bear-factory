@@ -18,7 +18,7 @@ public class DragState
     {
         this._piece = piece;
         this._target = pos;
-        this._offset = this._piece.GetDragOffset(pos);
+        this._offset = pos - piece.rigidbodyPosition;
         this._realElevation = 0f;
         this._animationTime = 0f;
         this._piece.isDragged = true;

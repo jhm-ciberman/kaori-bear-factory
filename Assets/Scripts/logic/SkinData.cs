@@ -5,5 +5,7 @@ public class SkinData : ScriptableObject
 {
     public Color color;
 
+    public Color lightColor;
+
     public Texture2D albedo;
 }

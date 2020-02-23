@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BlueSkin
   m_EditorClassIdentifier: 
   color: {r: 0.40392157, g: 0.40392157, b: 0.6156863, a: 1}
+  lightColor: {r: 0.40392157, g: 0.40392157, b: 0.6156863, a: 1}
   albedo: {fileID: 2800000, guid: 0b856dc9b1470d745b09a9e032c17a48, type: 3}

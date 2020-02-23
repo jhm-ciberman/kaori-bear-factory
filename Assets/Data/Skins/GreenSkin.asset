@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GreenSkin
   m_EditorClassIdentifier: 
   color: {r: 0.105882354, g: 0.46666667, b: 0.26666668, a: 1}
+  lightColor: {r: 0.105882354, g: 0.46666667, b: 0.26666668, a: 1}
   albedo: {fileID: 2800000, guid: ed254e89f5145d6458561bf286949758, type: 3}
