@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2116e7d43170ff94f92c077c19e9abf4
+guid: 1dff8f0bf5e1b0e48a39fe0fe5689345
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
+      name: fondo
     second: {fileID: 2100000, guid: 1b8bfc1e9f284be40b878b6b787eea3a, type: 2}
   materials:
     materialImportMode: 1
@@ -39,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 125
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -85,7 +85,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 1.25
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

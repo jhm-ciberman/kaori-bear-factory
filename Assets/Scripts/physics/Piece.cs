@@ -182,5 +182,5 @@ public class Piece : MonoBehaviour
         get => this._model.transform;
     }
 
-    public Vector3 rigidbodyPosition => this._transform.position;
+    public Vector3 rigidbodyPosition => this._rigidbody.position;
 }
