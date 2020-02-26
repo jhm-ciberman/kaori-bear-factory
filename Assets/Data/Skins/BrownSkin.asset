@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3830c7ba1c5e0584aa8d099db899a695, type: 3}
   m_Name: BrownSkin
   m_EditorClassIdentifier: 
-  uiIconColor: {r: 0.9254902, g: 0.7137255, b: 0.28235295, a: 1}
-  materialColor: {r: 0.9254902, g: 0.7137255, b: 0.28235295, a: 1}
-  lightColor: {r: 0.9254902, g: 0.7137255, b: 0.28235295, a: 1}
+  uiIconColor: {r: 0.7075472, g: 0.5482026, b: 0.2236116, a: 1}
+  materialColor: {r: 0.735849, g: 0.5724164, b: 0.23949803, a: 1}
+  lightColor: {r: 0.7075472, g: 0.5482026, b: 0.2236116, a: 1}
   albedo: {fileID: 2800000, guid: bc97dd6e4c61cab4fadf8e242b3da394, type: 3}
