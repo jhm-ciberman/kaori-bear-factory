@@ -77,6 +77,11 @@ public class PaintingMachine : MonoBehaviour
 
     private Color _pieceInsideColor = Color.gray;
 
+    public System.Action<SkinData> onPaintStart;
+    public System.Action<SkinData> onPaintFinish;
+    public System.Action onPieceRemoved;
+    public System.Action<float, int> onPaintProgress;
+
     void Start()
     {
         this._trigger = this._interiorTrigger.gameObject.AddComponent<InteriorTrigger>();
@@ -157,6 +162,7 @@ public class PaintingMachine : MonoBehaviour
 
         this._particleSystem?.Stop();
         this._SetInteriorLightColor(Color.black);
+        this.onPieceRemoved?.Invoke();
     }
 
     private void _CheckIfPieceExited(Piece piece)
@@ -187,6 +193,7 @@ public class PaintingMachine : MonoBehaviour
         if (this._painting != null)
         {
             this._painting.Update(Time.deltaTime);
+            this.onPaintProgress?.Invoke(this._painting.paintedPieces, this._painting.count);
         }
     }
 
@@ -212,8 +219,10 @@ public class PaintingMachine : MonoBehaviour
         this._painting.onFinished = () => {
             this._particleSystem?.Stop();
             this._SetInteriorLightColor(this._pieceInsideColor);
+            this.onPaintFinish?.Invoke(skin);
         };
 
+        this.onPaintStart?.Invoke(skin);
     }
 
     private void _SetInteriorLightColor(Color color)

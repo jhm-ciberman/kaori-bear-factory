@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public Transform _inGameUI;
 
+    [SerializeField] public PaintingProgressUI _paintingProgressUI;
+
     public TMPro.TextMeshProUGUI _customersCountText;
 
     void Start()
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
         this._pauseScreenUI.HideNow();
         this._overlayUI.HideNow();
         this._inGameUI.gameObject.SetActive(true);
+        this._paintingProgressUI.HideNow();
     }
 
     public void SetSlotsNumber(int slots)
@@ -82,5 +85,33 @@ public class UIManager : MonoBehaviour
         this.onPause?.Invoke();
         this._overlayUI.Show();
         this._pauseScreenUI.Show();
+    }
+
+    public void ShowPaintingProgress(SkinData skin)
+    {
+        this._paintingProgressUI.Show(skin.uiIconColor);
+    }
+
+    public void HidePaintingProgress()
+    {
+        this._paintingProgressUI.HideNow();
+    }
+
+    public void PaintingProgressFinish()
+    {
+        this._paintingProgressUI.Finish();
+    }
+
+    public void UpdatePaintingProgress(float amount, int total)
+    {
+        this._paintingProgressUI.progress = this._QuadInOut(amount / total);
+    }
+
+    private float _QuadInOut(float p)
+    {
+        p += p;
+        if (p < 1) return (p * p) * .5f;
+        p--;
+        return - (p * (p - 2) - 1) * .5f;
     }
 }

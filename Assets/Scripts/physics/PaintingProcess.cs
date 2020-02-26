@@ -23,20 +23,13 @@ public class PaintingProcess
         this._AddPiecesToPaint(this._piecesToPaint, piece, skin);
     }
 
-    public int count
-    {
-        get => this._piecesToPaint.Count;
-    }
+    public int count => this._piecesToPaint.Count;
 
-    public float progress
-    {
-        get => this._paintedPieces / this._piecesToPaint.Count;
-    }
+    public float paintedPieces => this._paintedPieces;
 
-    public bool hasFinished
-    {
-        get => this.progress == 1f;
-    }
+    public float progress => this._paintedPieces / this._piecesToPaint.Count;
+
+    public bool hasFinished => (this.progress == 1f);
 
     public void Update(float deltaTime)
     {

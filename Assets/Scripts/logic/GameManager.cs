@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public PlayerInput _playerInput = null;
 
+    [SerializeField] public PaintingMachine _paintingMachine = null;
+
     [HideInInspector]
     private LevelData _currentLevel;
 
@@ -38,6 +40,12 @@ public class GameManager : MonoBehaviour
         // Pause
         this._uiManager.onPause += this._OnPause;
         this._uiManager.onUnpause += this._OnUnpause;
+
+        // Painting Machine
+        this._paintingMachine.onPaintStart += (skin) => this._uiManager.ShowPaintingProgress(skin);
+        this._paintingMachine.onPaintFinish += (skin) => this._uiManager.PaintingProgressFinish();
+        this._paintingMachine.onPieceRemoved += () => this._uiManager.HidePaintingProgress();
+        this._paintingMachine.onPaintProgress += (amount, total) => this._uiManager.UpdatePaintingProgress(amount, total);
 
         // Start the fun!
         this._currentLevel = (GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData;
