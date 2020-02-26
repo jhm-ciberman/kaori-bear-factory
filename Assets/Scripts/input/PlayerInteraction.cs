@@ -7,6 +7,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] public LayerMask tableLayer;
 
     [SerializeField] public LayerMask interactionLayer;
+
+    [SerializeField] public LayerMask dragAreaLayer;
     
     [SerializeField] private DragState _drag = new DragState();
     
@@ -58,16 +60,23 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (this._drag.isDragging)
         {
-            RaycastHit hit;
-            Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
-            if (Physics.Raycast(ray, out hit, this._raycastDistance, this.tableLayer))
-            {
-                this._drag.targetPos = hit.point;
-            }
+            this._drag.targetPos = this._GetTableDragTarget(this._drag.targetPos);
 
             this._drag.UpdateDrag(Time.deltaTime);
             this._UpdateCamera();
         }
+    }
+
+    private Vector3 _GetTableDragTarget(Vector3 defaultTargetPos)
+    {
+        RaycastHit hit;
+        Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
+        if (Physics.Raycast(ray, out hit, this._raycastDistance, this.tableLayer))
+        {
+            return hit.point;
+        }
+
+        return defaultTargetPos;
     }
 
     private void _UpdateCamera()
@@ -94,25 +103,41 @@ public class PlayerInteraction : MonoBehaviour
 
         RaycastHit hit;
         Ray ray = this._camera.ScreenPointToRay(this._cursorScreenPos);
-
         if (Physics.Raycast(ray, out hit, this._raycastDistance, this.interactionLayer))
         {
-            Piece.Hitbox hitbox = hit.collider.GetComponent<Piece.Hitbox>();
+            Piece piece = hit.collider.GetComponent<Piece.Hitbox>()?.piece;
 
-            if (hitbox?.piece)
+            Vector3 elevationUpVector = this.GetElevationUpVector(hit.point);
+            Debug.DrawLine(hit.point, hit.point + elevationUpVector, Color.red, 0.5f);
+
+            if (piece != null)
             {
                 this._drag.EndDrag();
-                this._drag.StartDrag(hitbox.piece, hit.point);
+                Vector3 targetPos = this._GetTableDragTarget(hit.point);
+                this._drag.StartDrag(piece, targetPos, elevationUpVector);
                 this._playerMovement.DisableMovement();
+                return;
             }
 
             MachineButton button = hit.collider.GetComponent<MachineButton>();
+            button?.Interact();
+        }
+    }
 
-            if (button != null)
+    private Vector3 GetElevationUpVector(Vector3 pos)
+    {
+        var colliders = Physics.OverlapSphere(pos, 0.1f, this.dragAreaLayer);
+        foreach (var collider in colliders)
+        {
+            DragArea dragArea = collider.GetComponent<DragArea>();
+            if (dragArea != null)
             {
-                button.Interact();
+                Debug.Log(dragArea.elevationDirection);
+                return dragArea.elevationDirection;
             }
         }
+
+        return Vector3.up;
     }
 
     public void StopInteraction()

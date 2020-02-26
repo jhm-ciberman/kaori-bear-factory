@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 [System.Serializable]
@@ -13,15 +12,19 @@ public class DragState
     private float _realElevation = 0f;
     private float _animationTime = 0f;
     private Vector3 _target;
+    private Vector3 _elevationUpVector;
 
-    public void StartDrag(Piece piece, Vector3 pos)
+    public void StartDrag(Piece piece, Vector3 pos, Vector3 elevationUpVector)
     {
         this._piece = piece;
         this._target = pos;
         this._offset = pos - piece.rigidbodyPosition;
+        Debug.Log(this._offset);
+        Debug.DrawLine(piece.rigidbodyPosition, pos, Color.cyan, 0.5f);
         this._realElevation = 0f;
         this._animationTime = 0f;
         this._piece.isDragged = true;
+        this._elevationUpVector = elevationUpVector;
         this._piece.onAttached += this._OnPieceAttached;
     }
 
@@ -56,7 +59,7 @@ public class DragState
 
         this._realElevation = this._elevation * p;
 
-        Vector3 pos = this._target - this._offset + this._realElevation * Vector3.up;
+        Vector3 pos = this._target - this._offset + this._realElevation * this._elevationUpVector;
         Debug.DrawLine(this._target, this._target - this._offset);
         this._piece.UpdatePosition(pos);
     }

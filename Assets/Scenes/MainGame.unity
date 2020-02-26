@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774414}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.914, y: 0.536, z: -0.758}
+  m_LocalPosition: {x: 1.502, y: 0.535, z: -0.764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 844303718}
@@ -711,7 +711,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236685404}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 1.52, y: 0.126, z: -0.765}
+  m_LocalPosition: {x: 0.905, y: 0.128, z: -0.759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1812004470}
@@ -3354,7 +3354,8 @@ GameObject:
   m_Component:
   - component: {fileID: 816782344}
   - component: {fileID: 816782345}
-  m_Layer: 0
+  - component: {fileID: 816782346}
+  m_Layer: 11
   m_Name: InteriorTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3386,8 +3387,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3205516, y: 6.4024925, z: 2.5682554}
-  m_Center: {x: -0.11281739, y: -0.10212003, z: 0.46254683}
+  m_Size: {x: 3.8553216, y: 6.4024925, z: 5.2282486}
+  m_Center: {x: -0.47049507, y: -0.10212002, z: 0.55022657}
+--- !u!114 &816782346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816782343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a251fcf4076524ebfd2cbe837aaa5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elevationDirection: {x: -1, y: 0.5, z: 0}
 --- !u!4 &844303718
 Transform:
   m_ObjectHideFlags: 0
@@ -3835,8 +3849,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.526582, y: 0.07515935, z: 0.21835771}
-  m_Center: {x: 0.002844319, y: 0.041346163, z: 0.022958426}
+  m_Size: {x: 0.526582, y: 0.3055596, z: 0.21835771}
+  m_Center: {x: 0.0028443136, y: 0.15654622, z: 0.022958426}
 --- !u!23 &994474422
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3951,6 +3965,9 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 1280
+  dragAreaLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   _drag:
     _elevation: 0.5
     _animationDuration: 0.15
@@ -5199,8 +5216,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0870125, y: 0.95438457, z: 2.9605646}
-  m_Center: {x: 0.2633553, y: -0.022807717, z: -0.5689529}
+  m_Size: {x: 0.9950835, y: 0.95438457, z: 3.5311747}
+  m_Center: {x: 0.2799559, y: -0.022807717, z: -0.9011633}
 --- !u!4 &1447132525
 Transform:
   m_ObjectHideFlags: 0
@@ -5650,8 +5667,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5757225, y: 0.08337052, z: 0.21835771}
-  m_Center: {x: -0.07046333, y: 0.047156733, z: 0.022958428}
+  m_Size: {x: 0.5757224, y: 0.4953112, z: 0.21835771}
+  m_Center: {x: -0.07046333, y: 0.25312707, z: 0.022958428}
 --- !u!23 &1523649245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6593,8 +6610,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5757225, y: 0.08337052, z: 0.21835771}
-  m_Center: {x: -0.07046333, y: 0.047156733, z: 0.022958428}
+  m_Size: {x: 0.5757224, y: 0.3032282, z: 0.21835771}
+  m_Center: {x: -0.07046333, y: 0.15708558, z: 0.022958428}
 --- !u!23 &1754516418
 MeshRenderer:
   m_ObjectHideFlags: 0

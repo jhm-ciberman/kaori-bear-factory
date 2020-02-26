@@ -17,6 +17,10 @@ MonoBehaviour:
   requests:
   - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
   - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
+  - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
+  - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
+  - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
+  - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}
   slotsNumber: 2
   customerIntervals: 15
   unlockables: []
