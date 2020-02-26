@@ -57,13 +57,16 @@ public class PieceSkin
         {   
             renderer.material = this._renderingData.paintingMaterial;
             renderer.material.SetTexture("_BaseMap", this._data.albedo); 
+            renderer.material.SetColor("_BaseColor", this._data.materialColor);
             renderer.material.SetTexture("_SecondaryMap", this._secondaryData.albedo); 
+            renderer.material.SetColor("_SecondaryColor", this._secondaryData.materialColor);
             renderer.material.SetFloat("_BlendValue", this._transition); 
         }
         else
         {
             renderer.material = this._renderingData.nonPaintingMaterial;
             renderer.material.SetTexture("_BaseMap", this._data.albedo);
+            renderer.material.SetColor("_BaseColor", this._data.materialColor);
         }
     }
 

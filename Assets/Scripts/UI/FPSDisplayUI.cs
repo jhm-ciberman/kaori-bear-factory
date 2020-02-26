@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FPSDisplayUI : MonoBehaviour
 {
-    [SerializeField] private TMPro.TextMeshProUGUI _fpsText;
+    [SerializeField] private TMPro.TextMeshProUGUI _fpsText = null;
     [SerializeField] private float _hudRefreshRate = 1f;
 
     private float _timer;

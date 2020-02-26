@@ -23,7 +23,7 @@ public class ProductUI : MonoBehaviour
             RectTransform transform = Object.Instantiate(this.baseLayer, this.baseLayer.position, Quaternion.identity, this.baseLayer.parent);
             Image image = transform.GetComponent<Image>();
             image.sprite = this._GetSprite(piece);
-            image.color = piece.skin ? piece.skin.color : Color.white;
+            image.color = piece.skin ? piece.skin.uiIconColor : Color.white;
 
             transform.gameObject.SetActive(true);
         }

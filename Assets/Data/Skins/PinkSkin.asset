@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3830c7ba1c5e0584aa8d099db899a695, type: 3}
   m_Name: PinkSkin
   m_EditorClassIdentifier: 
-  color: {r: 0.8862745, g: 0.44705883, b: 0.7294118, a: 1}
+  uiIconColor: {r: 0.8862745, g: 0.44705883, b: 0.7294118, a: 1}
+  materialColor: {r: 0.8862745, g: 0.44705883, b: 0.7294118, a: 1}
   lightColor: {r: 0.8862745, g: 0.44705883, b: 0.7294118, a: 1}
-  albedo: {fileID: 2800000, guid: d7e1d3de6cbc4c647bb930ea1a1d52d7, type: 3}
+  albedo: {fileID: 2800000, guid: bc97dd6e4c61cab4fadf8e242b3da394, type: 3}

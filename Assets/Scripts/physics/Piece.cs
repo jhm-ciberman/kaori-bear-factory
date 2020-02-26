@@ -66,6 +66,7 @@ public class Piece : MonoBehaviour
         this._transform = this._rigidbody.transform;
         this._rigidbody.gameObject.AddComponent<CollisionDetection>().piece = this;
         this._dragHitbox.gameObject.AddComponent<Hitbox>().piece = this;
+        this._model.gameObject.layer = 8; // layer 8
 
         this._centerPos = this._center.localPosition;
         this._model.transform.localPosition -= this._centerPos;

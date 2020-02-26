@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        this._uiManager.gameObject.SetActive(true);
+        
         // Level exit UI
         this._uiManager.onExitLevel += this._GoToMenu;
 

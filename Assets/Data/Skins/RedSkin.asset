@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3830c7ba1c5e0584aa8d099db899a695, type: 3}
   m_Name: RedSkin
   m_EditorClassIdentifier: 
-  color: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
-  lightColor: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
-  albedo: {fileID: 2800000, guid: 2cfdff400ead362439fa0c8aa6025953, type: 3}
+  uiIconColor: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
+  materialColor: {r: 0.92941177, g: 0.1764706, b: 0.039215688, a: 1}
+  lightColor: {r: 1, g: 0.4538932, b: 0.3537736, a: 1}
+  albedo: {fileID: 2800000, guid: bc97dd6e4c61cab4fadf8e242b3da394, type: 3}

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3055021036828389283}
   - component: {fileID: 8406540215122558345}
-  - component: {fileID: 5331734634929690570}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -43,21 +42,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.793045, y: 1.3427794, z: 3.1790001}
-  m_Center: {x: 0.036140203, y: -0.17138982, z: -0.14103551}
---- !u!135 &5331734634929690570
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544980803233293905}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: -0.85, z: 0}
+  m_Size: {x: 4.046162, y: 2.4888563, z: 4.057761}
+  m_Center: {x: 0.088918924, y: -0.34070066, z: -0.09802733}
 --- !u!1 &811706924413742703
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811706924413742703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.71, z: 0.16}
+  m_LocalPosition: {x: 0.58, y: -0, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -102,7 +88,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.35
+  m_Radius: 1.34
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &5295917131793520336
 MonoBehaviour:
@@ -224,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091443764799757609}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3, y: 0.01, z: -0.86}
+  m_LocalPosition: {x: 1.3, y: 0.01, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -241,7 +227,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.33
+  m_Radius: 1
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &527127295385692962
 MonoBehaviour:
@@ -301,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508442104538816385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3, y: -0.3, z: 0.7}
+  m_LocalPosition: {x: 1.3, y: -0.3, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -318,7 +304,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.27
+  m_Radius: 1.11
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &4243947920975642159
 MonoBehaviour:
@@ -395,7 +381,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.12
+  m_Radius: 1.07
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6871839213681850647
 MonoBehaviour:
@@ -455,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3133300519688978134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.801, y: -0.08, z: -2.14}
+  m_LocalPosition: {x: 0.801, y: -0.08, z: -2.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -472,7 +458,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.21
+  m_Radius: 0.87
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &8098834489316591860
 MonoBehaviour:
@@ -611,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4876249273279829738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.7, z: 0.22}
+  m_LocalPosition: {x: -0.86, y: 0, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -628,7 +614,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.35
+  m_Radius: 1.34
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &6216876815104422776
 MonoBehaviour:
@@ -688,7 +674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6076770033906282312}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3, y: -0.3, z: 0.7}
+  m_LocalPosition: {x: -1.3, y: -0.3, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -705,7 +691,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.27
+  m_Radius: 1.11
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &7313446270282743926
 MonoBehaviour:
@@ -795,7 +781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6315292545460757889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.49, y: -0.01, z: -0.87}
+  m_LocalPosition: {x: -1.49, y: -0.01, z: -0.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -812,7 +798,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.33
+  m_Radius: 1
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &2382372413508558878
 MonoBehaviour:
@@ -858,7 +844,7 @@ GameObject:
   - component: {fileID: 2332348504014042370}
   - component: {fileID: 9090555266233660678}
   - component: {fileID: 5811492849485855428}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7691035191761798021}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.003, y: -0.06, z: -2.09}
+  m_LocalPosition: {x: -1.003, y: -0.06, z: -2.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5997748904319388961}
@@ -1012,7 +998,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.21
+  m_Radius: 0.87
   m_Center: {x: 0.15046185, y: 0.07645309, z: 0}
 --- !u!114 &4254937002681621405
 MonoBehaviour:
@@ -1089,7 +1075,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.64
+  m_Radius: 1.38
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1722919903803125067
 MonoBehaviour:

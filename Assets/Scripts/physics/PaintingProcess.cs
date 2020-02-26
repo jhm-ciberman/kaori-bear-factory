@@ -12,13 +12,15 @@ public class PaintingProcess
 
     private float _timePerPiece;
 
+    public System.Action onFinished;
+
     public PaintingProcess(SkinData skin, Piece piece, float timePerPiece)
     {
         this._paintedPieces = 0f;
         this._skin = skin;
         this._timePerPiece = timePerPiece;
 
-        this._AddPiecesToPaint(this._piecesToPaint, piece);
+        this._AddPiecesToPaint(this._piecesToPaint, piece, skin);
     }
 
     public int count
@@ -62,7 +64,7 @@ public class PaintingProcess
         }
     }
 
-    private void CancelPainting()
+    public void CancelPainting()
     {
         foreach (Piece piece in this._piecesToPaint)
         {
@@ -79,11 +81,13 @@ public class PaintingProcess
             piece.skin.secondaryData = null;
             piece.skin.transition = 0f;
         }
+
+        this.onFinished?.Invoke();
     }
 
-    void _AddPiecesToPaint(List<Piece> list, Piece piece)
+    void _AddPiecesToPaint(List<Piece> list, Piece piece, SkinData targetSkin)
     {
-        if (piece.pieceData.skinable)
+        if (piece.pieceData.skinable && piece.skin.data != targetSkin)
         {
             list.Add(piece);
         }
@@ -94,7 +98,7 @@ public class PaintingProcess
 
             foreach (var subpiece in craftable.attachedPieces)
             {
-                this._AddPiecesToPaint(list, subpiece);
+                this._AddPiecesToPaint(list, subpiece, targetSkin);
             }
         }
     }

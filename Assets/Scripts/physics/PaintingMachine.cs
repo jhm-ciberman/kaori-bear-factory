@@ -61,6 +61,8 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private Light _interiorLight = null;
 
+    [SerializeField] private ParticleSystem _particleSystem = null;
+
     private Piece _pieceInside = null;
 
     private Piece _lastPieceExited = null;
@@ -73,11 +75,16 @@ public class PaintingMachine : MonoBehaviour
 
     private InteriorTrigger _trigger;
 
+    private Color _pieceInsideColor = Color.gray;
+
     void Start()
     {
         this._trigger = this._interiorTrigger.gameObject.AddComponent<InteriorTrigger>();
         this._trigger.onPieceEnter += this._OnPieceEnter;
         this._trigger.onPieceExit += this._OnPieceExit;
+
+        this._SetInteriorLightColor(Color.black);
+        this._particleSystem?.Stop();
     }
 
     void _OnPieceEnter(Piece piece)
@@ -113,6 +120,8 @@ public class PaintingMachine : MonoBehaviour
         piece.Attach(this._attachSpot);
         piece.onDragStart += this._OnDragStart;
         piece.onAttached += this._OnAttached;
+
+        this._SetInteriorLightColor(this._pieceInsideColor);
     }
 
     private void _OnAttached(Piece piece)
@@ -135,10 +144,19 @@ public class PaintingMachine : MonoBehaviour
 
     private void _DeattachPiece()
     {
+        if (this._painting != null && ! this._painting.hasFinished)
+        {
+            this._painting.CancelPainting();
+            this._painting = null;
+        }
+
         this._status = MachineStatus.WaitingForPieceExit;
         this._pieceInside.onDragStart -= this._OnDragStart;
         this._pieceInside.onAttached -= this._OnAttached;
         this._pieceInside.Deattach();
+
+        this._particleSystem?.Stop();
+        this._SetInteriorLightColor(Color.black);
     }
 
     private void _CheckIfPieceExited(Piece piece)
@@ -184,12 +202,32 @@ public class PaintingMachine : MonoBehaviour
         if (this._painting.count == 0)
         {
             // No pieces to paint. Maybe play another sound? 
+            this._SetInteriorLightColor(this._pieceInsideColor);
             return;
+        }
+
+        this._SetInteriorLightColor(skin.lightColor);
+        this._particleSystem?.Play();
+
+        this._painting.onFinished = () => {
+            this._particleSystem?.Stop();
+            this._SetInteriorLightColor(this._pieceInsideColor);
+        };
+
+    }
+
+    private void _SetInteriorLightColor(Color color)
+    {
+        if (this._particleSystem)
+        {
+            var main = this._particleSystem.main;
+            main.startColor = color;
         }
 
         if (this._interiorLight)
         {
-            this._interiorLight.color = skin.lightColor;
+            LeanTween.value(this.gameObject, this._interiorLight.color, color, 0.25f)
+                .setOnUpdate((value) => this._interiorLight.color = value);
         }
     }
 }

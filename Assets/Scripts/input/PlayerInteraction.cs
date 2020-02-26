@@ -108,8 +108,7 @@ public class PlayerInteraction : MonoBehaviour
             Piece piece = hit.collider.GetComponent<Piece.Hitbox>()?.piece;
 
             Vector3 elevationUpVector = this.GetElevationUpVector(hit.point);
-            Debug.DrawLine(hit.point, hit.point + elevationUpVector, Color.red, 0.5f);
-
+            
             if (piece != null)
             {
                 this._drag.EndDrag();
@@ -132,7 +131,6 @@ public class PlayerInteraction : MonoBehaviour
             DragArea dragArea = collider.GetComponent<DragArea>();
             if (dragArea != null)
             {
-                Debug.Log(dragArea.elevationDirection);
                 return dragArea.elevationDirection;
             }
         }

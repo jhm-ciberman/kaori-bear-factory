@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3830c7ba1c5e0584aa8d099db899a695, type: 3}
   m_Name: GreenSkin
   m_EditorClassIdentifier: 
-  color: {r: 0.105882354, g: 0.46666667, b: 0.26666668, a: 1}
-  lightColor: {r: 0.105882354, g: 0.46666667, b: 0.26666668, a: 1}
-  albedo: {fileID: 2800000, guid: ed254e89f5145d6458561bf286949758, type: 3}
+  uiIconColor: {r: 0.5700036, g: 0.8773585, b: 0, a: 1}
+  materialColor: {r: 0.8295609, g: 1, b: 0.19339621, a: 1}
+  lightColor: {r: 0.3189974, g: 1, b: 0.1273585, a: 1}
+  albedo: {fileID: 2800000, guid: bc97dd6e4c61cab4fadf8e242b3da394, type: 3}
