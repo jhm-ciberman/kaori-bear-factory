@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Game/LevelData", order = 1)]
@@ -22,15 +23,15 @@ public class LevelData : ScriptableObject
 
     [SerializeField] public int slotsNumber = 3;
 
-    [SerializeField] public RequestData[] requests;
+    [ReorderableList] public RequestData[] requests;
 
-    public Unlockable[] unlockables;
+    [ReorderableList] public Unlockable[] afterLevelUnlockables;
 
-    public bool paintMachineUnlocked = true;
-    public bool giftBoxUnlocked = true;
+    [BoxGroup("Features")][Label("Paint Machine")] public bool paintMachineUnlocked = true;
+    [BoxGroup("Features")][Label("Gift Box")] public bool giftBoxUnlocked = true;
 
-    public SkinData[] availableSkins = new SkinData[0];
-    public PieceData[] availablePieces = new PieceData[0];
+    [ReorderableList] public SkinData[] availableSkins = new SkinData[0];
+    [ReorderableList] public PieceData[] availablePieces = new PieceData[0];
 
     public IEnumerable<Request> GetRequests()
     {

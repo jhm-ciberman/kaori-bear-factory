@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RequestData", menuName = "Game/RequestData", order = 1)]
@@ -19,19 +20,22 @@ public class RequestData : ScriptableObject
 
     public CustomerData customer;
 
-    public SkinData[] skins;
+    [ReorderableList] public SkinData[] skins;
 
     public PieceData   body;
-    public PieceData[] leftArm;
-    public PieceData[] rightArm;
-    public PieceData[] leftEye;
-    public PieceData[] rightEye;
-    public PieceData[] leftLeg;
-    public PieceData[] rightLeg;
-    public PieceData[] leftEar;
-    public PieceData[] rightEar;
-    public PieceData[] hat;
-    public PieceData[] clothe;
+    
+    [Space]
+
+    [ReorderableList] public PieceData[] leftArm;
+    [ReorderableList] public PieceData[] rightArm;
+    [ReorderableList] public PieceData[] leftEye;
+    [ReorderableList] public PieceData[] rightEye;
+    [ReorderableList] public PieceData[] leftLeg;
+    [ReorderableList] public PieceData[] rightLeg;
+    [ReorderableList] public PieceData[] leftEar;
+    [ReorderableList] public PieceData[] rightEar;
+    [ReorderableList] public PieceData[] hat;
+    [ReorderableList] public PieceData[] clothe;
 
     public bool perPartSkin = true;
 

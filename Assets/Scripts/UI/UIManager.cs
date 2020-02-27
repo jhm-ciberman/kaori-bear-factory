@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
 
         this._overlayUI.Show();
 
-        foreach (var unlockable in level.unlockables)
+        foreach (var unlockable in level.afterLevelUnlockables)
         {
             this._unlockScreenUI.AddUnlockable(unlockable.name, unlockable.model);
         }
