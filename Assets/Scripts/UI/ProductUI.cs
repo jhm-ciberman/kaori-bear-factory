@@ -18,7 +18,7 @@ public class ProductUI : MonoBehaviour
 
     public void SetRequest(Request request)
     {
-        foreach (RequestPiece piece in request.GetPieces())
+        foreach (RequestPiece piece in request.pieces)
         {
             RectTransform transform = Object.Instantiate(this.baseLayer, this.baseLayer.position, Quaternion.identity, this.baseLayer.parent);
             Image image = transform.GetComponent<Image>();

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RequestData", menuName = "Game/RequestData", order = 1)]
@@ -8,6 +9,12 @@ public class RequestData : ScriptableObject
     {
         public PieceDirection direction;
         public PieceData[] pieces;
+
+        public RequestPiecePool(PieceDirection direction, PieceData[] pieces)
+        {
+            this.direction = direction;
+            this.pieces = pieces;
+        }
     }
 
     public CustomerData customer;
@@ -28,40 +35,21 @@ public class RequestData : ScriptableObject
 
     public bool perPartSkin = true;
 
-    public Request MakeRequest(System.Random random, float levelTimeMultiplier) 
+    public IEnumerable<RequestPiecePool> pieceDataPools
     {
-        Request request = new Request(this.customer, levelTimeMultiplier);
-        
-        SkinData globalSkin = this.skins[random.Next(this.skins.Length)];
-
-        request.AddPiece(new RequestPiece(this.body, PieceDirection.None, this.body.skinable ? globalSkin : null));
-
-        this._AddPiece(request, random, this.leftArm      , PieceDirection.Left  , globalSkin);
-        this._AddPiece(request, random, this.rightArm     , PieceDirection.Right , globalSkin);
-        this._AddPiece(request, random, this.leftEye      , PieceDirection.Left  , globalSkin);
-        this._AddPiece(request, random, this.rightEye     , PieceDirection.Right , globalSkin);
-        this._AddPiece(request, random, this.leftLeg      , PieceDirection.Left  , globalSkin);
-        this._AddPiece(request, random, this.rightLeg     , PieceDirection.Right , globalSkin);
-        this._AddPiece(request, random, this.leftEar      , PieceDirection.Left  , globalSkin);
-        this._AddPiece(request, random, this.rightEar     , PieceDirection.Right , globalSkin);
-        this._AddPiece(request, random, this.hat          , PieceDirection.None  , globalSkin);
-        this._AddPiece(request, random, this.clothe       , PieceDirection.None  , globalSkin);
-
-        request.deliveryBoxType = this.customer.deliveryBoxTypes[random.Next(this.customer.deliveryBoxTypes.Length)];
-        return request;
+        get 
+        {
+            yield return new RequestPiecePool(PieceDirection.None , new PieceData[] {this.body});
+            yield return new RequestPiecePool(PieceDirection.Left , this.leftArm );
+            yield return new RequestPiecePool(PieceDirection.Right, this.rightArm);
+            yield return new RequestPiecePool(PieceDirection.Left , this.leftEye );
+            yield return new RequestPiecePool(PieceDirection.Right, this.rightEye);
+            yield return new RequestPiecePool(PieceDirection.Left , this.leftLeg );
+            yield return new RequestPiecePool(PieceDirection.Right, this.rightLeg);
+            yield return new RequestPiecePool(PieceDirection.Left , this.leftEar );
+            yield return new RequestPiecePool(PieceDirection.Right, this.rightEar);
+            yield return new RequestPiecePool(PieceDirection.None , this.hat     );
+            yield return new RequestPiecePool(PieceDirection.None , this.clothe  );
+        }
     }
-
-    private void _AddPiece(Request request, System.Random random, PieceData[] pool, PieceDirection direction, SkinData globalSkin)
-    {
-        if (pool.Length == 0) return;
-
-        PieceData pieceData = pool[random.Next(pool.Length)];
-
-        if (pieceData == null) return;
-
-        SkinData skin = (this.perPartSkin) ? this.skins[random.Next(this.skins.Length)] : globalSkin;
-
-        request.AddPiece(new RequestPiece(pieceData, direction, pieceData.skinable ? skin : null));
-    }
-
 }

@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 1776307041}
   - component: {fileID: 242070836}
   - component: {fileID: 242070835}
+  - component: {fileID: 242070837}
   - component: {fileID: 242070834}
   m_Layer: 0
   m_Name: caja regalo
@@ -648,7 +649,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -1550514412580984892, guid: 99dffec2761c6bd488672bb684e23f69, type: 3}
+  m_Mesh: {fileID: -5629627241074985529, guid: db9015448ee166942a7fe30a33eea4c5, type: 3}
 --- !u!23 &242070835
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -696,6 +697,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242070833}
   m_Mesh: {fileID: -5629627241074985529, guid: db9015448ee166942a7fe30a33eea4c5, type: 3}
+--- !u!114 &242070837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242070833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b8abe4a23da214b8d3bc20de575249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  trigger: {fileID: 1157263959}
 --- !u!1 &302280910
 GameObject:
   m_ObjectHideFlags: 0
@@ -6456,6 +6471,9 @@ MonoBehaviour:
   _requestsManager: {fileID: 805608070}
   _playerInput: {fileID: 1007200884}
   _paintingMachine: {fileID: 502905807}
+  _carboardBox: {fileID: 1461717916}
+  _giftBox: {fileID: 242070837}
+  _spawner: {fileID: 1829310625}
 --- !u!1 &816782343
 GameObject:
   m_ObjectHideFlags: 0
@@ -7513,7 +7531,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1157263958}
   - component: {fileID: 1157263959}
-  - component: {fileID: 1157263960}
   m_Layer: 9
   m_Name: BoxTriggerGift
   m_TagString: Untagged
@@ -7548,20 +7565,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4426578, y: 0.15187602, z: 0.45085979}
   m_Center: {x: 0.1546003, y: -0.124340504, z: 0.11642989}
---- !u!114 &1157263960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1157263957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b8abe4a23da214b8d3bc20de575249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requestsManager: {fileID: 805608070}
-  type: 1
 --- !u!1 &1223993531
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,6 +7737,7 @@ GameObject:
   - component: {fileID: 1447132525}
   - component: {fileID: 1461717915}
   - component: {fileID: 1461717914}
+  - component: {fileID: 1461717916}
   - component: {fileID: 1461717913}
   m_Layer: 0
   m_Name: caja carton
@@ -7755,7 +7759,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4493585093827132993, guid: 5120d7263370496469ea974d02cda37f, type: 3}
+  m_Mesh: {fileID: -1003828742497072157, guid: 3064a1fc082b5c244b68d0308f0dbb80, type: 3}
 --- !u!23 &1461717914
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7803,6 +7807,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461717912}
   m_Mesh: {fileID: -1003828742497072157, guid: 3064a1fc082b5c244b68d0308f0dbb80, type: 3}
+--- !u!114 &1461717916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461717912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b8abe4a23da214b8d3bc20de575249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  trigger: {fileID: 2058058167}
 --- !u!1 &1469913757
 GameObject:
   m_ObjectHideFlags: 0
@@ -8699,6 +8717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnAnimator: {fileID: 707081835}
   spawnInterval: 1.5
+  defaultSkin: {fileID: 0}
 --- !u!1 &1832013993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9502,7 +9521,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2058058166}
   - component: {fileID: 2058058167}
-  - component: {fileID: 2058058168}
   m_Layer: 9
   m_Name: BoxTriggerCardboard
   m_TagString: Untagged
@@ -9537,20 +9555,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.42067814, y: 0.11337415, z: 0.42893025}
   m_Center: {x: 0.1998492, y: -0.14359158, z: 0.07358134}
---- !u!114 &2058058168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058058165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b8abe4a23da214b8d3bc20de575249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requestsManager: {fileID: 805608070}
-  type: 0
 --- !u!4 &2085564638
 Transform:
   m_ObjectHideFlags: 0
@@ -9814,7 +9818,7 @@ PrefabInstance:
     - target: {fileID: 6063775131246652322, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.16
+      value: -0.16000366
       objectReference: {fileID: 0}
     - target: {fileID: 6063775131246652322, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
@@ -9849,22 +9853,62 @@ PrefabInstance:
     - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 29.63
+      value: 29.630005
       objectReference: {fileID: 0}
     - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 694.95
+      value: -25.049988
       objectReference: {fileID: 0}
     - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -633.34
+      value: 6.659973
       objectReference: {fileID: 0}
     - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 228.8
+      value: 228.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523423382338138165, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059128628729, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059472665680, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059472665680, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.2000122
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059472665680, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455988060196196878, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}

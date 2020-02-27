@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
-  m_Name: Eye
+  m_Name: BearLeg
   m_EditorClassIdentifier: 
-  piecePrefab: {fileID: 5204545154017681462, guid: 0ee0bc81aaeb798439c5d6426cf6bef2,
+  piecePrefab: {fileID: 7277765681763357570, guid: 65e5a5873a4e8be4c9bb12549c329c89,
     type: 3}
-  type: 2
-  skineable: 0
+  type: 3
+  skinable: 1
   uiLayerSpriteNone: {fileID: 0}
-  uiLayerSpriteLeft: {fileID: 21300000, guid: 3e9e21bc211f296489b9149d46585f7d, type: 3}
-  uiLayerSpriteRight: {fileID: 21300000, guid: 1a825584906a3a444aea8a37a7002e57, type: 3}
+  uiLayerSpriteLeft: {fileID: 21300000, guid: b8f0635fc7ea0eb43b0b524f43b6d6b1, type: 3}
+  uiLayerSpriteRight: {fileID: 21300000, guid: 6588f93a9a9432e44b78b30e6f7eff85, type: 3}

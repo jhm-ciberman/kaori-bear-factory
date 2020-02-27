@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public PaintingMachine _paintingMachine = null;
 
+    [SerializeField] public DeliveryBox _carboardBox = null;
+
+    [SerializeField] public DeliveryBox _giftBox = null;
+
+    [SerializeField] public Spawner _spawner = null;
+
     [HideInInspector]
     private LevelData _currentLevel;
 
@@ -47,12 +53,24 @@ public class GameManager : MonoBehaviour
         this._paintingMachine.onPieceRemoved += () => this._uiManager.HidePaintingProgress();
         this._paintingMachine.onPaintProgress += (amount, total) => this._uiManager.UpdatePaintingProgress(amount, total);
 
+        // DeliveryBox
+        this._carboardBox.onCraftableDelivered += this._requestsManager.DeliverCraftable;
+        this._giftBox.onCraftableDelivered += this._requestsManager.DeliverCraftable;
+
         // Start the fun!
         this._currentLevel = (GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData;
         this._uiManager.SetSlotsNumber(this._currentLevel.slotsNumber);
+        this._PrepareUnlockablesInLevel();
+        this._spawner.defaultSkin = this._currentLevel.availableSkins[0];
         this._requestsManager.StartLevel(this._currentLevel);
 
         this._UpdateCustomersUI();
+    }
+
+    private void _PrepareUnlockablesInLevel()
+    {
+        this._giftBox.gameObject.SetActive(this._currentLevel.giftBoxUnlocked);
+        this._paintingMachine.gameObject.SetActive(this._currentLevel.paintMachineUnlocked);
     }
 
     private void _UpdateCustomersUI()
@@ -65,15 +83,15 @@ public class GameManager : MonoBehaviour
         this._uiManager.SetCustomersCountText(str);
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
-#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
         {
             this._requestsManager.CompleteLevel();
         }
-#endif
     }
+#endif
 
     private void _OnPause()
     {

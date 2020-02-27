@@ -29,23 +29,21 @@ public class PaintingProcess
 
     public float progress => this._paintedPieces / this._piecesToPaint.Count;
 
-    public bool hasFinished => (this.progress == 1f);
+    public bool hasFinished => (this._paintedPieces >= this._piecesToPaint.Count);
 
     public void Update(float deltaTime)
     {
-        if (this._paintedPieces < this._piecesToPaint.Count)
-        {
-            this._paintedPieces += deltaTime / this._timePerPiece;
+        if (this.hasFinished) return;
 
-            if (this._paintedPieces >= this._piecesToPaint.Count)
-            {
-                this._paintedPieces = this._piecesToPaint.Count;
-                this._Finish();
-                return;
-            }
-            
-            this._SetPiecesProgres(this.progress);
+        this._paintedPieces += deltaTime / this._timePerPiece;
+
+        if (this._paintedPieces >= this._piecesToPaint.Count)
+        {
+            this._Finish();
+            return;
         }
+        
+        this._SetPiecesProgres(this.progress);
     }
 
     private void _SetPiecesProgres(float progress)
@@ -59,6 +57,10 @@ public class PaintingProcess
 
     public void CancelPainting()
     {
+        if (this.hasFinished) return;
+
+        Debug.Log("Cancel painting");
+        
         foreach (Piece piece in this._piecesToPaint)
         {
             piece.skin.secondaryData = null;
@@ -68,6 +70,8 @@ public class PaintingProcess
 
     private void _Finish()
     {
+        this._paintedPieces = this._piecesToPaint.Count;
+
         foreach (Piece piece in this._piecesToPaint)
         {
             piece.skin.data = this._skin;

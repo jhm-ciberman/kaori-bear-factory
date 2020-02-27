@@ -173,15 +173,9 @@ public class Piece : MonoBehaviour
         }
     }
 
-    public PieceSkin skin
-    {
-        get => this._skin;
-    }
+    public PieceSkin skin => this._skin;
 
-    public Transform modelTransform
-    {
-        get => this._model.transform;
-    }
+    public Transform modelTransform => this._model.transform;
 
     public Vector3 rigidbodyPosition => this._rigidbody.position;
 }

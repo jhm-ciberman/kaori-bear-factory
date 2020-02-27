@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
-  m_Name: Body
+  m_Name: BearEar
   m_EditorClassIdentifier: 
-  piecePrefab: {fileID: 939509388436483082, guid: 34e9a62fba1898c44a4fdea3bb4008e3,
+  piecePrefab: {fileID: 4467147661687035774, guid: e627865900cba5d4993a04827fc1a26c,
     type: 3}
-  type: 0
+  type: 4
   skinable: 1
-  uiLayerSpriteNone: {fileID: 21300000, guid: 5fcfed723311d594898e4db7cd442881, type: 3}
-  uiLayerSpriteLeft: {fileID: 0}
-  uiLayerSpriteRight: {fileID: 0}
+  uiLayerSpriteNone: {fileID: 0}
+  uiLayerSpriteLeft: {fileID: 21300000, guid: 5947931557b5c3740856f6e4e6a3444f, type: 3}
+  uiLayerSpriteRight: {fileID: 21300000, guid: c33ef13f2e5b3b442b214f232649702b, type: 3}

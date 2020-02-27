@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
-  m_Name: Ear
+  m_Name: BearArm
   m_EditorClassIdentifier: 
-  piecePrefab: {fileID: 4467147661687035774, guid: e627865900cba5d4993a04827fc1a26c,
+  piecePrefab: {fileID: 2885122486075614252, guid: 7dff2050e1992a746a0a863f72fc181e,
     type: 3}
-  type: 4
+  type: 1
   skinable: 1
   uiLayerSpriteNone: {fileID: 0}
-  uiLayerSpriteLeft: {fileID: 21300000, guid: 5947931557b5c3740856f6e4e6a3444f, type: 3}
-  uiLayerSpriteRight: {fileID: 21300000, guid: c33ef13f2e5b3b442b214f232649702b, type: 3}
+  uiLayerSpriteLeft: {fileID: 21300000, guid: 752809d0a78ba4f40b7d0cfdd028da89, type: 3}
+  uiLayerSpriteRight: {fileID: 21300000, guid: e793875e93ee3634ba060917e0a1f24b, type: 3}

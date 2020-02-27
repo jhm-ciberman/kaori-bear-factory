@@ -13,14 +13,25 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   displayName: 1 - Kaori Bears
-  levelTimeMultiplier: 1.5
+  seed: 0
+  levelTimeMultiplier: 1.4
+  customerIntervals: 15
+  slotsNumber: 2
   requests:
   - {fileID: 11400000, guid: 5866ba0e1cc14404da6be0db9d65afc3, type: 2}
   - {fileID: 11400000, guid: 5866ba0e1cc14404da6be0db9d65afc3, type: 2}
-  slotsNumber: 2
-  customerIntervals: 15
   unlockables:
   - name: Robot leg
     model: {fileID: 8364624348399638986, guid: b3201d33f5829a240bd3b4cb376b10de, type: 3}
   - name: Robot arm
     model: {fileID: 7496862108172226813, guid: d206b8cbc6e732f4296f8829f9729183, type: 3}
+  paintMachineUnlocked: 1
+  giftBoxUnlocked: 1
+  availableSkins:
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  availablePieces:
+  - {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
+  - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  - {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+  - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+  - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}

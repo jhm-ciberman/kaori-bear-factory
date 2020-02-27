@@ -13,20 +13,13 @@ public class CustomersLayoutUI : MonoBehaviour
     [HideInInspector]
     public int slotsNumber = 1;
 
-#if UNITY_EDITOR
-     private Vector2 _resolution;
-#endif //UNITY_EDITOR
+    private Vector2 _resolution;
 
     void Start()
     {
         this._rt = this.GetComponent<RectTransform>();
-
-#if UNITY_EDITOR
-        this._resolution = new Vector2(Screen.width, Screen.height);
-#endif //UNITY_EDITOR
     }
 
-#if UNITY_EDITOR
      private void Update ()
      {
          if (this._resolution.x != Screen.width || this._resolution.y != Screen.height)
@@ -41,7 +34,6 @@ public class CustomersLayoutUI : MonoBehaviour
              this._resolution.y = Screen.height;
          }
      }
-#endif //UNITY_EDITOR
 
     private float _GetSlotWidth()
     {

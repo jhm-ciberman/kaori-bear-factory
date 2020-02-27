@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 
 public class LevelPreviewWindow : EditorWindow
 {
@@ -13,9 +13,9 @@ public class LevelPreviewWindow : EditorWindow
         window.Show();
     }
 
-    private LevelData _level;
+    private LevelData _level = null;
 
-    private IEnumerable<Request> _requests;
+    private Request[] _requests = null;
 
     private Sprite _cardboardBoxSprite;
     private Sprite _giftBoxSprite;
@@ -26,55 +26,64 @@ public class LevelPreviewWindow : EditorWindow
     {
         this._cardboardBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/Boxes/CardboardBox.png", typeof(Sprite));
         this._giftBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/Boxes/GiftBox.png", typeof(Sprite));
-        Selection.selectionChanged += this.Repaint;
+        Selection.selectionChanged += this._OnSelectionChanged;
+
+        this._OnSelectionChanged();
     }
 
+    private void _OnSelectionChanged()
+    {
+        LevelData selected = (Selection.activeObject is LevelData) ? (LevelData) Selection.activeObject : null;
+        this._SetLevel(selected);
+        this.Repaint();
+    }
 
+    private void _SetLevel(LevelData levelData)
+    {
+        this._level = levelData;
+        this._requests = levelData?.GetRequests().ToArray();
+    }
 
     void OnGUI()
     {
-        EditorGUI.BeginChangeCheck();
-
-        Debug.Log(Selection.activeObject is LevelData);
-        if (Selection.activeObject != this._level && Selection.activeObject is LevelData)
+        if (this._level == null)
         {
-            this._level = (LevelData) Selection.activeObject;
-            this._requests = null;
+            EditorGUILayout.HelpBox("Select a level to preview from the project window", MessageType.Info);
+            return;
         }
-        //this._level = (LevelData) EditorGUILayout.ObjectField("Level Data", this._level, typeof(LevelData), false);
 
-        if (this._level != null)
+        if (this._level.seed == 0 && GUILayout.Button("New Random"))
         {
-            if (this._level.seed == 0 && GUILayout.Button("New Random"))
-            {
-                this._requests = null;
-            }
-
-            if (this._requests == null)
-            {
-                this._requests = this._level?.GetRequests();
-            }
+            this._SetLevel(this._level);
         }
 
         if (this._requests != null)
         {
             EditorGUILayout.Space();
 
-            float height = 90;
-
             this._scrollPos = EditorGUILayout.BeginScrollView(this._scrollPos);
-
-            foreach (var request in this._requests)
-            {
-                GUILayout.BeginHorizontal(GUILayout.Height(height + 10));
-                this._DrawSprite(request.customer.customerPortrait, height);
-                this._DrawRequestProduct(request, height);
-                this._DrawSprite(this._GetDeliveryBoxSprite(request), height);
-                GUILayout.Label(request.maximumTime + " seconds", GUILayout.ExpandHeight(true));
-                GUILayout.EndHorizontal();
-            }
-
+            this._ShowRequests();
             EditorGUILayout.EndScrollView();
+        }
+    }
+
+    private void _ShowRequests()
+    {
+        if (! this._requests.Any())
+        {
+            EditorGUILayout.HelpBox("No requests generated for this level. Check the level settings are valid.", MessageType.Warning);
+            return;
+        }
+
+        float height = 90;
+        foreach (var request in this._requests)
+        {
+            GUILayout.BeginHorizontal(GUILayout.Height(height + 10));
+            this._DrawSprite(request.customer.customerPortrait, height);
+            this._DrawRequestProduct(request, height);
+            this._DrawSprite(this._GetDeliveryBoxSprite(request), height);
+            GUILayout.Label(request.maximumTime + " seconds", GUILayout.ExpandHeight(true));
+            GUILayout.EndHorizontal();
         }
     }
 
@@ -83,7 +92,7 @@ public class LevelPreviewWindow : EditorWindow
         Rect rect = GUILayoutUtility.GetAspectRect(1f, GUILayout.ExpandWidth(false), GUILayout.MaxWidth(size));
 
         var oldColor = GUI.color;
-        foreach (var piece in request.GetPieces())
+        foreach (var piece in request.pieces)
         {
             GUI.color = piece.GetColor();
             Sprite sprite = piece.GetSprite();

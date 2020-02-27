@@ -64,7 +64,7 @@ public class RequestsManager : MonoBehaviour
 
         foreach (var activeRequest in this._queue.activeRequests)
         {
-            foreach (RequestPiece piece in activeRequest.GetPieces())
+            foreach (RequestPiece piece in activeRequest.pieces)
             {
                 this.spawner.AddPieceToSpawnList(piece.data, piece.skin);
             }
@@ -117,9 +117,11 @@ public class RequestsManager : MonoBehaviour
 
     public void DeliverCraftable(CraftablePiece craftable, DeliveryBoxType boxType)
     {
+        DeliveredProduct delivered = new DeliveredProduct(craftable);
+
         foreach (Request request in this._queue.activeRequests)
         {
-            if (request.IsValid(craftable, boxType)) 
+            if (delivered.IsValid(request, boxType)) 
             {
                 this._RemoveRequest(request);
                 return;
@@ -130,14 +132,14 @@ public class RequestsManager : MonoBehaviour
         Debug.Log("Invalid craftable!!");
         foreach (Request activeRequest in this._queue.activeRequests)
         {
-            this._ShowErrorsForInvalidCraftable(activeRequest, craftable);
+            this._ShowErrorsForInvalidCraftable(activeRequest, delivered);
         }
     }
 
-    private bool _ShowErrorsForInvalidCraftable(Request activeRequest, CraftablePiece craftable)
+    private bool _ShowErrorsForInvalidCraftable(Request activeRequest, DeliveredProduct delivered)
     {
-        HashSet<RequestPiece> missing = activeRequest.GetMissingParts(craftable);
-        HashSet<RequestPiece> extra = activeRequest.GetExtraParts(craftable);
+        HashSet<RequestPiece> missing = delivered.GetMissingParts(activeRequest);
+        HashSet<RequestPiece> extra = delivered.GetExtraParts(activeRequest);
 
         Debug.Log("Client review:" + activeRequest.customer.name);
 

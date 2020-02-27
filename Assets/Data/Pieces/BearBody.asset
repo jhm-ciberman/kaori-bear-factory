@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86b50bf94c828d146b44ee3acb7d3c31, type: 3}
-  m_Name: Arm
+  m_Name: BearBody
   m_EditorClassIdentifier: 
-  piecePrefab: {fileID: 2885122486075614252, guid: 7dff2050e1992a746a0a863f72fc181e,
+  piecePrefab: {fileID: 939509388436483082, guid: 34e9a62fba1898c44a4fdea3bb4008e3,
     type: 3}
-  type: 1
+  type: 0
   skinable: 1
-  uiLayerSpriteNone: {fileID: 0}
-  uiLayerSpriteLeft: {fileID: 21300000, guid: 752809d0a78ba4f40b7d0cfdd028da89, type: 3}
-  uiLayerSpriteRight: {fileID: 21300000, guid: e793875e93ee3634ba060917e0a1f24b, type: 3}
+  uiLayerSpriteNone: {fileID: 21300000, guid: 5fcfed723311d594898e4db7cd442881, type: 3}
+  uiLayerSpriteLeft: {fileID: 0}
+  uiLayerSpriteRight: {fileID: 0}

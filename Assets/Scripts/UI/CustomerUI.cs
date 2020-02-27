@@ -29,15 +29,15 @@ public class CustomerUI : MonoBehaviour
         this.requestFailed.gameObject.SetActive(false);
 
         this._rt = this.GetComponent<RectTransform>();
-        LeanTween.moveY(this._rt, this._rt.rect.height, 0.8f)
-            .setFrom(0f)
+        LeanTween.moveY(this._rt, 0f, 0.8f)
+            .setFrom(-this._rt.rect.height * this._rt.localScale.y)
             .setEaseOutQuad();
     }
 
     public void UpdatePosition(float slotWidth)
     {
         if (this._request == null) return;
-        this._rt.anchoredPosition = new Vector2(slotWidth * (this._request.slot + 0.5f), 0f);
+        this._rt.anchoredPosition = new Vector2(slotWidth * (this._request.slot - 0.5f), 0f);
     }
 
     public void SetRequest(Request request, float slotWidth)
@@ -69,7 +69,7 @@ public class CustomerUI : MonoBehaviour
                     .setEaseOutElastic()
             )
             .append(
-                LeanTween.moveY(this._rt, 0f, 0.8f)
+                LeanTween.moveY(this._rt, -this._rt.rect.height * this._rt.localScale.y, 0.8f)
                     .setEaseInQuad()
                     .setOnComplete(callback)
             );

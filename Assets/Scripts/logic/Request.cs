@@ -22,31 +22,7 @@ public class Request
         this.maximumTime = levelTimeMultiplier * this.customer.patienceTime;
     }
 
-
-
-    public HashSet<RequestPiece> GetMissingParts(CraftablePiece craftable)
-    {
-        HashSet<RequestPiece> missingParts = new HashSet<RequestPiece>(this._pieces);
-        missingParts.ExceptWith(craftable.requestPieces);
-        return missingParts;
-    }
-
-    public bool IsValid(CraftablePiece craftable, DeliveryBoxType boxType)
-    {
-        return this._pieces.SetEquals(craftable.requestPieces) && boxType == this.deliveryBoxType;
-    }
-
-    public HashSet<RequestPiece> GetExtraParts(CraftablePiece craftable)
-    {
-        HashSet<RequestPiece> extraParts = new HashSet<RequestPiece>(craftable.requestPieces);
-        extraParts.ExceptWith(this._pieces);
-        return extraParts;
-    }
-
-    public IEnumerable<RequestPiece> GetPieces()
-    {
-        return this._pieces;
-    }
+    public IEnumerable<RequestPiece> pieces => this._pieces;
 
     public bool CanAddPiece(RequestPiece requestPiece)
     {

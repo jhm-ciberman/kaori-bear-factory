@@ -14,7 +14,7 @@ public class RequestPiece// : IEquatable
     {
         this.data = data;
         this.direction = direction;
-        this.skin = skin;
+        this.skin = data.skinable ? skin : null;
     }
 
     public override bool Equals(object obj)

@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour
 
     private System.Random _random = new System.Random();
 
+    [HideInInspector] public SkinData defaultSkin = null;
+
     public void Update()
     {
         if (Time.time >  this._timeForNextSpawn)
@@ -68,7 +70,7 @@ public class Spawner : MonoBehaviour
 
         GameObject go = Object.Instantiate(requestPiece.data.piecePrefab, this.transform.position, this.transform.rotation);
         Piece piece = go.GetComponent<Piece>();
-        piece.skin.data = requestPiece.skin;
+        piece.skin.data = defaultSkin ?? requestPiece.skin;
 
         piece.pieceData = requestPiece.data;
 
