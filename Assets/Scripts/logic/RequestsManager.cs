@@ -21,7 +21,7 @@ public class RequestsManager : MonoBehaviour
         this._level = level;
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
-        this._queue = new RequestsQueue(this._level.requests, this._level.slotsNumber, this._level.levelTimeMultiplier);
+        this._queue = new RequestsQueue(this._level, this._level.slotsNumber, this._level.levelTimeMultiplier);
         this._queue.onFailRequest += this._RemoveRequest;
 
         if (this._level.requests == null || this._level.requests.Length == 0)

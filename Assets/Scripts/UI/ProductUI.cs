@@ -22,8 +22,8 @@ public class ProductUI : MonoBehaviour
         {
             RectTransform transform = Object.Instantiate(this.baseLayer, this.baseLayer.position, Quaternion.identity, this.baseLayer.parent);
             Image image = transform.GetComponent<Image>();
-            image.sprite = this._GetSprite(piece);
-            image.color = piece.skin ? piece.skin.uiIconColor : Color.white;
+            image.sprite = piece.GetSprite();
+            image.color = piece.GetColor();
 
             transform.gameObject.SetActive(true);
         }
@@ -36,14 +36,5 @@ public class ProductUI : MonoBehaviour
         {
             this.productBoxImage.sprite = this.spriteGiftBox;
         }
-    }
-
-    private Sprite _GetSprite(RequestPiece piece)
-    {
-        return (piece.direction == PieceDirection.Left)
-            ? piece.data.uiLayerSpriteLeft
-            : (piece.direction == PieceDirection.Right)
-                ? piece.data.uiLayerSpriteRight
-                : piece.data.uiLayerSpriteNone;
     }
 }

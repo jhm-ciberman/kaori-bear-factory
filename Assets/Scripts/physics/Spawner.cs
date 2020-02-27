@@ -47,21 +47,7 @@ public class Spawner : MonoBehaviour
     public void ReinitSpawnList()
     {
         this._temporalSpawnList = new List<SpawnerPieceData>(this._pieces);
-        Spawner.Shuffle(this._random, this._temporalSpawnList);
-    }
-
-    // https://stackoverflow.com/a/1262619/2022985
-    public static void Shuffle<T>(System.Random random, IList<T> list)  
-    {  
-        int n = list.Count;  
-        while (n > 1) 
-        {  
-            n--;  
-            int k = random.Next(n + 1);  
-            T value = list[k];  
-            list[k] = list[n];  
-            list[n] = value;  
-        }  
+        ListUtils.Shuffle(this._random, this._temporalSpawnList);
     }
 
     public void Spawn()

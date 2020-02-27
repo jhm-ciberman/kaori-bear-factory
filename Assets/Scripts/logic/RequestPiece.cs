@@ -32,4 +32,18 @@ public class RequestPiece// : IEquatable
     {
         return (this.data.type + "_" + this.direction).GetHashCode();
     }
+
+    public Color GetColor()
+    {
+        return this.data.skinable ? this.skin.uiIconColor : Color.white;
+    }
+
+    public Sprite GetSprite()
+    {
+        return (this.direction == PieceDirection.Left)
+            ? this.data.uiLayerSpriteLeft
+            : (this.direction == PieceDirection.Right)
+                ? this.data.uiLayerSpriteRight
+                : this.data.uiLayerSpriteNone;
+    }
 }
