@@ -26,16 +26,12 @@ public class RequestData : ScriptableObject
     
     [Space]
 
-    [ReorderableList] public PieceData[] leftArm;
-    [ReorderableList] public PieceData[] rightArm;
-    [ReorderableList] public PieceData[] leftEye;
-    [ReorderableList] public PieceData[] rightEye;
-    [ReorderableList] public PieceData[] leftLeg;
-    [ReorderableList] public PieceData[] rightLeg;
-    [ReorderableList] public PieceData[] leftEar;
-    [ReorderableList] public PieceData[] rightEar;
-    [ReorderableList] public PieceData[] hat;
-    [ReorderableList] public PieceData[] clothe;
+    [ReorderableList] public PieceData[] arms   = new PieceData[0];
+    [ReorderableList] public PieceData[] eyes   = new PieceData[0];
+    [ReorderableList] public PieceData[] legs   = new PieceData[0];
+    [ReorderableList] public PieceData[] ears   = new PieceData[0];
+    [ReorderableList] public PieceData[] hat    = new PieceData[0];
+    [ReorderableList] public PieceData[] clothe = new PieceData[0];
 
     public bool perPartSkin = true;
 
@@ -44,16 +40,16 @@ public class RequestData : ScriptableObject
         get 
         {
             yield return new RequestPiecePool(PieceDirection.None , new PieceData[] {this.body});
-            yield return new RequestPiecePool(PieceDirection.Left , this.leftArm );
-            yield return new RequestPiecePool(PieceDirection.Right, this.rightArm);
-            yield return new RequestPiecePool(PieceDirection.Left , this.leftEye );
-            yield return new RequestPiecePool(PieceDirection.Right, this.rightEye);
-            yield return new RequestPiecePool(PieceDirection.Left , this.leftLeg );
-            yield return new RequestPiecePool(PieceDirection.Right, this.rightLeg);
-            yield return new RequestPiecePool(PieceDirection.Left , this.leftEar );
-            yield return new RequestPiecePool(PieceDirection.Right, this.rightEar);
-            yield return new RequestPiecePool(PieceDirection.None , this.hat     );
-            yield return new RequestPiecePool(PieceDirection.None , this.clothe  );
+            yield return new RequestPiecePool(PieceDirection.Left , this.arms);
+            yield return new RequestPiecePool(PieceDirection.Right, this.arms);
+            yield return new RequestPiecePool(PieceDirection.Left , this.eyes);
+            yield return new RequestPiecePool(PieceDirection.Right, this.eyes);
+            yield return new RequestPiecePool(PieceDirection.Left , this.legs);
+            yield return new RequestPiecePool(PieceDirection.Right, this.legs);
+            yield return new RequestPiecePool(PieceDirection.Left , this.ears);
+            yield return new RequestPiecePool(PieceDirection.Right, this.ears);
+            yield return new RequestPiecePool(PieceDirection.None , this.hat);
+            yield return new RequestPiecePool(PieceDirection.None , this.clothe);
         }
     }
 }

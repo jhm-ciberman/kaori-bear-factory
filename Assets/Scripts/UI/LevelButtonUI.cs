@@ -7,7 +7,7 @@ public class LevelButtonUI : MonoBehaviour
     
     public GameObject levelCompleteImage;
 
-    public Text displayText;
+    public TMPro.TextMeshProUGUI displayText;
 
     private LevelData _level;
 

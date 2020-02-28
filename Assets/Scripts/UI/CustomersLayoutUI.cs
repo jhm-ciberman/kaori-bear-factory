@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
@@ -10,7 +11,7 @@ public class CustomersLayoutUI : MonoBehaviour
 
     private RectTransform _rt;
 
-    [HideInInspector]
+    [ReadOnly]
     public int slotsNumber = 1;
 
     private Vector2 _resolution;

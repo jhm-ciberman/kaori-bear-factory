@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: TolbaAnimation
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: fondo
+    second: {fileID: 2100000, guid: 1b8bfc1e9f284be40b878b6b787eea3a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

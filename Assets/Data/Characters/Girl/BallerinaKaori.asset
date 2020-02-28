@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b271ee0e8af3cb4f96ba6bfc3fb2c38, type: 3}
+  m_Name: BallerinaKaori
+  m_EditorClassIdentifier: 
+  customer: {fileID: 11400000, guid: f41ad965180d0f240ba077dd2ee62608, type: 2}
+  skins:
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+  - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+  - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+  - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
+  body: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
+  arms:
+  - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  eyes:
+  - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+  legs:
+  - {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+  ears:
+  - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
+  hat: []
+  clothe:
+  - {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}
+  perPartSkin: 0

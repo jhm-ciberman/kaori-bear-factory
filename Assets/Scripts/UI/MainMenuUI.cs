@@ -1,9 +1,10 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenuUI : ScreenUI
 {
+    [ReorderableList]
     public LevelData[] levels;
 
     public LevelButtonUI baseButton;

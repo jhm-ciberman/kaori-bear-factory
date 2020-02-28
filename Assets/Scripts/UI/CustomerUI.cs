@@ -37,7 +37,7 @@ public class CustomerUI : MonoBehaviour
     public void UpdatePosition(float slotWidth)
     {
         if (this._request == null) return;
-        this._rt.anchoredPosition = new Vector2(slotWidth * (this._request.slot - 0.5f), 0f);
+        this._rt.anchoredPosition = new Vector2(slotWidth * (this._request.slot + 0.5f), 0f);
     }
 
     public void SetRequest(Request request, float slotWidth)

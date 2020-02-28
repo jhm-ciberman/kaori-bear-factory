@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b271ee0e8af3cb4f96ba6bfc3fb2c38, type: 3}
+  m_Name: AfroKaori
+  m_EditorClassIdentifier: 
+  customer: {fileID: 11400000, guid: 1549b736035cccf46b25446ee2b6e997, type: 2}
+  skins:
+  - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
+  - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
+  - {fileID: 11400000, guid: cf7a2b188999b3d4e8354949b7093c27, type: 2}
+  - {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
+  - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+  body: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
+  arms:
+  - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  eyes:
+  - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+  legs:
+  - {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+  ears:
+  - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
+  hat:
+  - {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
+  clothe:
+  - {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
+  - {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
+  - {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
+  - {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
+  perPartSkin: 0
