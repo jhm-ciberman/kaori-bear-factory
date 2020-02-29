@@ -27,8 +27,7 @@ public class LevelData : ScriptableObject
 
     [ReorderableList] public Unlockable[] afterLevelUnlockables;
 
-    [BoxGroup("Features")][Label("Paint Machine")] public bool paintMachineUnlocked = true;
-    [BoxGroup("Features")][Label("Gift Box")] public bool giftBoxUnlocked = true;
+    public bool giftBoxUnlocked = true;
 
     [ReorderableList] public SkinData[] availableSkins = new SkinData[0];
     [ReorderableList] public PieceData[] availablePieces = new PieceData[0];
@@ -41,7 +40,7 @@ public class LevelData : ScriptableObject
 
         var requests = this.requests.Select(requestData => this._MakeRequest(requestData, random, this.levelTimeMultiplier));
 
-        ListUtils.Shuffle(random, requests.ToList());
+        requests = ListUtils.Shuffle(random, requests.ToList());
 
         return requests;
     }
@@ -58,7 +57,7 @@ public class LevelData : ScriptableObject
     {
         Request request = new Request(requestData.customer, levelTimeMultiplier);
 
-        var skins = this.paintMachineUnlocked 
+        var skins = (this.availableSkins.Length > 0)
             ? this._Filter(requestData.skins, this.availableSkins, this.defaultSkin)
             : new SkinData[] {this.defaultSkin};
 

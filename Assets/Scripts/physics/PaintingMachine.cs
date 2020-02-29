@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PaintingMachine : MonoBehaviour
@@ -47,6 +48,8 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private Transform _attachSpot = null;
 
+    [SerializeField] private MachineButton[] buttons = null;
+
     [SerializeField] private float _rotationAnimationSpeed = 1f;
 
     [SerializeField] private float _positionAnimationSpeed = 1f;
@@ -90,6 +93,20 @@ public class PaintingMachine : MonoBehaviour
 
         this._SetInteriorLightColor(Color.black);
         this._particleSystem?.Stop();
+    }
+
+    public void SetAvailableSkins(SkinData[] availableSkins)
+    {
+        if (availableSkins.Length < 2) 
+        {
+            this.gameObject.SetActive(false);
+            return;
+        }
+
+        foreach (var button in this.buttons)
+        {
+            button.gameObject.SetActive(availableSkins.Contains(button.skin));
+        }
     }
 
     void _OnPieceEnter(Piece piece)

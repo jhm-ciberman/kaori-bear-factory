@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3806274296725166886}
   - component: {fileID: 8106316965991147788}
   - component: {fileID: 5265686793684167427}
-  - component: {fileID: 605838043358729023}
+  - component: {fileID: 7703652951222185518}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -97,8 +97,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &605838043358729023
-CapsuleCollider:
+--- !u!135 &7703652951222185518
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,10 +107,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.24
-  m_Height: 3.17
-  m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 1.7482358}
+  serializedVersion: 2
+  m_Radius: 1.1538513
+  m_Center: {x: -0.004621029, y: -3.9534043e-15, z: 1.7218034}
 --- !u!1 &4682841938078630238
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5265686793684167427}
-  _dragHitbox: {fileID: 0}
+  _dragHitbox: {fileID: 7703652951222185518}
   _model: {fileID: 8106316965991147788}
   _center: {fileID: 3050677918976422892}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}

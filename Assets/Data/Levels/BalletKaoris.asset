@@ -23,10 +23,10 @@ MonoBehaviour:
   afterLevelUnlockables:
   - name: Tutu
     model: {fileID: 8050765700301482579, guid: fe22101f47a18b149b76c053251bf156, type: 3}
-  paintMachineUnlocked: 0
   giftBoxUnlocked: 0
   availableSkins:
   - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: cf7a2b188999b3d4e8354949b7093c27, type: 2}
   availablePieces:
   - {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
   - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}

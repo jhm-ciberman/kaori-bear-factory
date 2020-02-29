@@ -6,8 +6,6 @@ public class PieceSkin
 
     private float _transition = 0f;
 
-    private bool _dirty = true;
-
     private PieceSkinRenderingData _renderingData;
 
     public PieceSkin(PieceSkinRenderingData renderingData)
@@ -22,7 +20,6 @@ public class PieceSkin
         {
             if (this._data == value) return;
             this._data = value;
-            this._dirty = true;
         }
     }
 
@@ -33,7 +30,6 @@ public class PieceSkin
         {
             if (this._secondaryData == value) return;
             this._secondaryData = value;
-            this._dirty = true;
         }
     }
 
@@ -44,14 +40,12 @@ public class PieceSkin
         {
             if (this._transition == value) return;
             this._transition = value;
-            this._dirty = true;
         }
     }
 
     public void UpdateMaterial(UnityEngine.MeshRenderer renderer)
     {
         if (this._data == null) return;
-        if (! this._dirty) return;
 
         if (this._secondaryData != null)
         {   

@@ -27,9 +27,18 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         this._uiManager.gameObject.SetActive(true);
-        
-        // Level exit UI
+        this._SetupSceneEvents();
+
+        // Start the fun!
+        this.StartLevel((GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData);
+    }
+
+    private void _SetupSceneEvents()
+    {
+        // UI
         this._uiManager.onExitLevel += this._GoToMenu;
+        this._uiManager.onPause += this._OnPause;
+        this._uiManager.onUnpause += this._OnUnpause;
 
         // Requests handling
         this._requestsManager.onActiveRequestAdded += this._uiManager.AddRequest;
@@ -43,10 +52,6 @@ public class GameManager : MonoBehaviour
         // Level complete
         this._requestsManager.onLevelComplete += this._OnLevelComplete;
 
-        // Pause
-        this._uiManager.onPause += this._OnPause;
-        this._uiManager.onUnpause += this._OnUnpause;
-
         // Painting Machine
         this._paintingMachine.onPaintStart += (skin) => this._uiManager.ShowPaintingProgress(skin);
         this._paintingMachine.onPaintFinish += (skin) => this._uiManager.PaintingProgressFinish();
@@ -56,21 +61,17 @@ public class GameManager : MonoBehaviour
         // DeliveryBox
         this._carboardBox.onCraftableDelivered += this._requestsManager.DeliverCraftable;
         this._giftBox.onCraftableDelivered += this._requestsManager.DeliverCraftable;
-
-        // Start the fun!
-        this._currentLevel = (GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData;
-        this._uiManager.SetSlotsNumber(this._currentLevel.slotsNumber);
-        this._PrepareUnlockablesInLevel();
-        this._spawner.defaultSkin = this._currentLevel.availableSkins[0];
-        this._requestsManager.StartLevel(this._currentLevel);
-
-        this._UpdateCustomersUI();
     }
 
-    private void _PrepareUnlockablesInLevel()
+    public void StartLevel(LevelData level)
     {
+        this._currentLevel = level;
+        this._uiManager.SetSlotsNumber(this._currentLevel.slotsNumber);
         this._giftBox.gameObject.SetActive(this._currentLevel.giftBoxUnlocked);
-        this._paintingMachine.gameObject.SetActive(this._currentLevel.paintMachineUnlocked);
+        this._paintingMachine.SetAvailableSkins(this._currentLevel.availableSkins);
+        this._spawner.defaultSkin = this._currentLevel.availableSkins[0];
+        this._requestsManager.StartLevel(this._currentLevel);
+        this._UpdateCustomersUI();
     }
 
     private void _UpdateCustomersUI()

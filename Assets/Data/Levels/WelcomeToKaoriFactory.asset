@@ -20,11 +20,10 @@ MonoBehaviour:
   requests:
   - {fileID: 11400000, guid: 5866ba0e1cc14404da6be0db9d65afc3, type: 2}
   afterLevelUnlockables:
-  - name: Tutu
-    model: {fileID: 8050765700301482579, guid: fe22101f47a18b149b76c053251bf156, type: 3}
+  - name: Pink bear
+    model: {fileID: 8050765700301482579, guid: b49b14f6614590a42b250662d5ba7332, type: 3}
   - name: Painting machine
     model: {fileID: 8050765700301482579, guid: c199279242651a84d8cb09d5a1414ca2, type: 3}
-  paintMachineUnlocked: 0
   giftBoxUnlocked: 0
   availableSkins:
   - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}

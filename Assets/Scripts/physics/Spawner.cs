@@ -48,8 +48,7 @@ public class Spawner : MonoBehaviour
 
     public void ReinitSpawnList()
     {
-        this._temporalSpawnList = new List<SpawnerPieceData>(this._pieces);
-        ListUtils.Shuffle(this._random, this._temporalSpawnList);
+        this._temporalSpawnList = (List<SpawnerPieceData>) ListUtils.Shuffle(this._random, new List<SpawnerPieceData>(this._pieces));
     }
 
     public void Spawn()
