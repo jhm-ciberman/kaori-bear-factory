@@ -206,7 +206,7 @@ MonoBehaviour:
   _model: {fileID: 9157727896355914253}
   _center: {fileID: 2684015855352846573}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
-  pieceData: {fileID: 0}
+  pieceData: {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
 --- !u!1 &5734611449077017183
 GameObject:
   m_ObjectHideFlags: 0

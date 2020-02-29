@@ -84,7 +84,7 @@ public class PaintingProcess
 
     void _AddPiecesToPaint(List<Piece> list, Piece piece, SkinData targetSkin)
     {
-        if (piece.pieceData.skinable && piece.skin.data != targetSkin)
+        if (piece.skin != null && piece.skin.data != targetSkin)
         {
             list.Add(piece);
         }

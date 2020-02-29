@@ -26,7 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f5cd4ff73b1d6544b2aa6b931b8849c, type: 2}
   afterLevelUnlockables: []
   paintMachineUnlocked: 1
-  giftBoxUnlocked: 0
+  giftBoxUnlocked: 1
   availableSkins:
   - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
   - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}

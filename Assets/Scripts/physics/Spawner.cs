@@ -70,9 +70,10 @@ public class Spawner : MonoBehaviour
 
         GameObject go = Object.Instantiate(requestPiece.data.piecePrefab, this.transform.position, this.transform.rotation);
         Piece piece = go.GetComponent<Piece>();
-        piece.skin.data = defaultSkin ?? requestPiece.skin;
-
-        piece.pieceData = requestPiece.data;
+        if (piece.skin != null)
+        {
+            piece.skin.data = defaultSkin ?? requestPiece.skin;
+        }
 
         this._spawnAnimator?.Play("Spawn");
     }

@@ -171,7 +171,7 @@ MonoBehaviour:
   _model: {fileID: 2332348504014042370}
   _center: {fileID: 3582689615250181388}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
-  pieceData: {fileID: 0}
+  pieceData: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
   spots:
   - {fileID: 4243947920975642159}
   - {fileID: 7313446270282743926}

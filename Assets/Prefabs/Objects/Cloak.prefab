@@ -191,4 +191,4 @@ MonoBehaviour:
   _model: {fileID: 6383460501423179880}
   _center: {fileID: 198115171522613896}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
-  pieceData: {fileID: 0}
+  pieceData: {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}

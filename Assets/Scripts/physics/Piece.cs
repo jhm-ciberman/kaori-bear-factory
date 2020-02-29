@@ -46,8 +46,7 @@ public class Piece : MonoBehaviour
     [SerializeField] private MeshRenderer _model = null;
     [SerializeField] private Transform _center = null;
     [SerializeField] private PieceSkinRenderingData _renderingData = null;
-
-    [HideInInspector] public PieceData pieceData;
+    [SerializeField] public PieceData pieceData = null;
 
     private bool _isDraggable = true;
     private bool _isDragged = false;
@@ -56,9 +55,12 @@ public class Piece : MonoBehaviour
     private Vector3 _centerPos;
     private PieceSkin _skin = null;
 
-    protected void Awake()
+    public void Awake()
     {
-        this._skin = new PieceSkin(this._renderingData);
+        if (this.pieceData.skinable)
+        {
+            this._skin = new PieceSkin(this._renderingData);
+        }
     }
 
     protected void Start()
@@ -138,7 +140,7 @@ public class Piece : MonoBehaviour
 
     private void Update()
     {
-        this._skin.UpdateMaterial(this._model);
+        this._skin?.UpdateMaterial(this._model);
     }
 
     public void Deattach()

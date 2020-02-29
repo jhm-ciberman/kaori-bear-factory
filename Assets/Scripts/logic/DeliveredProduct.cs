@@ -6,13 +6,13 @@ public class DeliveredProduct
 
     public DeliveredProduct(CraftablePiece craftable)
     {
-        this._set.Add(new RequestPiece(craftable.pieceData, PieceDirection.None, craftable.skin.data));
+        this._set.Add(new RequestPiece(craftable.pieceData, PieceDirection.None, craftable.skin?.data));
 
         foreach (AttachSpot spot in craftable.spots)
         {
             if (spot.attachedPiece != null)
             {
-                this._set.Add(new RequestPiece(spot.attachedPiece.pieceData, spot.spotDirection, spot.attachedPiece.skin.data));
+                this._set.Add(new RequestPiece(spot.attachedPiece.pieceData, spot.spotDirection, spot.attachedPiece.skin?.data));
             }
         }
     }
