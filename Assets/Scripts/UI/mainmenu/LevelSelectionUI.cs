@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectionUI : ScreenUI
+public class LevelSelectionUI : MonoBehaviour
 {
-    public event System.Action onClosed;
-
     public GameLevelsData levelsData;
 
     public LevelButtonUI baseButton;
@@ -23,17 +21,6 @@ public class LevelSelectionUI : ScreenUI
         }
 
         Object.Destroy(this.baseButton.gameObject);
-    }
-
-    public void Show()
-    {
-        this.gameObject.SetActive(true);
-    }
-
-    public void OnCloseButtonPressed()
-    {
-        this.HideNow();
-        this.onClosed?.Invoke();
     }
 
     public void StartLevel(LevelData levelData)
