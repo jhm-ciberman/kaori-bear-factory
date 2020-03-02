@@ -1,37 +1,51 @@
-using NaughtyAttributes;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuUI : ScreenUI
 {
-    [ReorderableList]
-    public LevelData[] levels;
+    public LevelSelectionUI levelSelectionUI = null;
+    public CreditsUI creditsUI = null;
 
-    public LevelButtonUI baseButton;
+    private ScreenUI _activeScreen = null;
 
     public void Start()
     {
-        Transform parent = this.baseButton.transform.parent;
+        this.levelSelectionUI.HideNow();
+        this.creditsUI.HideNow();
+        
+        this.levelSelectionUI.onClosed += this._OnScreenClosed;
+        this.creditsUI.onClosed += this._OnScreenClosed;
+    }
 
-        foreach (LevelData level in this.levels)
-        {
-            LevelButtonUI button = Object.Instantiate(this.baseButton, Vector3.zero, Quaternion.identity, parent);
-            button.onLevelSelect += this.StartLevel;
-            button.SetLevel(level);
-        }
+    public void OnPlayButtonPressed()
+    {
+        this._activeScreen?.HideNow();
+        this.levelSelectionUI.Show();
+        this._activeScreen = this.levelSelectionUI;
+    }
 
-        Object.Destroy(this.baseButton.gameObject);
+    public void OnOptionsButtonPressed()
+    {
+        this._activeScreen?.HideNow();
+        this.levelSelectionUI.Show();
+        this._activeScreen = this.levelSelectionUI;
+    }
+
+    public void OnCreditsButtonPressed()
+    {
+        this._activeScreen?.HideNow();
+        this.creditsUI.Show();
+        this._activeScreen = this.creditsUI;
+    }
+
+    void _OnScreenClosed()
+    {
+        this._activeScreen = null;
     }
 
     public void ClearProgress()
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-    }
-
-    public void StartLevel(LevelData levelData)
-    {
-        GameManager.currentLevelData = levelData;
-        SceneManager.LoadScene("MainGame", LoadSceneMode.Single);
     }
 }

@@ -7,11 +7,13 @@ public class LevelButtonUI : MonoBehaviour
     
     public GameObject levelCompleteImage;
 
-    public TMPro.TextMeshProUGUI displayText;
+    public TMPro.TextMeshProUGUI levelTitleText;
+
+    public TMPro.TextMeshProUGUI levelDayText;
 
     private LevelData _level;
 
-    public void SetLevel(LevelData level)
+    public void SetLevel(LevelData level, string dayText)
     {
         this._level = level;
 
@@ -19,11 +21,14 @@ public class LevelButtonUI : MonoBehaviour
 
         this.levelCompleteImage.SetActive(levelIsComplete);
 
-        this.displayText.text = level.displayName;
+        this.levelDayText.text = dayText;
+        this.levelTitleText.text = level.displayName;
     }
 
     public void OnClick()
     {
         this.onLevelSelect?.Invoke(this._level);
     }
+
+    
 }

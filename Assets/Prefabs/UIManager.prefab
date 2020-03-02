@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 6.659973, y: -25.049988}
+  m_AnchoredPosition: {x: 6.659973, y: -25.049805}
   m_SizeDelta: {x: 228.79999, y: 29.630005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5671516013128298973
@@ -442,7 +442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -72, y: -30.8}
+  m_AnchoredPosition: {x: -72, y: -30.799805}
   m_SizeDelta: {x: 120.350006, y: 41.119995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8455988059056077279
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continue
+  m_text: CONTINUE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
   m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
@@ -636,8 +636,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.6
-  m_fontSizeBase: 37.6
+  m_fontSize: 34.8
+  m_fontSizeBase: 34.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1069,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 74.81, y: -29.68}
+  m_AnchoredPosition: {x: 74.81006, y: -29.680176}
   m_SizeDelta: {x: 138.66, y: 48.71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8455988059177774993
@@ -1289,7 +1289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.2000122}
+  m_AnchoredPosition: {x: 0, y: 0.20019531}
   m_SizeDelta: {x: 0, y: 156.6}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &8455988059472665695
@@ -1342,7 +1342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 77.377, y: -72.2}
+  m_AnchoredPosition: {x: 77.37695, y: -72.200195}
   m_SizeDelta: {x: 133.5, y: 19.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8455988059617671368
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
   m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
@@ -1913,10 +1913,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Continue
+  m_text: CONTINUE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
+  m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1948,7 +1949,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 4098
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1982,13 +1983,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8455988059859549185}
-    characterCount: 0
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
-    wordCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -2118,8 +2119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 85.1, y: -26.395}
-  m_SizeDelta: {x: 68.77, y: 29.06}
+  m_AnchoredPosition: {x: 85.1, y: -24.6}
+  m_SizeDelta: {x: 85.35, y: 32.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8455988059885377082
 CanvasRenderer:
@@ -2176,8 +2177,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 22.7
-  m_fontSizeBase: 22.7
+  m_fontSize: 22.2
+  m_fontSizeBase: 22.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2214,7 +2215,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -3.8170273, z: 0, w: 0}
+  m_margin: {x: 0.52363306, y: 1.1837454, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8455988059885377083}
     characterCount: 6
@@ -2435,7 +2436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8455988060245656030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3053,8 +3054,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: New BLABLA BLA Unlocked!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
+  m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3085,8 +3087,8 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 514
+  m_fontStyle: 16
+  m_textAlignment: 4098
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -3120,13 +3122,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8455988060879666927}
-    characterCount: 0
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
