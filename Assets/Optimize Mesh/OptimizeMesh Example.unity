@@ -121,6 +121,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &7551268
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 88ffebf52a3f0a74a8421ec04a3984b7,
+        type: 3}
+      propertyPath: m_Name
+      value: tolba
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88ffebf52a3f0a74a8421ec04a3984b7, type: 3}
 --- !u!1001 &223974226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,6 +399,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6a1af314225eba4f964bc84316d45cf, type: 3}
+--- !u!33 &223974227 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 1955582000455517019, guid: a6a1af314225eba4f964bc84316d45cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 223974226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &302988618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5851816121915452704, guid: a6a1af314225eba4f964bc84316d45cf,
@@ -334,6 +424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quality: 0.2
+  _renderer: {fileID: 0}
+  _mesh: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quality: 0.8
+  _renderer: {fileID: 223974227}
+  _mesh: {fileID: 4300000, guid: 28a2fbedac9e20e4c9d05504f7852473, type: 2}
 --- !u!1 &2534866582420357932
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quality: 0.461
+  _renderer: {fileID: 2834078682577113929}
+  _mesh: {fileID: 0}
 --- !u!33 &2834078682577113929
 MeshFilter:
   m_ObjectHideFlags: 0

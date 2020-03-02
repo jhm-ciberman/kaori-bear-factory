@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        this._uiManager.gameObject.SetActive(true);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 1000;
+
+        //this._uiManager.gameObject.SetActive(true);
         this._SetupSceneEvents();
 
         // Start the fun!

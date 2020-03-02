@@ -1,28 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-[CustomEditor(typeof(OptimizeMesh))]
-public class LevelScriptEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-        OptimizeMesh myTarget = (OptimizeMesh)target;
-
-        if (GUILayout.Button("Optimize Mesh!"))
-        {
-            myTarget.DecimateMesh();
-        }
-
-        if (GUILayout.Button("Save Mesh!"))
-        {
-            myTarget.SaveMesh();
-        }
-
-    }
-}
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class OptimizeMesh : MonoBehaviour
@@ -37,32 +13,17 @@ public class OptimizeMesh : MonoBehaviour
         _mesh = _renderer.sharedMesh;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            DecimateMesh();
-        }
-    }
-
     public void DecimateMesh()
     {
-        if (!EditorApplication.isPlaying)
-        {
-            var meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
-            meshSimplifier.Initialize(_mesh);
-            meshSimplifier.SimplifyMesh(_quality);
-            var destMesh = meshSimplifier.ToMesh();
-            _renderer.sharedMesh = destMesh;
-        }
+        var meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
+        meshSimplifier.Initialize(_mesh);
+        meshSimplifier.SimplifyMesh(_quality);
+        var destMesh = meshSimplifier.ToMesh();
+        _renderer.sharedMesh = destMesh;
     }
 
     public void SaveMesh()
     {
-        if (!EditorApplication.isPlaying)
-        {
-            MeshSaverEditor.SaveMesh(_renderer.sharedMesh, "Optimized__" + gameObject.name, false, true);
-        }
+        MeshSaverEditor.SaveMesh(_renderer.sharedMesh, "Optimized__" + gameObject.name, false, true);
     }
 }
