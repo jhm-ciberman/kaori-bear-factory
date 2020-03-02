@@ -10070,12 +10070,22 @@ PrefabInstance:
     - target: {fileID: 1497614123149615580, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1497614123149615580, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059040991216, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000013079
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059040991216, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 107.85
       objectReference: {fileID: 0}
     - target: {fileID: 8455988059617671369, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
@@ -10087,6 +10097,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988059945932812, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988060196196864, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455988060196196878, guid: 56ddb26a2a6514e4c96ef4f250613dba,
         type: 3}
@@ -10157,6 +10177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455988060677697723, guid: 56ddb26a2a6514e4c96ef4f250613dba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56ddb26a2a6514e4c96ef4f250613dba, type: 3}

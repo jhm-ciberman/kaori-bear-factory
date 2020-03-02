@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public PauseScreenUI _pauseScreenUI;
 
+    [SerializeField] public RectTransform _pauseButton;
+
     [SerializeField] public OverlayUI _overlayUI;
 
     [SerializeField] public Transform _inGameUI;
@@ -34,8 +36,10 @@ public class UIManager : MonoBehaviour
         this._pauseScreenUI.onUnpaused += () => {
             this.onUnpause?.Invoke();
             this._overlayUI.HideNow();
+            this._pauseButton.gameObject.SetActive(true);
         };
 
+        this._pauseButton.gameObject.SetActive(true);
         this._customersLayoutUI.gameObject.SetActive(true);
         this._levelCompleteUI.HideNow();
         this._unlockScreenUI.HideNow();
@@ -80,8 +84,9 @@ public class UIManager : MonoBehaviour
         this._customersLayoutUI.RemoveRequest(request);
     }
 
-    public void OnMenuButtonPressed()
+    public void OnPauseButtonPressed()
     {
+        this._pauseButton.gameObject.SetActive(false);
         this.onPause?.Invoke();
         this._overlayUI.Show();
         this._pauseScreenUI.Show();

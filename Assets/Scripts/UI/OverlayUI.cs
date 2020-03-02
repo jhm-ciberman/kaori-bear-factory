@@ -8,7 +8,9 @@ public class OverlayUI : ScreenUI
     public void Show()
     {
         this.image.gameObject.SetActive(true);
-        LeanTween.alpha(this.image.GetComponent<RectTransform>(), 0.8f, 0.5f).setIgnoreTimeScale(true);
+        LeanTween.alpha(this.image.GetComponent<RectTransform>(), 0.8f, 0.5f)
+            .setEaseOutQuad()
+            .setIgnoreTimeScale(true);
     }
 
     public new void HideNow()
