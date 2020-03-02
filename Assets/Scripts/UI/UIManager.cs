@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
             this._unlockScreenUI.ShowFirstUnlockable();
         };
         this._unlockScreenUI.onDone += () => this.onExitLevel?.Invoke();
+        this._pauseScreenUI.onGoToMainMenu += () => this.onExitLevel?.Invoke();
         this._pauseScreenUI.onUnpaused += () => {
             this.onUnpause?.Invoke();
             this._overlayUI.HideNow();

@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     private void _GoToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 

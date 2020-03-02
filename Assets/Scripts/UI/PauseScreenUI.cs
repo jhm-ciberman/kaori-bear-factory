@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PauseScreenUI : ScreenUI
 {
     public System.Action onUnpaused;
+    public System.Action onGoToMainMenu;
 
     public void Show()
     {
@@ -19,6 +20,6 @@ public class PauseScreenUI : ScreenUI
 
     public void OnGoToMainMenuButtonPressed()
     {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        this.onGoToMainMenu?.Invoke();
     }
 }
