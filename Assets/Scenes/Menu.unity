@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9880384}
   - component: {fileID: 9880383}
   - component: {fileID: 9880382}
+  - component: {fileID: 9880381}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -161,6 +162,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 52.19}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &9880381
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9880379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78a1c196f29b3ca4e86066640d5284e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &9880382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,8 +436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108.89996, y: -37.630005}
-  m_SizeDelta: {x: 193.41, y: -193.44998}
+  m_AnchoredPosition: {x: 118.77, y: -38.5}
+  m_SizeDelta: {x: 186.35, y: -236.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54683773
 MonoBehaviour:
@@ -2430,6 +2450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e52323bdf2b141b4f57987d7f42be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  element: {fileID: 0}
 --- !u!222 &1007532022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2654,9 +2675,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Made with      by:\n<margin=1em>\nProgramming\n - Javier \"Ciberman\"
-    Mora\n\n3D Art\n - Guillermo Vergara\n - Franco Biagioli\n\nUI\n - Mailen Britez\n\n2D
-    Character Design\n - Camila \"Neo\" Cir\xEDaco\n<margin=0em>\nOriginally developed
-    during the Global Game Jam 2020"
+    Mora\n\n3D Art\n - Guillermo Vergara\n - Franco Biagioli\n\nUI\n - Mail\xE9n
+    Britez\n\n2D Character Design\n - Camila \"Neo\" Cir\xEDaco\n<margin=0em>\nOriginally
+    developed during the Global Game Jam 2020"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
   m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
@@ -3611,6 +3632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e52323bdf2b141b4f57987d7f42be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  element: {fileID: 0}
 --- !u!1 &1321318503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3728,6 +3750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e52323bdf2b141b4f57987d7f42be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  element: {fileID: 1639517057}
 --- !u!222 &1340640410
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4547,6 +4570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5e52323bdf2b141b4f57987d7f42be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  element: {fileID: 0}
 --- !u!222 &1641548501
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6065,8 +6089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108.899994, y: -59.600006}
-  m_SizeDelta: {x: 193.42, y: 116.8}
+  m_AnchoredPosition: {x: 122.3, y: -69.9}
+  m_SizeDelta: {x: 209.32, y: 128.28}
   m_Pivot: {x: 0.49999988, y: 0.55901957}
 --- !u!114 &1940995467
 MonoBehaviour:
