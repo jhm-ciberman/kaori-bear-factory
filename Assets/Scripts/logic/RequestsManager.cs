@@ -6,7 +6,7 @@ public class RequestsManager : MonoBehaviour
     public event System.Action<Request> onActiveRequestAdded;
     public event System.Action<Request> onActiveRequestCompleted;
     public event System.Action<Request> onActiveRequestFailed;
-    public event System.Action<LevelData> onLevelComplete;
+    public event System.Action onLevelComplete;
 
     [SerializeField] public Spawner spawner = null;
 
@@ -85,7 +85,7 @@ public class RequestsManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        this.onLevelComplete?.Invoke(this._level);
+        this.onLevelComplete?.Invoke();
         this._level = null;
         this.spawner.enabled = false;
     }

@@ -115,15 +115,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    private void _OnLevelComplete(LevelData level)
+    private void _OnLevelComplete()
     {
-        PlayerPrefs.SetInt("Level_" + level.name, 1);
+        PlayerPrefs.SetInt("Level_" + this._currentLevel.name, 1);
         PlayerPrefs.Save();
 
         this._playerInput.DisableInput();
 
         LeanTween.delayedCall(2f, () => {
-            this._uiManager.ShowLevelCompleteScreen(level);
+            this._uiManager.ShowLevelCompleteScreen(this._currentLevel);
         });
     }
 }

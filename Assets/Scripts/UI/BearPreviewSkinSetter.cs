@@ -19,7 +19,7 @@ public class BearPreviewSkinSetter : MonoBehaviour
         }
     }
 
-    public void Awake()
+    public void Start()
     {
         this.SetBearColor();
     }
