@@ -9,37 +9,62 @@ public class RequestData : ScriptableObject
     public struct RequestPiecePool
     {
         public PieceDirection direction;
-        public PieceData[] pieces;
+        public WeigtedPieceData[] pieces;
 
-        public RequestPiecePool(PieceDirection direction, PieceData[] pieces)
+        public RequestPiecePool(PieceDirection direction, WeigtedPieceData[] pieces)
         {
             this.direction = direction;
             this.pieces = pieces;
         }
     }
 
-    public CustomerData customer;
+    [System.Serializable]
+    public struct WeigtedPieceData
+    {
+        public PieceData piece;
+        
+        [Range(0,1)] public float probability;
 
-    [ReorderableList] public SkinData[] skins;
+        public WeigtedPieceData(PieceData piece, float probability)
+        {
+            this.piece = piece;
+            this.probability = probability;
+        }
 
-    public PieceData   body;
+    }
+
+    [System.Serializable]
+    public struct WeigtedSkinData
+    {
+        public SkinData skin;
+        [Range(0,1)] public float probability;
+    }
+
+    [Required] public CustomerData customer;
+
+    [ReorderableList] public WeigtedSkinData[] skins = new WeigtedSkinData[0];
+    public bool perPartSkin = true;
+
+    [Required] public PieceData   body;
     
     [Space]
 
-    [ReorderableList] public PieceData[] arms   = new PieceData[0];
-    [ReorderableList] public PieceData[] eyes   = new PieceData[0];
-    [ReorderableList] public PieceData[] legs   = new PieceData[0];
-    [ReorderableList] public PieceData[] ears   = new PieceData[0];
-    [ReorderableList] public PieceData[] hat    = new PieceData[0];
-    [ReorderableList] public PieceData[] clothe = new PieceData[0];
+    [ReorderableList] public WeigtedPieceData[] arms   = new WeigtedPieceData[0];
+    [ReorderableList] public WeigtedPieceData[] eyes   = new WeigtedPieceData[0];
+    [ReorderableList] public WeigtedPieceData[] legs   = new WeigtedPieceData[0];
+    [ReorderableList] public WeigtedPieceData[] ears   = new WeigtedPieceData[0];
+    [ReorderableList] public WeigtedPieceData[] hat    = new WeigtedPieceData[0];
+    [ReorderableList] public WeigtedPieceData[] clothe = new WeigtedPieceData[0];
 
-    public bool perPartSkin = true;
+
 
     public IEnumerable<RequestPiecePool> pieceDataPools
     {
         get 
         {
-            yield return new RequestPiecePool(PieceDirection.None , new PieceData[] {this.body});
+            yield return new RequestPiecePool(PieceDirection.None , 
+                new WeigtedPieceData[] {new WeigtedPieceData(this.body, 1.0f)}
+            );
             yield return new RequestPiecePool(PieceDirection.Left , this.arms);
             yield return new RequestPiecePool(PieceDirection.Right, this.arms);
             yield return new RequestPiecePool(PieceDirection.Left , this.eyes);

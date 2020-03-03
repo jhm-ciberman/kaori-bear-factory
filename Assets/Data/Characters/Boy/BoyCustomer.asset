@@ -15,55 +15,5 @@ MonoBehaviour:
   customerPortrait: {fileID: 21300000, guid: ceec6dbcabab6754b92eb491c12f9275, type: 3}
   customerAngryPortrait: {fileID: 21300000, guid: 7f6026cb60b3b4d4ba978f116d65e6f4,
     type: 3}
-  patienceTime: 40
-  skins:
-  - {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
-  - {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
-  - {fileID: 11400000, guid: cf7a2b188999b3d4e8354949b7093c27, type: 2}
-  - {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
-  - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
-  compulsoryParts:
-  - data: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
-    direction: 0
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 0fcc15d8c7744e742827d7a39ef3c1f9, type: 2}
-    direction: 1
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 0fcc15d8c7744e742827d7a39ef3c1f9, type: 2}
-    direction: 2
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
-    direction: 1
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
-    direction: 2
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
-    direction: 2
-    skin: {fileID: 0}
-  - data: {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
-    direction: 1
-    skin: {fileID: 0}
-  optionalPartsPools:
-  - pieces:
-    - data: {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
-      direction: 1
-      skin: {fileID: 0}
-    - data: {fileID: 0}
-      direction: 0
-      skin: {fileID: 0}
-    - data: {fileID: 0}
-      direction: 0
-      skin: {fileID: 0}
-  - pieces:
-    - data: {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
-      direction: 2
-      skin: {fileID: 0}
-    - data: {fileID: 0}
-      direction: 0
-      skin: {fileID: 0}
-    - data: {fileID: 0}
-      direction: 0
-      skin: {fileID: 0}
-  perPartSkin: 1
+  patienceTime: 60
   deliveryBoxTypes: 0100000000000000

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd10c21296869274798276c436eebf72, type: 3}
+  m_Name: 5_CyborgKaoris
+  m_EditorClassIdentifier: 
+  displayName: Cyborg Kaoris
+  seed: 0
+  levelTimeMultiplier: 1.4
+  customerIntervals: 15
+  slotsNumber: 2
+  requests:
+  - {fileID: 11400000, guid: 37d5caa12b6c3064dad6b180f56fb764, type: 2}
+  - {fileID: 11400000, guid: 37d5caa12b6c3064dad6b180f56fb764, type: 2}
+  - {fileID: 11400000, guid: 5859e0ef05831cc4e93bb7c59a38518b, type: 2}
+  afterLevelCompleteUnlockables:
+  - name: Beard
+    model: {fileID: 8050765700301482579, guid: 60e41de2e26e8ee479b3be617fc8270e, type: 3}
+  - name: Afro
+    model: {fileID: 8050765700301482579, guid: 88831d4707b63364cbdbb301070ee25b, type: 3}
+  giftBoxUnlocked: 1
+  availableSkins:
+  - {fileID: 11400000, guid: 9b7d68f0c2fe67e458a745de4ab834aa, type: 2}
+  - {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+  - {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
+  - {fileID: 11400000, guid: cf7a2b188999b3d4e8354949b7093c27, type: 2}
+  availablePieces:
+  - {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
+  - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  - {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+  - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+  - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
+  - {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}

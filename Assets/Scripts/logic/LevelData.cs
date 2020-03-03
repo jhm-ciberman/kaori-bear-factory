@@ -6,13 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelData", menuName = "Game/LevelData", order = 1)]
 public class LevelData : ScriptableObject
 {
-    [System.Serializable]
-    public struct Unlockable
-    {
-        public string name;
-        public GameObject model;
-    }
-
     [SerializeField] public string displayName = "Level";
 
     [SerializeField] public int seed = 0;
@@ -25,7 +18,14 @@ public class LevelData : ScriptableObject
 
     [ReorderableList] public RequestData[] requests;
 
-    [ReorderableList] public Unlockable[] afterLevelUnlockables;
+    [System.Serializable]
+    public struct Unlockable
+    {
+        public string name;
+        public GameObject model;
+    }
+
+    [ReorderableList] public Unlockable[] afterLevelCompleteUnlockables = new Unlockable[0];
 
     public bool giftBoxUnlocked = true;
 
@@ -45,33 +45,21 @@ public class LevelData : ScriptableObject
         return requests;
     }
 
-    public SkinData defaultSkin => this.availableSkins.First();
-
-    private T[]  _Filter<T>(T[] requestList, T[] filterList, T defaultValue)
-    {
-        IEnumerable<T> skins = filterList.Intersect(requestList);
-        return skins.Any() ? skins.ToArray() : new T[] {defaultValue}; 
-    }
-
     private Request _MakeRequest(RequestData requestData, System.Random random, float levelTimeMultiplier) 
     {
         Request request = new Request(requestData.customer, levelTimeMultiplier);
 
-        var skins = (this.availableSkins.Length > 0)
-            ? this._Filter(requestData.skins, this.availableSkins, this.defaultSkin)
-            : new SkinData[] {this.defaultSkin};
-
-        SkinData globalSkin = this._Choose(random, skins);
+        var skins = this._GetAvailableSkins(random, requestData);
+        SkinData globalSkin = skins.Next();
 
         foreach (var pool in requestData.pieceDataPools)
         {
-            var availablePieces = this._Filter(pool.pieces, this.availablePieces, null);
-            PieceData pieceData = this._Choose(random, availablePieces);
+            var pieceData = this._ChoosePiece(random, pool.pieces);
 
             if (pieceData == null) continue;
 
             SkinData skin = pieceData.skinable 
-                ? (requestData.perPartSkin) ? this._Choose(random, skins) : globalSkin
+                ? (requestData.perPartSkin) ? skins.Next() : globalSkin
                 : null;
 
             request.AddPiece(new RequestPiece(pieceData, pool.direction, skin));
@@ -82,18 +70,47 @@ public class LevelData : ScriptableObject
         return request;
     }
 
+    public WeightedRandom<SkinData> _GetAvailableSkins(System.Random random, RequestData requestData)
+    {
+        var wr = new WeightedRandom<SkinData>(random);
+
+        if (this.availableSkins.Length < 2)
+        {
+            wr.Add(this.availableSkins.First(), 1f);
+        }
+        else
+        {
+            foreach (var weigtedSkin in requestData.skins)
+            {
+                if (this.availableSkins.Contains(weigtedSkin.skin))
+                {
+                    wr.Add(weigtedSkin.skin, weigtedSkin.probability);
+                }
+            }
+        }
+
+        return wr;
+    }
+
+    public PieceData _ChoosePiece(System.Random random, RequestData.WeigtedPieceData[] pool)
+    {
+        var wr = new WeightedRandom<PieceData>(random);
+
+        foreach (var weigtedPiece in pool)
+        {
+            if (weigtedPiece.piece == null || this.availablePieces.Contains(weigtedPiece.piece))
+            {
+                wr.Add(weigtedPiece.piece, weigtedPiece.probability);
+            }
+        }
+
+        return wr.Next();;
+    }
+
+
     private DeliveryBoxType _ChooseDeliveryBox(System.Random random, DeliveryBoxType[] availableDeliveryBoxes)
     {
-        var box = this._Choose(random, availableDeliveryBoxes );
+        var box = availableDeliveryBoxes[random.Next(availableDeliveryBoxes.Length)];
         return (box == DeliveryBoxType.Gift && ! this.giftBoxUnlocked) ? DeliveryBoxType.Cardboard : box;
     }
-
-    private T _Choose<T>(System.Random random, T[] pool, T defaultValue = default(T))
-    {
-        if (pool.Length > 0)
-            return pool[random.Next(pool.Length)];
-
-        return defaultValue;
-    }
-
 }

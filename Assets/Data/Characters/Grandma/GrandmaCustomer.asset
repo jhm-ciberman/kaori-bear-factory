@@ -15,5 +15,5 @@ MonoBehaviour:
   customerPortrait: {fileID: 21300000, guid: 223d548d0f4128f48804b74fcff895d4, type: 3}
   customerAngryPortrait: {fileID: 21300000, guid: 37646fa58da115b44b16d78e848dbbe8,
     type: 3}
-  patienceTime: 40
+  patienceTime: 60
   deliveryBoxTypes: 01000000

@@ -14,27 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customer: {fileID: 11400000, guid: 77b01e633b51b804ba445b44353ae83c, type: 2}
   skins:
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
-  - {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
+  - skin: {fileID: 11400000, guid: 12e945b9d991a5d44b99f82b62ec9328, type: 2}
+    probability: 1
+  - skin: {fileID: 11400000, guid: a78ccefd227c59d4a95caf0cbd927e94, type: 2}
+    probability: 0.297
+  - skin: {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
+    probability: 0.047
+  perPartSkin: 1
   body: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
   arms:
-  - {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  - piece: {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+    probability: 1
   eyes:
-  - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+  - piece: {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
+    probability: 1
   legs:
-  - {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+  - piece: {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
+    probability: 1
   ears: []
-  hat: []
+  hat:
+  - piece: {fileID: 0}
+    probability: 1
+  - piece: {fileID: 11400000, guid: 57b490aea4a5b93498a7383e01f22ea9, type: 2}
+    probability: 0.035
   clothe:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
-  - {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
-  - {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
-  perPartSkin: 1
+  - piece: {fileID: 0}
+    probability: 1
+  - piece: {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
+    probability: 0.636
+  - piece: {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
+    probability: 0.311
+  - piece: {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
+    probability: 0.066

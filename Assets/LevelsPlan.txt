@@ -1,0 +1,72 @@
+Unlock: pink skin
+Unlock: [Ballet Kaori]
+
+=> Level 1: "Welcome to Kaori Factory"
+    - 1 Ballet
+
+Unlock: tutu
+Unlock Painting machine
+Unlock: White skin
+
+=> Level 2: "Ballet Kaoris"
+    - 2 Ballet
+
+Unlock: Gift box
+Unlock: Brown skin
+Unlock: [Cowboy Kaori]
+
+=> Level 3 "A Kaori for my grandson, sir"
+    - 2 Cowboy
+
+Unlock: Cowboy Hat
+Unlock: TShirt
+
+=> Level 4 "Cowboy Kaoris"
+    - 1 Ballet, 1 Cowboy
+
+Unlock: Red skin
+Unlock: Robot leg
+Unlock: Robot arm
+Unlock: [Robot Kaori]
+
+=> Level 5: "Cyborg Kaoris"
+    - 2 Robot, 1 Cowboy
+
+Unlock: Beard
+Unlock: Afro
+Unlock: [Afro Kaori]
+
+=> Level 6: "Afro Kaoris"
+    - 1 Ballet, 2 Afro
+
+Unlock: Blue Skin
+Unlock: Cloak
+
+=> Level 7: "I want a Magic Kaori"
+    - 1 Afro, 1 Cowboy, 1 Ballet
+
+Unlock: Fez
+
+=> Level 8: "The amazing Kaori Factory"
+    - 1 Robot, 1 Cowboy, 1 Ballet
+
+Unlock: Coat
+
+=> Level 9: "A world of Kaoris"
+    - 1 Robot, 1 Cowboy, 1 Afro
+
+Unlock: Green Skin
+Unlock: [Alien Kaori]
+
+=> Level 10: "Clients from outer space"
+    - 3 Alien
+
+=> Level 11: "Alien Kaoris vs Cyborg Kaoris"
+    - 2 Alien, 2 Robot
+
+=> Level 12: "All types of Kaoris!"
+    - 1 Alien, 1 Robot, 1 Cowboy, 1 Afro, 1 Ballet 
+
+=> Level 13: "The final challenge"
+    - 2 Alien, 2 Robot, 2 Cowboy, 2 Afro, 2 Ballet 
+
