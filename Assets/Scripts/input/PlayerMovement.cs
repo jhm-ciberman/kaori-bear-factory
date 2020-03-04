@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Transform stationA = this._stations[a];
         Transform stationB = this._stations[b];
-        this.transform.position = Vector3.LerpUnclamped   (stationA.position, stationB.position, t);
-        this.transform.rotation = Quaternion.LerpUnclamped(stationA.rotation, stationB.rotation, t);
+        this.transform.position = Vector3.SlerpUnclamped   (stationA.position, stationB.position, t);
+        this.transform.rotation = Quaternion.SlerpUnclamped(stationA.rotation, stationB.rotation, t);
     }
 }

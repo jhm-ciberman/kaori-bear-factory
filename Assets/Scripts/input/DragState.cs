@@ -14,16 +14,21 @@ public class DragState
     private Vector3 _target;
     private Vector3 _elevationUpVector;
 
-    public void StartDrag(Piece piece, Vector3 pos, Vector3 elevationUpVector)
+    private Quaternion _startRotation;
+    private Quaternion _endRotation;
+
+    public void StartDrag(Piece piece, Vector3 pos, Vector3 elevationUpVector, Quaternion _endRotation)
     {
         this._piece = piece;
         this._target = pos;
-        this._offset = pos - piece.rigidbodyPosition;
+        this._offset = pos - piece.rigidbodyWorldCenter;
         this._realElevation = 0f;
         this._animationTime = 0f;
         this._piece.isDragged = true;
         this._elevationUpVector = elevationUpVector;
         this._piece.onAttached += this._OnPieceAttached;
+        this._startRotation = this._piece.rigidbodyRotation;
+        this._endRotation = _endRotation;
     }
 
     private void _OnPieceAttached(Piece piece)
@@ -58,7 +63,7 @@ public class DragState
         this._realElevation = this._elevation * p;
 
         Vector3 pos = this._target - this._offset + this._realElevation * this._elevationUpVector;
-        this._piece.UpdatePosition(pos);
+        this._piece.UpdateRotation(pos, Quaternion.Lerp(this._startRotation, this._endRotation, p));
     }
 
     public void EndDrag()

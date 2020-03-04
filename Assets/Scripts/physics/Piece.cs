@@ -52,7 +52,6 @@ public class Piece : MonoBehaviour
     private bool _isDragged = false;
     private bool _isAttached = false;
     private Transform _transform;
-    private Vector3 _centerPos;
     private PieceSkin _skin = null;
 
     public void Awake()
@@ -70,8 +69,7 @@ public class Piece : MonoBehaviour
         this._dragHitbox.gameObject.AddComponent<Hitbox>().piece = this;
         this._model.gameObject.layer = 8; // layer 8
 
-        this._centerPos = this._center.localPosition;
-        this._model.transform.localPosition -= this._centerPos;
+        this._model.transform.localPosition -= this._rigidbody.centerOfMass;
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
         this._UpdateRigidBodyState();
@@ -87,6 +85,13 @@ public class Piece : MonoBehaviour
     public void UpdatePosition(Vector3 pos)
     {
         this._rigidbody.MovePosition(pos);
+    }
+
+    public void UpdateRotation(Vector3 pos, Quaternion rotation)
+    {
+        var origin = this._rigidbody.worldCenterOfMass - this._rigidbody.position;
+        this._rigidbody.MovePosition(pos - origin);
+        this._rigidbody.MoveRotation(rotation);
     }
 
     private float _GetScale(PieceDirection dir)
@@ -148,7 +153,7 @@ public class Piece : MonoBehaviour
         this._isAttached = false;
         this._UpdateRigidBodyState();
         this.modelTransform.parent = this.transform;
-        this.modelTransform.localPosition += this._centerPos;
+        this.modelTransform.localPosition += this._rigidbody.centerOfMass;
     }
 
     private void _UpdateRigidBodyState()
@@ -180,4 +185,6 @@ public class Piece : MonoBehaviour
     public Transform modelTransform => this._model.transform;
 
     public Vector3 rigidbodyPosition => this._rigidbody.position;
+    public Vector3 rigidbodyWorldCenter => this._rigidbody.worldCenterOfMass;
+    public Quaternion rigidbodyRotation => this._rigidbody.rotation;
 }

@@ -9,6 +9,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] public LayerMask interactionLayer;
 
     [SerializeField] public LayerMask dragAreaLayer;
+
+    [SerializeField] public Vector3 defaultEulerRotation;
     
     [SerializeField] private DragState _drag = new DragState();
     
@@ -107,13 +109,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             Piece piece = hit.collider.GetComponent<Piece.Hitbox>()?.piece;
 
-            Vector3 elevationUpVector = this.GetElevationUpVector(hit.point);
-            
+            var dragArea = this.GetDragArea(hit.point);
+            Vector3 elevationUpVector = (dragArea != null) ? dragArea.elevationDirection : Vector3.up;
+
             if (piece != null)
             {
                 this._drag.EndDrag();
                 Vector3 targetPos = this._GetTableDragTarget(hit.point);
-                this._drag.StartDrag(piece, targetPos, elevationUpVector);
+                this._drag.StartDrag(piece, targetPos, elevationUpVector, Quaternion.Euler(this.defaultEulerRotation));
                 this._playerMovement.DisableMovement();
                 return;
             }
@@ -123,19 +126,14 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private Vector3 GetElevationUpVector(Vector3 pos)
+    private DragArea GetDragArea(Vector3 pos)
     {
         var colliders = Physics.OverlapSphere(pos, 0.1f, this.dragAreaLayer);
         foreach (var collider in colliders)
         {
-            DragArea dragArea = collider.GetComponent<DragArea>();
-            if (dragArea != null)
-            {
-                return dragArea.elevationDirection;
-            }
+            return collider.GetComponent<DragArea>();
         }
-
-        return Vector3.up;
+        return null;
     }
 
     public void StopInteraction()
