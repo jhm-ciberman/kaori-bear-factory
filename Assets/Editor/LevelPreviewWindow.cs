@@ -24,8 +24,8 @@ public class LevelPreviewWindow : EditorWindow
 
     void Awake()
     {
-        this._cardboardBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/Boxes/CardboardBox.png", typeof(Sprite));
-        this._giftBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/Boxes/GiftBox.png", typeof(Sprite));
+        this._cardboardBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/CardboardBox.png", typeof(Sprite));
+        this._giftBoxSprite = (Sprite) AssetDatabase.LoadAssetAtPath("Assets/UI/GiftBox.png", typeof(Sprite));
         Selection.selectionChanged += this._OnSelectionChanged;
 
         this._OnSelectionChanged();
