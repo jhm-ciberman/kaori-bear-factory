@@ -16,7 +16,7 @@ MonoBehaviour:
   seed: 0
   levelTimeMultiplier: 1.4
   customerIntervals: 15
-  slotsNumber: 2
+  slotsNumber: 1
   requests:
   - {fileID: 11400000, guid: 5859e0ef05831cc4e93bb7c59a38518b, type: 2}
   - {fileID: 11400000, guid: 5859e0ef05831cc4e93bb7c59a38518b, type: 2}

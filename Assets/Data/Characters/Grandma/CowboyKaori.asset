@@ -33,8 +33,12 @@ MonoBehaviour:
   hat:
   - piece: {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
     probability: 1
+  - piece: {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
+    probability: 0.482
   clothe:
   - piece: {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
     probability: 0.828
   - piece: {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
+    probability: 0.437
+  - piece: {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
     probability: 0.437

@@ -216,6 +216,8 @@ public class PaintingMachine : MonoBehaviour
 
     public void StartPainting(SkinData skin)
     {
+        this._particleSystem?.Stop();
+        
         if (this._status != MachineStatus.PieceAttached || this._pieceInside == null)
         {
             // Error, no pieces inside. Maybe play a sound?
@@ -226,6 +228,7 @@ public class PaintingMachine : MonoBehaviour
         if (this._painting.count == 0)
         {
             // No pieces to paint. Maybe play another sound? 
+            this._painting = null;
             this._SetInteriorLightColor(this._pieceInsideColor);
             return;
         }

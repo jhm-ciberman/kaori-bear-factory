@@ -18,33 +18,35 @@ MonoBehaviour:
     probability: 1
   - skin: {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
     probability: 0.169
+  - skin: {fileID: 11400000, guid: 91ead48fe48449d499ecf64ba9a56568, type: 2}
+    probability: 0.175
   perPartSkin: 1
   body: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
   arms:
   - piece: {fileID: 11400000, guid: 0fcc15d8c7744e742827d7a39ef3c1f9, type: 2}
     probability: 1
   - piece: {fileID: 0}
-    probability: 0.277
+    probability: 0.041
   - piece: {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
-    probability: 0.074
+    probability: 0.151
   eyes:
   - piece: {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
     probability: 1
   - piece: {fileID: 0}
-    probability: 0.143
+    probability: 0.073
   legs:
   - piece: {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
     probability: 1
   - piece: {fileID: 0}
-    probability: 0.322
+    probability: 0.111
   - piece: {fileID: 11400000, guid: 55bf8ef7a837cf74c8406274c8e94af1, type: 2}
-    probability: 0.054
+    probability: 0.258
   ears:
   - piece: {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
     probability: 1
   hat:
   - piece: {fileID: 0}
-    probability: 1
+    probability: 0.623
   - piece: {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
     probability: 0.284
   - piece: {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}

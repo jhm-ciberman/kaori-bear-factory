@@ -39,6 +39,8 @@ MonoBehaviour:
     probability: 1
   - piece: {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
     probability: 0.105
+  - piece: {fileID: 11400000, guid: 57b490aea4a5b93498a7383e01f22ea9, type: 2}
+    probability: 0.105
   clothe:
   - piece: {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}
     probability: 1

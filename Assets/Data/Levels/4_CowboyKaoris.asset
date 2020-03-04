@@ -16,7 +16,7 @@ MonoBehaviour:
   seed: 0
   levelTimeMultiplier: 1.4
   customerIntervals: 15
-  slotsNumber: 2
+  slotsNumber: 1
   requests:
   - {fileID: 11400000, guid: 5866ba0e1cc14404da6be0db9d65afc3, type: 2}
   - {fileID: 11400000, guid: 5859e0ef05831cc4e93bb7c59a38518b, type: 2}
@@ -39,3 +39,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
   - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
   - {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}
+  - {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
+  - {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
