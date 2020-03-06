@@ -16,7 +16,7 @@ MonoBehaviour:
   skins:
   - skin: {fileID: 11400000, guid: 3b2639d36c73e2443a54a1e0b514bea9, type: 2}
     probability: 1
-  perPartSkin: 1
+  perPartSkin: 0
   body: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
   arms:
   - piece: {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
