@@ -58,7 +58,7 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private float _positionAnimationAmount = 0.25f;
 
-    [SerializeField] private float _timePerPiece = 3f;
+    [SerializeField] public float timePerPiece = 3f;
 
     [SerializeField] private Vector3 _rotationDir = Vector3.up;
 
@@ -224,7 +224,7 @@ public class PaintingMachine : MonoBehaviour
             return;
         }
 
-        this._painting = new PaintingProcess(skin, this._pieceInside, this._timePerPiece);
+        this._painting = new PaintingProcess(skin, this._pieceInside, this.timePerPiece);
         if (this._painting.count == 0)
         {
             // No pieces to paint. Maybe play another sound? 

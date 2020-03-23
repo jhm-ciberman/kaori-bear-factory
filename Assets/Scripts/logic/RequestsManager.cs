@@ -111,7 +111,8 @@ public class RequestsManager : MonoBehaviour
         }
         else
         {
-            this._nextCustomerTime = Time.time + this._level.customerIntervals;
+            float t = (this._queue.activeRequestsCount == 0) ? 2f : this._level.customerIntervals;
+            this._nextCustomerTime = Time.time + t;
         }
     }
 

@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: Cowboy Kaoris
   seed: 0
   levelTimeMultiplier: 1.4
+  paintingTimePerPiece: 2
   customerIntervals: 15
   slotsNumber: 1
   requests:
@@ -41,3 +42,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}
   - {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
   - {fileID: 11400000, guid: 59a0997dcf0430743bca202c20b25ae4, type: 2}
+  tutorialUI: {fileID: 0}

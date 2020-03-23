@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: A Kaori for my grandson, Sir
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 1.585
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 1
   requests:
@@ -37,3 +38,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b07c1b1cb7a623745834d06f3a91042c, type: 2}
   - {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
   - {fileID: 11400000, guid: 7f9d87028aaf66044b4145f8c5947f5c, type: 2}
+  tutorialUI: {fileID: 0}

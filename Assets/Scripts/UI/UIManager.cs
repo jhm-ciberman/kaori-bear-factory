@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public Transform _inGameUI;
 
+    [SerializeField] public Transform _gameCanvasUI;
+
     [SerializeField] public PaintingProgressUI _paintingProgressUI;
 
     public TMPro.TextMeshProUGUI _customersCountText;
@@ -73,6 +75,18 @@ public class UIManager : MonoBehaviour
         }
 
         this._levelCompleteUI.Show();
+    }
+
+    public void OpenTutorialUI(GameObject windowUI, System.Action then) 
+    {
+        GameObject go = Object.Instantiate<GameObject>(windowUI, this._gameCanvasUI.transform);
+        WindowUI window = go.GetComponent<WindowUI>();
+        this._inGameUI.gameObject.SetActive(false);
+        window.onClosed += () => {
+            this._inGameUI.gameObject.SetActive(true);
+            then.Invoke();
+        };
+        window.Show();
     }
 
     public void AddRequest(Request request)

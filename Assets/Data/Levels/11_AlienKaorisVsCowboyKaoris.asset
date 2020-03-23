@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Alien Kaoris vs Cowboy Kaoris
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 1.547
   customerIntervals: 15
   slotsNumber: 3
   requests:
@@ -41,3 +41,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
   - {fileID: 11400000, guid: d5a55b8486f754c45be7a5bd66762b40, type: 2}
   - {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
+  tutorialUI: {fileID: 0}

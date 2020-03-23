@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Afro Kaoris
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 1.47
+  paintingTimePerPiece: 2.2
   customerIntervals: 15
   slotsNumber: 2
   requests:
@@ -43,3 +44,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7cf5d8e5ddebd7d47b813e80b24412f5, type: 2}
   - {fileID: 11400000, guid: 0fcc15d8c7744e742827d7a39ef3c1f9, type: 2}
   - {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
+  tutorialUI: {fileID: 0}

@@ -12,6 +12,8 @@ public class LevelData : ScriptableObject
     
     [Range(0f, 2f)] public float levelTimeMultiplier = 1f;
 
+    [Range(0f, 4f)] public float paintingTimePerPiece = 3f;
+
     [Range(0f, 30f)] public float customerIntervals = 3f;
 
     [SerializeField] public int slotsNumber = 3;
@@ -31,6 +33,8 @@ public class LevelData : ScriptableObject
 
     [ReorderableList] public SkinData[] availableSkins = new SkinData[0];
     [ReorderableList] public PieceData[] availablePieces = new PieceData[0];
+
+    public GameObject tutorialUI = null;
 
     public IEnumerable<Request> GetRequests()
     {

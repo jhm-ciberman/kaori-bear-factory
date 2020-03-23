@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: I want a magic Kaori
   seed: 0
   levelTimeMultiplier: 1.4
+  paintingTimePerPiece: 2.3
   customerIntervals: 15
   slotsNumber: 2
   requests:
@@ -41,3 +42,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
   - {fileID: 11400000, guid: 0fcc15d8c7744e742827d7a39ef3c1f9, type: 2}
   - {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
+  tutorialUI: {fileID: 0}

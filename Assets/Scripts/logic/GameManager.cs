@@ -27,13 +27,35 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 1000;
+        Application.targetFrameRate = 60;
 
         //this._uiManager.gameObject.SetActive(true);
         this._SetupSceneEvents();
 
         // Start the fun!
-        this.StartLevel((GameManager.currentLevelData == null) ? this._testLevel : GameManager.currentLevelData);
+        this._StartTheFun();
+    }
+
+    private void _StartTheFun() 
+    {
+        LevelData level = (GameManager.currentLevelData == null) 
+            ? this._testLevel 
+            : GameManager.currentLevelData;
+
+        if (level.tutorialUI != null) 
+        {
+            this._playerInput.DisableInput();
+            this._uiManager.OpenTutorialUI(level.tutorialUI, () => this.StartLevel(level));
+        }
+        else
+        {
+            this.StartLevel(level);
+        }
+    }
+
+    private void _OpenTutorialUI(LevelData level)
+    {
+
     }
 
     private void _SetupSceneEvents()
@@ -72,8 +94,10 @@ public class GameManager : MonoBehaviour
         this._uiManager.SetSlotsNumber(this._currentLevel.slotsNumber);
         this._giftBox.gameObject.SetActive(this._currentLevel.giftBoxUnlocked);
         this._paintingMachine.SetAvailableSkins(this._currentLevel.availableSkins);
+        this._paintingMachine.timePerPiece = this._currentLevel.paintingTimePerPiece;
         this._spawner.defaultSkin = this._currentLevel.availableSkins[0];
         this._requestsManager.StartLevel(this._currentLevel);
+        this._playerInput.EnableInput();
         this._UpdateCustomersUI();
     }
 
