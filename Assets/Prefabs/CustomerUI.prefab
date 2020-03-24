@@ -695,6 +695,9 @@ MonoBehaviour:
   productUI: {fileID: 9069898805782996589}
   timerSlider: {fileID: 5019469437772596251}
   animator: {fileID: 3658395039878043290}
+  newClientSound: {fileID: 8300000, guid: 9187a2e5a3d243f47971c164e7c6cef0, type: 3}
+  okSound: {fileID: 8300000, guid: 4c5031e26d2b5544c8785ab9c19143f4, type: 3}
+  failSound: {fileID: 0}
 --- !u!1 &9069898805782996591
 GameObject:
   m_ObjectHideFlags: 0

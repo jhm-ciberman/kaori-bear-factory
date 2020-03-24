@@ -51,6 +51,8 @@ MonoBehaviour:
   _center: {fileID: 4976419934673411319}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 11400000, guid: a37ae116c092a2b4ebcc043c07df1e46, type: 2}
+  impactSound: {fileID: 8300000, guid: 38ebd0c14d0de6546a291494c90014ef, type: 3}
+  snapSound: {fileID: 8300000, guid: 6d6a6876571e4eb43a62b96c9c8c2a22, type: 3}
 --- !u!1 &3433202078005898821
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Hellmade.Sound;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,11 @@ public class CustomerUI : MonoBehaviour
 
     private bool _isAngry = false;
 
-    private RectTransform _rt; 
+    private RectTransform _rt;
+
+    public AudioClip newClientSound = null;
+    public AudioClip okSound = null;
+    public AudioClip failSound = null;
 
     public void Awake()
     {
@@ -32,6 +37,14 @@ public class CustomerUI : MonoBehaviour
         LeanTween.moveY(this._rt, 0f, 0.8f)
             .setFrom(-this._rt.rect.height * this._rt.localScale.y)
             .setEaseOutQuad();
+    }
+
+    public void Start()
+    {
+        if (this.newClientSound)
+        {
+            EazySoundManager.PlaySound(this.newClientSound);
+        }
     }
 
     public void UpdatePosition(float slotWidth)
@@ -51,11 +64,21 @@ public class CustomerUI : MonoBehaviour
     {
         this.animator.Play("Normal");
         this._ShowAnimation(this.requestOk.gameObject, this.onExitAnimationComplete);
+
+        if (this.okSound)
+        {
+            EazySoundManager.PlaySound(this.okSound);
+        }
     }
 
     public void ShowFailAnimation()
     {
         this._ShowAnimation(this.requestFailed.gameObject, this.onExitAnimationComplete);
+
+        if (this.failSound)
+        {
+            EazySoundManager.PlaySound(this.failSound);
+        }
     }
 
     private void _ShowAnimation(GameObject go, System.Action callback)

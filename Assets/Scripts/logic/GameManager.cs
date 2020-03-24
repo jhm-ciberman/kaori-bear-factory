@@ -1,3 +1,4 @@
+using Hellmade.Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,22 +8,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LevelData _testLevel = null;
 
-    [SerializeField] public UIManager _uiManager = null;
+    [SerializeField] private UIManager _uiManager = null;
 
-    [SerializeField] public RequestsManager _requestsManager = null;
+    [SerializeField] private RequestsManager _requestsManager = null;
 
-    [SerializeField] public PlayerInput _playerInput = null;
+    [SerializeField] private PlayerInput _playerInput = null;
 
-    [SerializeField] public PaintingMachine _paintingMachine = null;
+    [SerializeField] private PaintingMachine _paintingMachine = null;
 
-    [SerializeField] public DeliveryBox _carboardBox = null;
+    [SerializeField] private DeliveryBox _carboardBox = null;
 
-    [SerializeField] public DeliveryBox _giftBox = null;
+    [SerializeField] private DeliveryBox _giftBox = null;
 
-    [SerializeField] public Spawner _spawner = null;
+    [SerializeField] private Spawner _spawner = null;
 
-    [HideInInspector]
-    private LevelData _currentLevel;
+    [SerializeField] private AudioClip _musicAudioClip = null;
+
+    [HideInInspector] private LevelData _currentLevel;
 
     public void Start()
     {
@@ -34,6 +36,11 @@ public class GameManager : MonoBehaviour
 
         // Start the fun!
         this._StartTheFun();
+
+        if (this._musicAudioClip) 
+        {
+            EazySoundManager.PlayMusic(this._musicAudioClip, 0.25f);
+        }
     }
 
     private void _StartTheFun() 

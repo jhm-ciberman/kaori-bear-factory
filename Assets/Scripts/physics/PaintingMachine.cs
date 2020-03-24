@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Hellmade.Sound;
 using UnityEngine;
 
 public class PaintingMachine : MonoBehaviour
@@ -66,6 +67,14 @@ public class PaintingMachine : MonoBehaviour
 
     [SerializeField] private ParticleSystem _particleSystem = null;
 
+    [SerializeField] private AudioClip _paintingError = null;
+
+    [SerializeField] private AudioClip _paintingFinished = null;
+
+    [SerializeField] private AudioClip _buttonPressedAudio = null;
+
+    [SerializeField] private AudioClip _paintingProcessLoopAudio = null;
+
     private Piece _pieceInside = null;
 
     private Piece _lastPieceExited = null;
@@ -79,6 +88,8 @@ public class PaintingMachine : MonoBehaviour
     private InteriorTrigger _trigger;
 
     private Color _pieceInsideColor = Color.gray;
+
+    private int _loopAudioId = -1;
 
     public System.Action<SkinData> onPaintStart;
     public System.Action<SkinData> onPaintFinish;
@@ -217,10 +228,20 @@ public class PaintingMachine : MonoBehaviour
     public void StartPainting(SkinData skin)
     {
         this._particleSystem?.Stop();
+
+        if (this._loopAudioId >= 0)
+        {
+            EazySoundManager.GetAudio(this._loopAudioId).Stop();
+            this._loopAudioId = -1;
+        }
         
         if (this._status != MachineStatus.PieceAttached || this._pieceInside == null)
         {
             // Error, no pieces inside. Maybe play a sound?
+            if (this._paintingError)
+            {
+                EazySoundManager.PlaySound(this._paintingError);
+            }
             return;
         }
 
@@ -230,6 +251,10 @@ public class PaintingMachine : MonoBehaviour
             // No pieces to paint. Maybe play another sound? 
             this._painting = null;
             this._SetInteriorLightColor(this._pieceInsideColor);
+            if (this._paintingError)
+            {
+                EazySoundManager.PlaySound(this._paintingError);
+            }
             return;
         }
 
@@ -240,9 +265,28 @@ public class PaintingMachine : MonoBehaviour
             this._particleSystem?.Stop();
             this._SetInteriorLightColor(this._pieceInsideColor);
             this.onPaintFinish?.Invoke(skin);
+
+            if (this._loopAudioId >= 0)
+            {
+               EazySoundManager.GetAudio(this._loopAudioId).Stop();
+               this._loopAudioId = -1;
+            }
+            if (this._paintingFinished)
+            {
+                EazySoundManager.PlaySound(this._paintingFinished);
+            }
         };
 
         this.onPaintStart?.Invoke(skin);
+        if (this._paintingProcessLoopAudio) 
+        {
+            this._loopAudioId = EazySoundManager.PlaySound(this._paintingProcessLoopAudio, true);
+        }
+
+        if (this._buttonPressedAudio)
+        {
+            EazySoundManager.PlaySound(this._buttonPressedAudio);
+        }
     }
 
     private void _SetInteriorLightColor(Color color)

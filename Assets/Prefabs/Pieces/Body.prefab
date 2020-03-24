@@ -172,6 +172,8 @@ MonoBehaviour:
   _center: {fileID: 3582689615250181388}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 11400000, guid: 3b68b4cf9e5e1ad4d948be1d69cace6a, type: 2}
+  impactSound: {fileID: 8300000, guid: 38ebd0c14d0de6546a291494c90014ef, type: 3}
+  snapSound: {fileID: 8300000, guid: 6d6a6876571e4eb43a62b96c9c8c2a22, type: 3}
   spots:
   - {fileID: 4243947920975642159}
   - {fileID: 7313446270282743926}

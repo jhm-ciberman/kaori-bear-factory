@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Hellmade.Sound;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public class Piece : MonoBehaviour
@@ -22,16 +23,27 @@ public class Piece : MonoBehaviour
         void OnCollisionStay(Collision other)
         {
             GameObject go = other.gameObject;
-            if (go.tag == "Belt")
-            {
-                Belt belt = go.GetComponent<Belt>();
-                this.piece.MoveByBelt(belt);
-            }
 
             if (go.tag == "Dispawner")
             {
                 this.piece.Dispawn();
+                return;
             }
+
+            if (go.tag == "Belt")
+            {
+                Belt belt = go.GetComponent<Belt>();
+                this.piece.MoveByBelt(belt);
+                return;
+            }
+        }
+
+        void OnCollisionEnter(Collision other)
+        {
+            GameObject go = other.gameObject;
+            if (go.tag == "Dispawner") return;
+
+            this.piece.CollisionWithOther();
         }
     }
 
@@ -47,6 +59,9 @@ public class Piece : MonoBehaviour
     [SerializeField] private Transform _center = null;
     [SerializeField] private PieceSkinRenderingData _renderingData = null;
     [SerializeField] public PieceData pieceData = null;
+    [SerializeField] public AudioClip impactSound = null;
+    [SerializeField] public AudioClip snapSound = null;
+
 
     private bool _isDraggable = true;
     private bool _isDragged = false;
@@ -141,6 +156,11 @@ public class Piece : MonoBehaviour
         this._UpdateRigidBodyState();
 
         this.onAttached?.Invoke(this);
+
+        if (this.snapSound)
+        {
+            EazySoundManager.PlaySound(this.snapSound);
+        }
     }
 
     private void Update()
@@ -187,4 +207,12 @@ public class Piece : MonoBehaviour
     public Vector3 rigidbodyPosition => this._rigidbody.position;
     public Vector3 rigidbodyWorldCenter => this._rigidbody.worldCenterOfMass;
     public Quaternion rigidbodyRotation => this._rigidbody.rotation;
+
+    public void CollisionWithOther()
+    {
+        if (this.impactSound)
+        {
+            EazySoundManager.PlaySound(this.impactSound);
+        }
+    }
 }
