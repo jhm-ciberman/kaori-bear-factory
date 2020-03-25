@@ -1,4 +1,5 @@
 
+using Hellmade.Sound;
 using UnityEngine;
 
 public class MainMenuUI : ScreenUI
@@ -8,12 +9,19 @@ public class MainMenuUI : ScreenUI
     public WindowUI creditsUI = null;
 
     private WindowUI _activeScreen = null;
+    public AudioClip music = null;
+
 
     public void Start()
     {
         this.levelSelectionUI.HideNow();
         this.optionsUI.HideNow();
         this.creditsUI.HideNow();
+
+        if (this.music)
+        {
+            EazySoundManager.PlayMusic(this.music, 0.25f);
+        }
         
         this.levelSelectionUI.onClosed += this._OnScreenClosed;
         this.optionsUI.onClosed += this._OnScreenClosed;

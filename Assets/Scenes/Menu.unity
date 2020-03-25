@@ -497,7 +497,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 219045692}
   - component: {fileID: 219045693}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SliderMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,7 +834,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1007532023}
+        m_MethodName: OnMusicVolumeChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &283577217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1223,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1358,7 +1369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000153, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &451217304
@@ -1646,7 +1657,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2171,7 +2182,7 @@ GameObject:
   - component: {fileID: 683689112}
   - component: {fileID: 683689113}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: SliderSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2248,7 +2259,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1007532023}
+        m_MethodName: OnFxVolumeChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &717332295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,6 +2625,7 @@ MonoBehaviour:
   levelSelectionUI: {fileID: 1306699035}
   optionsUI: {fileID: 1007532021}
   creditsUI: {fileID: 1641548499}
+  music: {fileID: 8300000, guid: 2998de4e65c04eb438b4678bffd762c6, type: 3}
 --- !u!4 &772803889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: db9015448ee166942a7fe30a33eea4c5,
@@ -3080,7 +3103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007532020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3100,7 +3123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 106.86, y: -10.7}
+  m_AnchoredPosition: {x: 106.859985, y: -10.700012}
   m_SizeDelta: {x: -376.82, y: -203.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007532021
@@ -3137,6 +3160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressClearedPopupUI: {fileID: 1340640409}
+  soundVolumeSlider: {fileID: 683689113}
+  musicVolumeSlider: {fileID: 219045693}
+  audioTestClip: {fileID: 8300000, guid: c7033d6fda0584c41a8540d0b3d5047b, type: 3}
 --- !u!1 &1054540708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,10 +3365,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Made with      by:\n<margin=1em>\nProgramming\n - Javier \"Ciberman\"
+  m_text: "Made with         by:\n<margin=1em>\nProgramming\n - Javier \"Ciberman\"
     Mora\n\n3D Art\n - Guillermo Vergara\n - Franco Biagioli\n\nUI\n - Mail\xE9n
-    Britez\n\n2D Character Design\n - Camila \"Neo\" Cir\xEDaco\n<margin=0em>\nOriginally
-    developed during the Global Game Jam 2020"
+    Britez\n\n2D Character Design\n - Camila \"Neo\" Cir\xEDaco\n<margin=0em>\nMenu
+    music: \"mini candy\" by Siix0\n\nOriginally developed during the Global Game
+    Jam 2020"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fddf473a0a28f9b4da9ec6c633762a32, type: 2}
   m_sharedMaterial: {fileID: 7236746966451393762, guid: fddf473a0a28f9b4da9ec6c633762a32,
@@ -3371,8 +3398,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 12.27
-  m_fontSizeBase: 12.27
+  m_fontSize: 11.4
+  m_fontSizeBase: 11.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3388,7 +3415,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 243
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3412,12 +3439,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0.39418876, z: 114.61225, w: 0}
   m_textInfo:
     textComponent: {fileID: 1109609952}
-    characterCount: 225
+    characterCount: 263
     spriteCount: 0
-    spaceCount: 49
-    wordCount: 35
+    spaceCount: 59
+    wordCount: 41
     linkCount: 0
-    lineCount: 17
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5310,7 +5337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1641548498
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6612,7 +6639,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7179,7 +7206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.0000153, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2072008904
