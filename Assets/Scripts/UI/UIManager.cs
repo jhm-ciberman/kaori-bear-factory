@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public System.Action onExitLevel;
+    public System.Action onNextLevel;
+    public System.Action onRestartLevel;
     public System.Action onPause;
     public System.Action onUnpause;
 
@@ -25,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public PaintingProgressUI _paintingProgressUI;
 
+    [SerializeField] public WindowUI _gameOverUI;
+
     public TMPro.TextMeshProUGUI _customersCountText;
 
     void Start()
@@ -34,13 +38,14 @@ public class UIManager : MonoBehaviour
             this._overlayUI.HideNow();
             this._unlockScreenUI.ShowFirstUnlockable();
         };
-        this._unlockScreenUI.onDone += () => this.onExitLevel?.Invoke();
+        this._unlockScreenUI.onDone += () => this.onNextLevel?.Invoke();
         this._pauseScreenUI.onGoToMainMenu += () => this.onExitLevel?.Invoke();
         this._pauseScreenUI.onUnpaused += () => {
             this.onUnpause?.Invoke();
             this._overlayUI.HideNow();
             this._pauseButton.gameObject.SetActive(true);
         };
+        this._pauseScreenUI.onRestart += () => this.onRestartLevel?.Invoke();
 
         this._pauseButton.gameObject.SetActive(true);
         this._customersLayoutUI.gameObject.SetActive(true);
@@ -48,6 +53,7 @@ public class UIManager : MonoBehaviour
         this._unlockScreenUI.HideNow();
         this._pauseScreenUI.HideNow();
         this._overlayUI.HideNow();
+        this._gameOverUI.HideNow();
         this._inGameUI.gameObject.SetActive(true);
         this._paintingProgressUI.HideNow();
     }
@@ -75,6 +81,16 @@ public class UIManager : MonoBehaviour
         }
 
         this._levelCompleteUI.Show();
+    }
+
+    public void ShowLevelFailScreen()
+    {
+        this._inGameUI.gameObject.SetActive(false);
+        this._customersLayoutUI.gameObject.SetActive(false);
+
+        this._overlayUI.Show();
+
+        this._gameOverUI.Show();
     }
 
     public void OpenTutorialUI(GameObject windowUI, System.Action then) 

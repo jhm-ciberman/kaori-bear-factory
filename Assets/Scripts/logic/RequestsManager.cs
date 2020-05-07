@@ -7,6 +7,7 @@ public class RequestsManager : MonoBehaviour
     public event System.Action<Request> onActiveRequestCompleted;
     public event System.Action<Request> onActiveRequestFailed;
     public event System.Action onLevelComplete;
+    public event System.Action onLevelFailed;
 
     [SerializeField] public Spawner spawner = null;
 
@@ -97,6 +98,8 @@ public class RequestsManager : MonoBehaviour
         if (request.failed)
         {
             this.onActiveRequestFailed?.Invoke(request);
+            this.onLevelFailed?.Invoke();
+            return;
         }
         else 
         {

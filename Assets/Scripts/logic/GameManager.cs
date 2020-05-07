@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static LevelData currentLevelData;
 
+    [SerializeField] private GameLevelsData _gameLevelsData = null;
+
     [SerializeField] private LevelData _testLevel = null;
 
     [SerializeField] private UIManager _uiManager = null;
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        LevelManager.SetLevelsList(this._gameLevelsData);
+        
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
@@ -60,17 +64,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void _OpenTutorialUI(LevelData level)
-    {
-
-    }
-
     private void _SetupSceneEvents()
     {
         // UI
         this._uiManager.onExitLevel += this._GoToMenu;
+        this._uiManager.onNextLevel += this._NextLevel;
         this._uiManager.onPause += this._OnPause;
         this._uiManager.onUnpause += this._OnUnpause;
+        this._uiManager.onRestartLevel += this._RestartLevel;
 
         // Requests handling
         this._requestsManager.onActiveRequestAdded += this._uiManager.AddRequest;
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
 
         // Level complete
         this._requestsManager.onLevelComplete += this._OnLevelComplete;
+        this._requestsManager.onLevelFailed += this._OnLevelFailed;
 
         // Painting Machine
         this._paintingMachine.onPaintStart += (skin) => this._uiManager.ShowPaintingProgress(skin);
@@ -146,15 +148,38 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    private void _NextLevel()
+    {
+        var nextLevel = LevelManager.GetNextLevel(this._currentLevel);
+        GameManager.currentLevelData = nextLevel;
+        this._RestartLevel();
+    }
+
+    private void _RestartLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     private void _OnLevelComplete()
     {
-        PlayerPrefs.SetInt("Level_" + this._currentLevel.name, 1);
-        PlayerPrefs.Save();
+        LevelManager.Win(this._currentLevel);
 
         this._playerInput.DisableInput();
 
         LeanTween.delayedCall(2f, () => {
             this._uiManager.ShowLevelCompleteScreen(this._currentLevel);
+        });
+    }
+
+    private void _OnLevelFailed()
+    {
+        LevelManager.Fail(this._currentLevel);
+
+        this._playerInput.DisableInput();
+
+        LeanTween.delayedCall(2f, () => {
+            this._uiManager.ShowLevelFailScreen();
         });
     }
 }

@@ -1,11 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelSelectionUI : MonoBehaviour
 {
     public GameLevelsData levelsData;
 
     public LevelButtonUI baseButton;
+
+    public ScrollRect scrollRect = null;
 
     public void Start()
     {
@@ -21,6 +25,16 @@ public class LevelSelectionUI : MonoBehaviour
         }
 
         Object.Destroy(this.baseButton.gameObject);
+        
+        this.StartCoroutine(this._FixUndesiredMovement(parent));
+    }
+
+    private IEnumerator _FixUndesiredMovement(Transform parent)
+    {
+        yield return new WaitForEndOfFrame();
+        this.scrollRect.verticalNormalizedPosition = 1f;
+        this.scrollRect.StopMovement();
+        parent.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
     }
 
     public void StartLevel(LevelData levelData)
