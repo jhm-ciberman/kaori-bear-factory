@@ -27,7 +27,7 @@ public class CraftablePiece : Piece
     {
         if (piece.isAttached) return;
         
-        piece.Attach(this, spot.spotDirection);
+        piece.AttachToCraftable(this, spot.spotDirection);
         piece.draggable = false;
         spot.attachedPiece = piece;
         spot.Disable();

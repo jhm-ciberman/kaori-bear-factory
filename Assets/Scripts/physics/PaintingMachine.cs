@@ -45,7 +45,9 @@ public class PaintingMachine : MonoBehaviour
         WaitingForPieceExit,
     }
 
-    [SerializeField] private Collider _interiorTrigger = null;
+    [SerializeField] private Collider _interiorEnterTrigger = null;
+
+    [SerializeField] private Collider _interiorExitTrigger = null;
 
     [SerializeField] private Transform _attachSpot = null;
 
@@ -85,8 +87,6 @@ public class PaintingMachine : MonoBehaviour
 
     private PaintingProcess _painting = null;
 
-    private InteriorTrigger _trigger;
-
     private Color _pieceInsideColor = Color.gray;
 
     private int _loopAudioId = -1;
@@ -98,9 +98,10 @@ public class PaintingMachine : MonoBehaviour
 
     void Start()
     {
-        this._trigger = this._interiorTrigger.gameObject.AddComponent<InteriorTrigger>();
-        this._trigger.onPieceEnter += this._OnPieceEnter;
-        this._trigger.onPieceExit += this._OnPieceExit;
+        var enterTrigger = this._interiorEnterTrigger.gameObject.AddComponent<InteriorTrigger>();
+        var exitTrigger = this._interiorExitTrigger.gameObject.AddComponent<InteriorTrigger>();
+        enterTrigger.onPieceEnter += this._OnPieceEnter;
+        exitTrigger.onPieceExit += this._OnPieceExit;
 
         this._SetInteriorLightColor(Color.black);
         this._particleSystem?.Stop();
@@ -150,7 +151,7 @@ public class PaintingMachine : MonoBehaviour
         this._status = MachineStatus.PieceAttached;
         this._pieceInside = piece;
         this._lastPieceExited = null;
-        piece.Attach(this._attachSpot);
+        piece.AttachToSpot(this._attachSpot);
         piece.onDragStart += this._OnDragStart;
         piece.onAttached += this._OnAttached;
 
@@ -216,7 +217,7 @@ public class PaintingMachine : MonoBehaviour
         t.localRotation = Quaternion.AngleAxis(rotation, this._rotationDir);
 
         float position = Mathf.Sin(this._animationTime * this._positionAnimationSpeed) * this._positionAnimationAmount;
-        t.localPosition = this._rotationDir * position;
+        t.localPosition = this._rotationDir * position - this._pieceInside.localCenter;
 
         if (this._painting != null)
         {

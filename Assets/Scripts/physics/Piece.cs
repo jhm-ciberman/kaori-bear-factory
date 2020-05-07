@@ -56,7 +56,6 @@ public class Piece : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private Collider _dragHitbox = null;
     [SerializeField] private MeshRenderer _model = null;
-    [SerializeField] private Transform _center = null;
     [SerializeField] private PieceSkinRenderingData _renderingData = null;
     [SerializeField] public PieceData pieceData = null;
     [SerializeField] public AudioClip impactSound = null;
@@ -68,6 +67,8 @@ public class Piece : MonoBehaviour
     private bool _isAttached = false;
     private Transform _transform;
     private PieceSkin _skin = null;
+
+    private Vector3 _localCenter;
 
     public void Awake()
     {
@@ -84,11 +85,14 @@ public class Piece : MonoBehaviour
         this._dragHitbox.gameObject.AddComponent<Hitbox>().piece = this;
         this._model.gameObject.layer = 8; // layer 8
 
-        this._model.transform.localPosition -= this._rigidbody.centerOfMass;
+        this._localCenter = this._rigidbody.centerOfMass;
+        this._model.transform.localPosition -= this._localCenter;
         this.transform.localScale = Piece.globalScale * Vector3.one;
 
         this._UpdateRigidBodyState();
     }
+
+    public Vector3 localCenter => this._localCenter;
 
     public void MoveByBelt(Belt belt)
     {
@@ -136,22 +140,31 @@ public class Piece : MonoBehaviour
         }
     }
 
-    public void Attach(CraftablePiece craftable, PieceDirection dir)
-    {
-        this.Attach(craftable.modelTransform, dir);
-        this._rigidbody.isKinematic = this._isAttached;
-
-        this.transform.parent = craftable.transform;
-    }
-
-    public void Attach(Transform attachSpot, PieceDirection dir = PieceDirection.None)
+    public void AttachToCraftable(CraftablePiece craftable, PieceDirection dir)
     {
         Transform t = this.modelTransform;
-        t.parent = attachSpot;
+        t.parent = craftable.modelTransform;
         t.localPosition = Vector3.zero;
         t.localRotation = Quaternion.identity;
         t.localScale = new Vector3(this._GetScale(dir), 1f, 1f);
+        this._rigidbody.isKinematic = true;
+        this.transform.parent = craftable.transform;
+        
+        this._AfterAtttach();
+    }
 
+    public void AttachToSpot(Transform attachSpot)
+    {
+        Transform t = this.modelTransform;
+        t.parent = attachSpot;
+        Debug.Log(this.localCenter);
+        t.localPosition -= this.localCenter;
+        t.localRotation = Quaternion.identity;
+        this._AfterAtttach();
+    }
+
+    protected void _AfterAtttach()
+    {
         this._isAttached = true;
         this._UpdateRigidBodyState();
 
