@@ -14,6 +14,8 @@ public class MainMenuUI : ScreenUI
 
     public void Start()
     {
+        AdsManager.instance.Init();
+        
         this.levelSelectionUI.HideNow();
         this.optionsUI.HideNow();
         this.creditsUI.HideNow();

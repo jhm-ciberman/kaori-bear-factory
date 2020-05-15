@@ -28,7 +28,7 @@ SpriteAtlas:
       m_TextureFormat: -1
       m_TextureCompression: 1
       m_CompressionQuality: 50
-      m_CrunchedCompression: 1
+      m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
@@ -38,7 +38,7 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
+      enableRotation: 0
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
@@ -72,13 +72,17 @@ SpriteAtlas:
     - {fileID: 2800000, guid: ec17d77d5a2f93b4da4780705f70de57, type: 3}
     - {fileID: 2800000, guid: 5be7e9709f6986442ac8e31e920ffb8a, type: 3}
     - {fileID: 102900000, guid: f62cf184dfc087d4ab0561ecf5867c7d, type: 3}
-    totalSpriteSurfaceArea: 4327586
+    - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 102900000, guid: b0f9250c027ae06448c1df309baf132d, type: 3}
+    totalSpriteSurfaceArea: 2831316
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 21300000, guid: 901a0e00c63b0074ab76eff286dc6756, type: 3}
   - {fileID: 21300000, guid: 74bcd95065bf34d4e85cbf416394b03c, type: 3}
   - {fileID: 21300000, guid: 5be7e9709f6986442ac8e31e920ffb8a, type: 3}
+  - {fileID: 21300000, guid: 4026e2905ca16734294e59e88ec172e0, type: 3}
   - {fileID: 21300000, guid: 49fcd490051d3ff459fa15e634a88f63, type: 3}
   - {fileID: 21300000, guid: 9b1b22a08a1091c4aa1a6b6227e466de, type: 3}
   - {fileID: 21300000, guid: 8750a8c09e272fd4a9330dc963ebb49c, type: 3}
@@ -92,6 +96,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7987ce622e8fb3941b1314752bd677c9, type: 3}
   - {fileID: 21300000, guid: 5fcfed723311d594898e4db7cd442881, type: 3}
   - {fileID: 21300000, guid: 9107c54317b10f84d86282ef7f3e4b8b, type: 3}
+  - {fileID: 21300000, guid: ad0ea6a3a9069bb4eab332774c9b3b3b, type: 3}
   - {fileID: 21300000, guid: 0e05f3f3e1e0a0647a2a38cbeffc14f1, type: 3}
   - {fileID: 21300000, guid: 1f3a8ff360f186345b8ebf463f68d58a, type: 3}
   - {fileID: 21300000, guid: 3e16c844553bb1d44b5555f643095e65, type: 3}
@@ -107,8 +112,11 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fc1d5679ff3686944855e1938545817a, type: 3}
   - {fileID: 21300000, guid: 908582b90baefdb4ba64b1b4678880ac, type: 3}
   - {fileID: 21300000, guid: 6588f93a9a9432e44b78b30e6f7eff85, type: 3}
+  - {fileID: 21300000, guid: 751c479aac0c0164a994edd40047cc70, type: 3}
   - {fileID: 21300000, guid: 9c8dbbca43ab64f41b8aeb83fe8a3cc4, type: 3}
   - {fileID: 21300000, guid: 85eba62b84c5faf448e5a4c832bba149, type: 3}
+  - {fileID: 21300000, guid: 790e2c3bdd766a743920136f2d4898f7, type: 3}
+  - {fileID: 21300000, guid: 3534a85bc89baa847a4517d395923810, type: 3}
   - {fileID: 21300000, guid: 7f6026cb60b3b4d4ba978f116d65e6f4, type: 3}
   - {fileID: 21300000, guid: 86d764ebb2c833f4e8c54b052b925018, type: 3}
   - {fileID: 21300000, guid: 13c8566caa07b5f4b866ed11a7d933e1, type: 3}
@@ -126,10 +134,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b8f0635fc7ea0eb43b0b524f43b6d6b1, type: 3}
   - {fileID: 21300000, guid: 64bd047fbcd00264e9ad35ae7ee6e3c1, type: 3}
   - {fileID: 21300000, guid: 1697088fdaf66e64f818d4d0c4fb2a11, type: 3}
+  - {fileID: 21300000, guid: 073382bf6951e994fb40216ed926d688, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Knob
   - nariz
   - sombrero
   - GiftBox
+  - d
   - brazo bot_R
   - ProgressBarForeground
   - Alien_2
@@ -143,6 +154,7 @@ SpriteAtlas:
   - request_ok
   - cuerpo oso
   - tutuuu
+  - f
   - afro negro
   - request_fail
   - remera
@@ -158,8 +170,11 @@ SpriteAtlas:
   - globito dialogo
   - Alien_1
   - pie blanco R
+  - a
   - barrita llena
   - barrita
+  - c
+  - b
   - Boy_2
   - barba
   - button
@@ -177,5 +192,6 @@ SpriteAtlas:
   - pie blanco L
   - pie robot L
   - panel
+  - e
   m_Tag: UI Atrlas
   m_IsVariant: 0
