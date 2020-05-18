@@ -13,16 +13,26 @@ public class LevelButtonUI : MonoBehaviour
 
     private LevelData _level;
 
+    private string _dayText;
+
     public void SetLevel(LevelData level, string dayText)
     {
         this._level = level;
+        this._dayText = dayText;
 
-        bool levelIsComplete = (PlayerPrefs.GetInt("Level_" + level.name, 0) == 1);
+        this._UpdateText();
+
+        LevelManager.onProgressReset += this._UpdateText;
+    }
+
+    private void _UpdateText()
+    {
+        bool levelIsComplete = LevelManager.GetLevelIsComplete(this._level);
 
         this.levelCompleteImage.SetActive(levelIsComplete);
 
-        this.levelDayText.text = dayText;
-        this.levelTitleText.text = level.displayName;
+        this.levelDayText.text = this._dayText;
+        this.levelTitleText.text = this._level.displayName;
     }
 
     public void OnClick()

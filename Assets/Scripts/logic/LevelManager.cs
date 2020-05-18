@@ -4,6 +4,8 @@ public static class LevelManager
 {
     private static GameLevelsData _levelsData;
 
+    public static System.Action onProgressReset;
+
     public static void SetLevelsList(GameLevelsData levelsData)
     {
         LevelManager._levelsData = levelsData;
@@ -32,6 +34,18 @@ public static class LevelManager
     {
         PlayerPrefs.SetInt("Level_" + level.name, 1);
         PlayerPrefs.Save();
+    }
+
+    public static void ResetProgress()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        LevelManager.onProgressReset?.Invoke();
+    }
+
+    public static bool GetLevelIsComplete(LevelData level)
+    {
+        return (PlayerPrefs.GetInt("Level_" + level.name, 0) == 1);
     }
 
     public static int GetFailedAttempts(LevelData level)

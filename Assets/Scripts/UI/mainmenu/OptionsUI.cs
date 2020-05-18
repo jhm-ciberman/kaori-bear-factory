@@ -42,9 +42,7 @@ public class OptionsUI : MonoBehaviour
 
     public void OnClearProgressPressed()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-
+        LevelManager.ResetProgress();
         this.progressClearedPopupUI.Show();
     }
 
