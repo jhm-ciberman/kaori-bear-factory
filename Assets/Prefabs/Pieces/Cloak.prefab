@@ -111,36 +111,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &7499966978589040698
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 198115171522613896}
-  m_Layer: 0
-  m_Name: Center
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &198115171522613896
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499966978589040698}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0.22, z: -1.258}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6476538445996529728}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8050765700301482579
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +140,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 928053746312849098}
-  - {fileID: 198115171522613896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -189,7 +158,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 7060111397313415783}
   _dragHitbox: {fileID: 2063623384078468477}
   _model: {fileID: 6383460501423179880}
-  _center: {fileID: 198115171522613896}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 11400000, guid: ca23721764aec6d44920625c60d62764, type: 2}
   impactSound: {fileID: 8300000, guid: 38ebd0c14d0de6546a291494c90014ef, type: 3}

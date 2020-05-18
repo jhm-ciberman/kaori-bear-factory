@@ -137,7 +137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946883869836338097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 0.049, z: -2.365}
+  m_LocalPosition: {x: -0.836, y: -0.017, z: -2.365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1679304785156461907}
@@ -156,36 +156,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8339031545165271971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1806178247756964113}
-  m_Layer: 0
-  m_Name: Center
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1806178247756964113
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8339031545165271971}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.86, y: -2.33, z: 0.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4777831425647274969}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8364624348399638986
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +185,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1679304785156461907}
-  - {fileID: 1806178247756964113}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,7 +203,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 8815093484980697598}
   _dragHitbox: {fileID: 3089852266640435237}
   _model: {fileID: 4844068592653646833}
-  _center: {fileID: 1806178247756964113}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 11400000, guid: 8d3b7e0aa9c0d0047b2989ca1292094b, type: 2}
   impactSound: {fileID: 8300000, guid: 38ebd0c14d0de6546a291494c90014ef, type: 3}

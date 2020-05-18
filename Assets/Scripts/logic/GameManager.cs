@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
         if (this._musicAudioClip) 
         {
-            EazySoundManager.PlayMusic(this._musicAudioClip, 0.25f);
+            EazySoundManager.PlayMusic(this._musicAudioClip, 0.25f, true, false);
         }
     }
 

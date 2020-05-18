@@ -22,7 +22,7 @@ public class MainMenuUI : ScreenUI
 
         if (this.music)
         {
-            EazySoundManager.PlayMusic(this.music, 0.25f);
+            EazySoundManager.PlayMusic(this.music, 0.25f, true, false);
         }
         
         this.levelSelectionUI.onClosed += this._OnScreenClosed;

@@ -44,36 +44,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &4202231898530471191
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5835459143161638821}
-  m_Layer: 0
-  m_Name: Center
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5835459143161638821
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4202231898530471191}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.421, y: 0.012, z: 1.071}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 839119759441421677}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4467147661687035774
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +73,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6819985207982971879}
-  - {fileID: 5835459143161638821}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -122,7 +91,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 3728666539315001162}
   _dragHitbox: {fileID: 1225859515300821817}
   _model: {fileID: 779954103753913669}
-  _center: {fileID: 5835459143161638821}
   _renderingData: {fileID: 11400000, guid: f15e3d1059da0c844b5c5bf2957ab6e6, type: 2}
   pieceData: {fileID: 11400000, guid: 3b64b117312a6224b951331c113391cb, type: 2}
   impactSound: {fileID: 8300000, guid: 38ebd0c14d0de6546a291494c90014ef, type: 3}

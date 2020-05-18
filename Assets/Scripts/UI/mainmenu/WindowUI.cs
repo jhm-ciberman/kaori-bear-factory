@@ -6,19 +6,25 @@ public class WindowUI : MonoBehaviour
 
     public RectTransform element = null;
 
+    private Vector3 _initialScale; 
+
     public void HideNow()
     {
         this.gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        this.element = (this.element != null) ? this.element : this.GetComponent<RectTransform>();
+        this._initialScale = this.element.localScale;
     }
 
     public void Show()
     {
         this.gameObject.SetActive(true);
 
-        var rt = (this.element != null) ? this.element : this.GetComponent<RectTransform>();
-        var scale = rt.localScale;
-        rt.localScale = Vector3.zero;
-        LeanTween.scale(rt, scale, .5f)
+        this.element.localScale = Vector3.zero;
+        LeanTween.scale(this.element, this._initialScale, .5f)
             .setEaseOutBack();
     }
 
