@@ -43,18 +43,21 @@ public class RequestsManager : MonoBehaviour
 
     public void Update()
     {
-        if (this._level == null) return;
+        if (this._level == null || this._queue == null) return;
 
         this._queue.Update(Time.deltaTime);
 
-        if (Time.time > this._nextCustomerTime)
+        if (this._queue != null)
         {
-            if (this._queue.levelFinished) return;
-            if (! this._queue.hasFreeSlots) return;
-
-            if (this._queue.hasRequestsInQueue)
+            if (Time.time > this._nextCustomerTime)
             {
-                this._AddNextRequest();
+                if (this._queue.levelFinished) return;
+                if (! this._queue.hasFreeSlots) return;
+
+                if (this._queue.hasRequestsInQueue)
+                {
+                    this._AddNextRequest();
+                }
             }
         }
     }
@@ -99,6 +102,7 @@ public class RequestsManager : MonoBehaviour
         {
             this.onActiveRequestFailed?.Invoke(request);
             this.onLevelFailed?.Invoke();
+            this._queue = null;
             return;
         }
         else 

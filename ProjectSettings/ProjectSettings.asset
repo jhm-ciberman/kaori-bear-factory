@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Ciberman
-  productName: Kaori Factory
+  productName: Kaori Bear Factory
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -275,36 +275,55 @@ PlayerSettings:
   androidGamepadSupportLevel: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 100
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 869ea27990539ae499c571124468e27c, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 425448c973f0c7d43a1d4ae3734956fb, type: 3}
+      - {fileID: 2800000, guid: 50f25aa6a1f189f4b8a1dd6155d5b83a, type: 3}
       m_Width: 432
       m_Height: 432
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: f668c34335f36494ab448825e6f21294, type: 3}
+      - {fileID: 2800000, guid: e148110b5488df3499c2cfcf2b362ec7, type: 3}
       m_Width: 324
       m_Height: 324
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: f2902f512c4ea2d45a70ef4d2d7aaaff, type: 3}
+      - {fileID: 2800000, guid: 1748001af816b0a4a981dcbb9edc8334, type: 3}
       m_Width: 216
       m_Height: 216
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: cf07b320d8ce73540bdaf53a4068e0e2, type: 3}
+      - {fileID: 2800000, guid: 1d091ce76222ae640944d008e0affa2b, type: 3}
       m_Width: 162
       m_Height: 162
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: b00813646485c644280f9b0521727920, type: 3}
+      - {fileID: 2800000, guid: 14da995199157bb48ba778178df5f535, type: 3}
       m_Width: 108
       m_Height: 108
       m_Kind: 2
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 9f4cf72185ad57f4e8c9bf0df7fdfd2f, type: 3}
+      - {fileID: 2800000, guid: d46c6f6b7149df748a7a21d11373b0ae, type: 3}
       m_Width: 81
       m_Height: 81
       m_Kind: 2
@@ -346,37 +365,37 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: 7771b89d7f264db49be833172ca9f0f4, type: 3}
       m_Width: 192
       m_Height: 192
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: 9f34e30833cfb474c8934dda0c7bf0fe, type: 3}
       m_Width: 144
       m_Height: 144
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: 2356bba89c811f040b5ad70f1c5465b8, type: 3}
       m_Width: 96
       m_Height: 96
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: 21ba66473507b3c478b84335386c8f0a, type: 3}
       m_Width: 72
       m_Height: 72
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: b41261fa16cf82f47af020bbe76dfdd7, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
       m_SubKind: 
     - m_Textures:
-      - {fileID: 0}
+      - {fileID: 2800000, guid: f9aabfb99f4499c46a03baa83f20109a, type: 3}
       m_Width: 36
       m_Height: 36
       m_Kind: 0

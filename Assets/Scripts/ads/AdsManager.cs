@@ -37,18 +37,22 @@ public class AdsManager
     
     public void ShowInterstitialAndThen(System.Action callback)
     {
-        if (this._interstitial != null && this._interstitial.IsLoaded())
-        {
-            this._interstitial.OnAdClosed += (sender, args) => callback?.Invoke();
-            this._interstitial.Show();
-            this._interstitial = null;
-
-            this._RequestInterstitial();
-        }
-        else
-        {
+        #if UNITY_EDITOR
             callback?.Invoke();
-        }
+        #else
+            if (this._interstitial != null && this._interstitial.IsLoaded())
+            {
+                this._interstitial.OnAdClosed += (sender, args) => callback?.Invoke();
+                this._interstitial.Show();
+                this._interstitial = null;
+
+                this._RequestInterstitial();
+            }
+            else
+            {
+                callback?.Invoke();
+            }
+        #endif
     }
 
     private void _RequestInterstitial()
