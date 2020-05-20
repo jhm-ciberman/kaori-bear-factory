@@ -33,6 +33,14 @@ public class AdsManager
             Debug.Log("MobileAds.Initialize Finished");
             this._RequestInterstitial();
         });
+
+        Debug.Log("Ironsource.Agent.init called");
+        IronSource.Agent.init("c507665d");
+    }
+
+    public void OnApplicationPause(bool isPaused) 
+    {                 
+        IronSource.Agent.onApplicationPause(isPaused);
     }
     
     public void ShowInterstitialAndThen(System.Action callback)

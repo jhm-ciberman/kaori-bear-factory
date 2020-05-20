@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="preferExternal"
+    package="com.Company.ProductName"
+    android:versionName="1.0"
+    android:versionCode="1">
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <application>
+        
+        <!-- AdMob -->
+        
+        <!--As Requiered By Admob please add your App ID-->
+
+        <!--<meta-data-->
+            <!--android:name="com.google.android.gms.ads.APPLICATION_ID"-->
+            <!--android:value="YOUR_ADMOB_APP_ID"/>-->
+
+        <!-- Amazon -->
+        <activity android:name="com.amazon.device.ads.AdActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+
+        <!-- AppLovin -->
+        <activity
+        android:name="com.applovin.adview.AppLovinInterstitialActivity"
+        android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.applovin.sdk.AppLovinWebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />        
+        <meta-data
+        android:name="applovin.sdk.verbose_logging"
+        android:value="true" />
+
+        <!-- Chartboost -->
+        <activity
+        android:name="com.chartboost.sdk.CBImpressionActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:excludeFromRecents="true"
+        android:hardwareAccelerated="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        
+        <!-- InMobi -->
+        <activity
+            android:name="com.inmobi.ads.rendering.InMobiAdActivity"
+            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize|screenLayout|locale|fontScale|uiMode"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.NoTitleBar"
+            tools:ignore="UnusedAttribute" />
+        
+        <!-- Maio -->
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity
+            android:name="jp.maio.sdk.android.AdFullscreenActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="jp.maio.sdk.android.HtmlBasedAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+
+        <!-- Mintegral -->
+       <activity
+        android:name="com.mintegral.msdk.activity.MTGCommonActivity"
+        android:configChanges="keyboard|orientation"
+        android:screenOrientation="portrait"
+        android:exported="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar">
+    </activity>
+    <activity   
+   android:name="com.mintegral.msdk.reward.player.MTGRewardVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+    </activity>
+
+
+        <!-- MyTarget -->
+        <activity
+            android:name="com.my.target.common.MyTargetActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <!-- TapJoy -->
+        <activity
+        android:name="com.tapjoy.TJAdUnitActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:hardwareAccelerated="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+        android:name="com.tapjoy.mraid.view.ActionHandler"
+        android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+        android:name="com.tapjoy.mraid.view.Browser"
+        android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+        android:name="com.tapjoy.TJContentActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:hardwareAccelerated="true" />
+
+        <!-- UnityAds -->
+        <activity
+        android:name="com.unity3d.services.ads.adunit.AdUnitActivity"
+        android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+        android:hardwareAccelerated="true"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+        android:name="com.unity3d.services.ads.adunit.AdUnitTransparentActivity"
+        android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+        android:hardwareAccelerated="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+        android:name="com.unity3d.services.ads.adunit.AdUnitTransparentSoftwareActivity"
+        android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+        android:hardwareAccelerated="false"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+        android:name="com.unity3d.services.ads.adunit.AdUnitSoftwareActivity"
+        android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+        android:hardwareAccelerated="false"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+       
+    </application>
+</manifest>

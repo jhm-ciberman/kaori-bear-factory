@@ -1,6 +1,8 @@
 <dependencies>
   <packages>
     <package>com.google.android.gms:play-services-ads:19.1.0</package>
+    <package>com.google.android.gms:play-services-ads-identifier:17.0.0</package>
+    <package>com.ironsource.sdk:mediationsdk:6.16.1</package>
   </packages>
   <files>
     <file>Assets/Plugins/Android/androidx.annotation.annotation-1.0.0.jar</file>
@@ -40,6 +42,7 @@
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-measurement-base-17.1.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-measurement-sdk-api-17.1.0.aar</file>
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-tasks-17.0.0.aar</file>
+    <file>Assets/Plugins/Android/com.ironsource.sdk.mediationsdk-6.16.1.aar</file>
   </files>
   <settings>
     <setting name="androidAbis" value="armeabi-v7a" />

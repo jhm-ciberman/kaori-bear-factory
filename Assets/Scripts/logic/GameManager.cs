@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour
     }
 #endif
 
+    private void OnApplicationPause(bool isPaused) 
+    {
+        AdsManager.instance.OnApplicationPause(isPaused);
+    }
+
     private void _OnPause()
     {
         Time.timeScale = 0f;
