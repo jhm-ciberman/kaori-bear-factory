@@ -22,7 +22,8 @@ public class RequestsManager : MonoBehaviour
         this._level = level;
         this._nextCustomerTime = Time.time + this._nextCustomerTime; 
 
-        this._queue = new RequestsQueue(this._level, this._level.slotsNumber, this._level.levelTimeMultiplier);
+        var difficultyMultiplier = LevelManager.GetDifficultyMultiplier(level);
+        this._queue = new RequestsQueue(this._level, this._level.slotsNumber, difficultyMultiplier);
         this._queue.onFailRequest += this._RemoveRequest;
 
         if (this._level.requests == null || this._level.requests.Length == 0)

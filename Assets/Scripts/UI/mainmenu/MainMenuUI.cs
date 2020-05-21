@@ -14,6 +14,7 @@ public class MainMenuUI : ScreenUI
 
     public void Start()
     {
+        PlayerPrefsManager.LoadPrefs();
         AdsManager.instance.Init();
         
         this.levelSelectionUI.HideNow();

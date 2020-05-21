@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: The Final Challenge
   seed: 0
   levelTimeMultiplier: 1.4
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 3
   requests:
@@ -53,3 +54,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07918ad36f16f5e42b4e4bf40b1c005c, type: 2}
   - {fileID: 11400000, guid: 57b490aea4a5b93498a7383e01f22ea9, type: 2}
   - {fileID: 11400000, guid: edd49d85fb9428045b76032e30da511a, type: 2}
+  tutorialUI: {fileID: 0}

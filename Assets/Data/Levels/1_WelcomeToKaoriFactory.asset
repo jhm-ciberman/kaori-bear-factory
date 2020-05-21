@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Welcome to Kaori Factory
   seed: 0
   levelTimeMultiplier: 2
-  paintingTimePerPiece: 1.03
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 1
   requests:

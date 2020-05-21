@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Cyborg Kaoris
   seed: 0
   levelTimeMultiplier: 1.595
-  paintingTimePerPiece: 2
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 2
   requests:

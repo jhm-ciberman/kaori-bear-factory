@@ -33,6 +33,7 @@ public static class LevelManager
     public static void Win(LevelData level)
     {
         PlayerPrefs.SetInt("Level_" + level.name, 1);
+        LevelManager.SetFailedAttempts(level, 0);
         PlayerPrefs.Save();
     }
 
@@ -51,6 +52,11 @@ public static class LevelManager
     public static int GetFailedAttempts(LevelData level)
     {
         return PlayerPrefs.GetInt("ConsecutiveFails_Level_" + level.name, 0);
+    }
+
+    public static float GetDifficultyMultiplier(LevelData level)
+    {
+        return level.levelTimeMultiplier * (1f + LevelManager.GetFailedAttempts(level) * 0.25f);
     }
 
     public static void SetFailedAttempts(LevelData level, int number)

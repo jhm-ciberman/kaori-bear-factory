@@ -49,11 +49,13 @@ public class OptionsUI : MonoBehaviour
     public void OnMusicVolumeChange(float volume)
     {
         EazySoundManager.GlobalMusicVolume = volume;
+        PlayerPrefsManager.SavePrefs();
     }
 
     public void OnFxVolumeChange(float volume)
     {
         EazySoundManager.GlobalSoundsVolume = volume;
         EazySoundManager.GlobalUISoundsVolume = volume;
+        PlayerPrefsManager.SavePrefs();
     }
 }

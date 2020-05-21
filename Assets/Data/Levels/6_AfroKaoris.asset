@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Afro Kaoris
   seed: 0
   levelTimeMultiplier: 1.47
-  paintingTimePerPiece: 2.2
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 2
   requests:

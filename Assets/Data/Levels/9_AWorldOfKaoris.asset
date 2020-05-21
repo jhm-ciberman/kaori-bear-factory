@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: A World of Kaoris
   seed: 0
   levelTimeMultiplier: 1.381
-  paintingTimePerPiece: 2.5
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 2
   requests:

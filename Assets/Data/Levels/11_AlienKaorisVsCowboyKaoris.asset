@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Alien Kaoris vs Cowboy Kaoris
   seed: 0
-  levelTimeMultiplier: 1.547
+  levelTimeMultiplier: 2
+  paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 3
   requests:
