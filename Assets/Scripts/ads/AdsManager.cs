@@ -9,10 +9,8 @@ public class AdsManager
     {
         get
         {
-            if (AdsManager._instance == null)
-            {
+            if (AdsManager._instance == null) 
                 AdsManager._instance = new AdsManager();
-            }
 
             return AdsManager._instance;
         }
@@ -27,20 +25,42 @@ public class AdsManager
         if (this._initializeWasCalled) return;
 
         this._initializeWasCalled = true;
-        // Initialize the Google Mobile Ads SDK.
-        Debug.Log("MobileAds.Initialize Called");
-        MobileAds.Initialize(initStatus => {
-            Debug.Log("MobileAds.Initialize Finished");
-            this._RequestInterstitial();
-        });
 
-        Debug.Log("Ironsource.Agent.init called");
-        IronSource.Agent.init("c507665d");
+        this._InitAdMob();
+        this._InitIronSource();
+        this._ConnectToTenjin();
     }
 
     public void OnApplicationPause(bool isPaused) 
     {                 
         IronSource.Agent.onApplicationPause(isPaused);
+
+        if (! isPaused) this._ConnectToTenjin();
+    }
+
+    private void _InitAdMob()
+    {
+        Debug.Log("MobileAds.Initialize Called");
+        MobileAds.Initialize(initStatus => {
+            Debug.Log("MobileAds.Initialize Finished");
+            this._RequestInterstitial();
+        });
+    }
+
+    private void _InitIronSource()
+    {
+        Debug.Log("Ironsource.Agent.init called");
+        IronSource.Agent.init(AppConfig.ironSourceAppKey);
+
+        //Debug.Log("Ironsource.Agent.validateIntegration called");
+        //IronSource.Agent.validateIntegration();
+    }
+
+    private void _ConnectToTenjin()
+    {
+        Debug.Log("Tenjin Connect called");
+        BaseTenjin instance = Tenjin.getInstance(AppConfig.tenjinAppKey);
+        instance.Connect();
     }
     
     public void ShowInterstitialAndThen(System.Action callback)
@@ -65,23 +85,15 @@ public class AdsManager
 
     private void _RequestInterstitial()
     {
-        #if UNITY_EDITOR
-            string adUnitId = "unused";
-        #elif UNITY_ANDROID
-            //string adUnitId = "ca-app-pub-3940256099942544/1033173712"; // Test Ad
-            string adUnitId = "ca-app-pub-8938056874619269/2918817667"; // Real Ad
-        #elif UNITY_IPHONE
-            string adUnitId = "unexpected_platform";
-        #else
-            string adUnitId = "unexpected_platform";
-        #endif
-
         // Initialize an InterstitialAd.
-        this._interstitial = new InterstitialAd(adUnitId);
+        this._interstitial = new InterstitialAd(AppConfig.adUnitId);
 
         // Create an empty ad request.
         var builder = new AdRequest.Builder();
-        builder.AddTestDevice("6AFA163589E44B52902FF87313B07633");
+        foreach (var id in AppConfig.testDevicesIds)
+        {
+            builder.AddTestDevice(id);
+        }
 
         // Load the interstitial with the request.
         this._interstitial.OnAdLoaded += (sender, args) => {
