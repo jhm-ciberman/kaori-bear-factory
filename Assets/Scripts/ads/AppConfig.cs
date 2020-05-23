@@ -12,12 +12,14 @@ public static class AppConfig
     public static string adUnitId = "unexpected_platform";
 #endif
 
-    public static string ironSourceAppKey = "c507665d";
+    //public static string ironSourceAppKey = "c507665d"; // Ciberman
+    public static string ironSourceAppKey = "c51b2d1d"; // AppSoluteGames
 
-    public static string tenjinAppKey = "HMFVJUPHW378PYXCFSCU9ZJ1YTXKDGOR";
+    //public static string tenjinAppKey = "HMFVJUPHW378PYXCFSCU9ZJ1YTXKDGOR"; // Ciberman
+    public static string tenjinAppKey = "A1VXEYGAFV7V1UWSEPEVZPWEXXD6YY8M"; // AppSoluteGames
 
     public static string[] testDevicesIds = new string[] {
-        "6AFA163589E44B52902FF87313B07633",
+        "6AFA163589E44B52902FF87313B07633", // My own cellphone (Ciberman)
     };
 
 }

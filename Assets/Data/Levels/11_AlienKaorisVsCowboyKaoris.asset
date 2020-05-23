@@ -16,7 +16,7 @@ MonoBehaviour:
   seed: 0
   levelTimeMultiplier: 2
   paintingTimePerPiece: 1
-  customerIntervals: 15
+  customerIntervals: 27.9
   slotsNumber: 3
   requests:
   - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}

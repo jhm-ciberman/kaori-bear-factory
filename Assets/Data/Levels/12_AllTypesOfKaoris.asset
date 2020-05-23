@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: All types of Kaoris
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 2
   paintingTimePerPiece: 1
-  customerIntervals: 15
+  customerIntervals: 30
   slotsNumber: 3
   requests:
   - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}

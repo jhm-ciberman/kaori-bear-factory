@@ -7,6 +7,11 @@ public class FPSDisplayUI : MonoBehaviour
 
     private float _timer;
 
+    private void Awake()
+    {
+        this.gameObject.SetActive(false); // For release
+    }
+
     private void Update()
     {
         if (Time.unscaledTime > _timer)

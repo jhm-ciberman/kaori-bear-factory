@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Clients from Outer Space
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 1.789
   paintingTimePerPiece: 1
-  customerIntervals: 15
+  customerIntervals: 21.8
   slotsNumber: 2
   requests:
   - {fileID: 11400000, guid: 2f57aaac2c2dc7048b91a9c5ce431857, type: 2}

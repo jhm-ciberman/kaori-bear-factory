@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: The Final Challenge
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 2
   paintingTimePerPiece: 1
-  customerIntervals: 15
+  customerIntervals: 30
   slotsNumber: 3
   requests:
   - {fileID: 11400000, guid: 6f5cd4ff73b1d6544b2aa6b931b8849c, type: 2}

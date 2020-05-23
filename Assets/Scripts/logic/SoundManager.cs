@@ -3,7 +3,7 @@ using UnityEngine;
 
 class SoundManager : MonoBehaviour
 {
-    public AudioClip newClient;
+    public AudioClip newClient = null;
 
     public void Start()
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: The Amazing Kaori Factory
   seed: 0
-  levelTimeMultiplier: 1.381
+  levelTimeMultiplier: 1.579
   paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 2

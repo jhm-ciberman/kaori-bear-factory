@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: I want a magic Kaori
   seed: 0
-  levelTimeMultiplier: 1.4
+  levelTimeMultiplier: 1.511
   paintingTimePerPiece: 1
   customerIntervals: 15
   slotsNumber: 2
