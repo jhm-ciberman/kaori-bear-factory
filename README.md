@@ -1,6 +1,6 @@
 # Kaori Bear Factory
 
-Kaori Bear Factory is a short 3D Indie Mobile Game in where you have to craft, paint and deliver teddy bears to different clients according to their requests before the time runs out.
+Kaori Bear Factory is a short 3D Indie desktop game in where you have to craft, paint and deliver teddy bears to different clients according to their requests before the time runs out.
 
 - 13 unique different levels with different challenges.
 - Cute 3D graphics with hand painted textures.
