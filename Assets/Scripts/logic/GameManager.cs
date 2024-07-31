@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         LevelManager.SetLevelsList(this._gameLevelsData);
-        
-        AdsManager.instance.Init();
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
@@ -134,7 +132,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationPause(bool isPaused) 
     {
-        AdsManager.instance.OnApplicationPause(isPaused);
+        //
     }
 
     private void _OnPause()
@@ -157,19 +155,15 @@ public class GameManager : MonoBehaviour
 
     private void _NextLevel()
     {
-        AdsManager.instance.ShowInterstitialAndThen(() => {
-            var nextLevel = LevelManager.GetNextLevel(this._currentLevel);
-            GameManager.currentLevelData = nextLevel;
-            this._RestartLevel();
-        });
+        var nextLevel = LevelManager.GetNextLevel(this._currentLevel);
+        GameManager.currentLevelData = nextLevel;
+        this._RestartLevel();
     }
 
     private void _RestartLevel()
     {
-        AdsManager.instance.ShowInterstitialAndThen(() => {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        });
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void _OnLevelComplete()
