@@ -12,7 +12,7 @@ Originally made for the Global Game Jam 2020, this game was developed in 48 hour
 
 ## Play
 
-Download the game for free from: ciberman.itch.io/kaori-bear-factory
+Download the game for free from Itch.io: http://ciberman.itch.io/kaori-bear-factory
 
 ## Screenshots
 
