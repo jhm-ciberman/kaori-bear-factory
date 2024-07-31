@@ -10,6 +10,10 @@ Kaori Bear Factory is a short 3D Indie desktop game in where you have to craft, 
 
 Originally made for the Global Game Jam 2020, this game was developed in 48 hours.
 
+## Play
+
+Download the game for free from: ciberman.itch.io/kaori-bear-factory
+
 ## Screenshots
 
 ![image](https://github.com/user-attachments/assets/0728d5d5-a0fe-4e8e-8543-a647f9384efa)
