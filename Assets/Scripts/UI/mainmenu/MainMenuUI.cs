@@ -45,6 +45,11 @@ public class MainMenuUI : ScreenUI
         this.SetActiveWindow(this.creditsUI);
     }
 
+    public void OnExitButtonPressed()
+    {
+        Application.Quit();
+    }
+
     public void SetActiveWindow(WindowUI window)
     {
         this._activeScreen?.HideNow();
